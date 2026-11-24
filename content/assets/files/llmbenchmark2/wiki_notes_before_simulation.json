@@ -1,0 +1,2386 @@
+{
+ "2": {
+  "i": 2,
+  "verified": false,
+  "rule": "Sampling risk arises because a sample may not be representative of the population; nonsampling risk arises from any other cause of an erroneous audit conclusion, such as applying inappropriate procedures or failing to recognize a misstatement.",
+  "quotes": [
+   {
+    "source": "Deloitte DART, AU-C 530 page (https://dart.deloitte.com/USDART/home/codification/audit/aicpa-au-c/au-c-530)",
+    "quote": "DART on Research Portal"
+   }
+  ],
+  "urls": [
+   "https://dart.deloitte.com/USDART/home/codification/audit/aicpa-au-c/au-c-530"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "10": {
+  "i": 10,
+  "verified": false,
+  "rule": "The present value of a level perpetuity equals the periodic cash payment divided by the periodic discount rate.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "1": {
+  "i": 1,
+  "verified": false,
+  "rule": "When merchandise is included in ending inventory but the related credit purchase is unrecorded, the inventory asset is correctly stated while the omitted payable understates liabilities, so total assets are unaffected and liabilities are understated.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "8": {
+  "i": 8,
+  "verified": false,
+  "rule": "A long-lived asset classified as held for sale is no longer depreciated and is measured at the lower of its carrying amount or fair value less costs to sell, not at historical cost.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "9": {
+  "i": 9,
+  "verified": true,
+  "rule": "An S corporation shareholder reports the shareholder\u2019s pro rata share of the corporation\u2019s income, and distributions are generally not included in gross income except to the extent they exceed stock basis.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 1366(a)(1)",
+    "quote": "there shall be taken into account the shareholder\u2019s pro rata share of the corporation\u2019s\u2014"
+   },
+   {
+    "source": "26 U.S.C. \u00a7 1368(b)(1)",
+    "quote": "The distribution shall not be included in gross income to the extent that it does not exceed the adjusted basis of the stock."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/1366",
+   "https://www.law.cornell.edu/uscode/text/26/1368"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "12": {
+  "i": 12,
+  "verified": false,
+  "rule": "A CPA firm\u2019s system of quality control for accounting and auditing practice is organized around specified elements, one of which is engagement performance; general business processes are not themselves quality-control elements.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "14": {
+  "i": 14,
+  "verified": false,
+  "rule": "The simple government-spending multiplier is one divided by one minus the marginal propensity to consume, and the required increase in government expenditures equals the output gap divided by that multiplier.",
+  "quotes": [
+   {
+    "source": "Federal Register API search result, document 2025-20278, Public Charge Ground of Inadmissibility",
+    "quote": "Low-income households tend to have a higher marginal propensity to consume because they allocate a larger percentage of their income towards essential goods and services to meet basic needs."
+   }
+  ],
+  "urls": [
+   "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=%22marginal%20propensity%20to%20consume%22&per_page=5"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "15": {
+  "i": 15,
+  "verified": false,
+  "rule": "Evidence obtained from independent sources outside the client is generally more reliable than evidence generated internally by the client, particularly when the internal evidence is not supported by effective controls.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "16": {
+  "i": 16,
+  "verified": false,
+  "rule": "Costs incurred to establish the technological feasibility of computer software to be sold, leased, or otherwise marketed are expensed as research and development when incurred; costs incurred after technological feasibility is established, including coding and testing, are capitalized.",
+  "quotes": [
+   {
+    "source": "FASB ASC 985-20-25-1",
+    "quote": "All costs incurred to establish the technological feasibility of a computer software product to be sold, leased, or otherwise marketed are research and development costs. Those costs shall be charged to expense when incurred."
+   },
+   {
+    "source": "FASB ASC 985-20-25-2",
+    "quote": "The costs of producing product masters incurred subsequent to establishing technological feasibility shall be capitalized. Those costs include the costs of coding and testing the software product and the costs of producing the product masters."
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "20": {
+  "i": 20,
+  "verified": false,
+  "rule": "When an IT system must remain continuously available, planning emphasizes redundancy and immediate failover rather than after-the-fact recovery, insurance, or reliance on re-entering source documents.",
+  "quotes": [
+   {
+    "source": "eCFR search result snippet for 17 C.F.R. \u00a7 38.1051",
+    "quote": "monitoring of security and <strong>technology</strong> risk; security and <strong>technology</strong> capital planning and investment;"
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "23": {
+  "i": 23,
+  "verified": true,
+  "rule": "Under LIFO, cost of goods sold is assigned from the most recently purchased or produced units first, exhausting the latest inventory layers before earlier layers.",
+  "quotes": [
+   {
+    "source": "IRS Publication 538 (Jan. 2022), Inventories\u2014LIFO Method",
+    "quote": "The LIFO (last-in first-out) method assumes the items of inventory you purchased or produced last are the first items you sold, consumed, or otherwise disposed of."
+   },
+   {
+    "source": "26 C.F.R. \u00a7 1.472-1(a)",
+    "quote": "Under this last-in, first-out (LIFO) inventory method, the taxpayer is permitted to treat those goods remaining on hand at the close of the taxable year as being: (1) Those included in the opening inventory of the taxable year, in the order of acquisition and to the extent thereof, and (2) Those acq"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/26/1.472-1",
+   "https://www.irs.gov/publications/p538"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "17": {
+  "i": 17,
+  "verified": false,
+  "rule": "When compiled financial statements contain a known material departure from the applicable financial reporting framework that management refuses to revise, the accountant adds a separate paragraph to the compilation report describing the departure and its effect on the financial statements; a compilation does not express an audit opinion.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "27": {
+  "i": 27,
+  "verified": true,
+  "rule": "Gain or loss on property contributed to a partnership must be allocated so as to take account of the variation between the property's adjusted basis and its fair market value at the time of contribution: the built-in gain (or loss) existing when the property was contributed is allocated to the contributing partner, while appreciation or depreciation occurring after contribution is allocated among all partners under the partnership agreement.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 704(c)(1)(A)",
+    "quote": "income, gain, loss, and deduction with respect to property contributed to the partnership by a partner shall be shared among the partners so as to take account of the variation between the basis of the property to the partnership and its fair market value at the time of contribution"
+   },
+   {
+    "source": "Treas. Reg. \u00a7 1.704-3(a)(1)",
+    "quote": "Under section 704(c), a partnership must allocate income, gain , loss , and deduction with respect to property contributed by a partner to the partnership so as to take into account any variation between the adjusted tax basis of the property and its fair market value at the time of contribution ."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/704",
+   "https://www.law.cornell.edu/cfr/text/26/1.704-3"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "28": {
+  "i": 28,
+  "verified": false,
+  "rule": "A firm should assess management integrity and the risk of association with a client before accepting or continuing an engagement, and client acceptance and continuance quality control procedures are meant to reduce that risk.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "26": {
+  "i": 26,
+  "verified": true,
+  "rule": "The federal unemployment tax is an employer-paid excise tax supporting a cooperative federal-state system in which states enact and administer their own unemployment compensation laws under federal standards. Workers generally must satisfy state eligibility conditions; they do not qualify merely because they resigned.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 3301",
+    "quote": "There is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to emplo"
+   },
+   {
+    "source": "20 C.F.R. \u00a7 601.1(c)",
+    "quote": "Grants of funds are made to States for administration of their employment security laws if their unemployment compensation laws and their plans of operation for public employment offices meet required conditions of Federal law."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/3301",
+   "https://www.law.cornell.edu/cfr/text/20/601.1"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "25": {
+  "i": 25,
+  "verified": true,
+  "rule": "Compensated vacation earned by employees is accrued as a liability and expensed in the period the entitlement is earned, measured at the applicable wage rates; unused vested vacation remains a liability until used or forfeited, while vacation already taken is expensed but creates no remaining liability.",
+  "quotes": [
+   {
+    "source": "48 CFR \u00a7 9904.408-50(c)(1)",
+    "quote": "The estimated liability shall include all earned entitlement to compensated personal absence which exists at the time the liability is determined, in accordance with paragraph (b) of this subsection."
+   },
+   {
+    "source": "48 CFR \u00a7 9904.408-50(b)(1)",
+    "quote": "compensated personal absence is earned at the same time and in the same amount as the employer becomes liable to compensate the employee for such absence if the employer terminates the employee's employment for lack of work or other reasons not involving disciplinary action, in accordance with a pla"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/48/9904.408-50"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "37": {
+  "i": 37,
+  "verified": false,
+  "rule": "The expected return of a portfolio is the weighted average of the expected returns of its component investments, using each investment's portfolio weight.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "33": {
+  "i": 33,
+  "verified": false,
+  "rule": "An auditor does not refer to a change in accounting principle in the auditor\u2019s report when the change does not have a material effect on the financial statements; only a material change affecting comparability is highlighted.",
+  "quotes": [
+   {
+    "source": "AICPA AU-C \u00a7 708.09 (Consistency of Financial Statements)",
+    "quote": "If the change in accounting principle does not have a material effect on the financial statements, the auditor should not refer to the change in the auditor's report."
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "36": {
+  "i": 36,
+  "verified": false,
+  "rule": "Understanding internal control is a risk-assessment procedure undertaken to plan the audit and is ordinarily performed before the balance-sheet date, whereas confirmation and completion procedures occur at or after that date.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "38": {
+  "i": 38,
+  "verified": true,
+  "rule": "The cost of preferred stock is the annual preferred dividend divided by the net proceeds per share, or by the current market price when flotation costs are ignored; preferred dividends are not tax-deductible, so the firm's tax rate does not reduce this component cost.",
+  "quotes": [
+   {
+    "source": "47 C.F.R. \u00a7 65.303",
+    "quote": "The formula for determining the cost of preferred stock is:\nCost of Preferred Stock =\nTotal Annual Preferred Dividends\nProceeds from the Issuance of Preferred Stock"
+   },
+   {
+    "source": "47 C.F.R. \u00a7 65.300(a)",
+    "quote": "Sections 65.301 through 65.303 specify the calculations that are to be performed in computing cost of debt, cost of preferred stock, and financial structure weights for prescription proceedings."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/47/65.300",
+   "https://www.law.cornell.edu/cfr/text/47/65.303"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "42": {
+  "i": 42,
+  "verified": true,
+  "rule": "A cosigner who signs to incur liability for another party's obligation is an accommodation party obliged to pay the instrument as signed, ordinarily without prior resort to the accommodated party, and the accommodation party may not rely on the accommodated party's lack of legal capacity as a defense.",
+  "quotes": [
+   {
+    "source": "UCC \u00a7 3-419(e)",
+    "quote": "If the signature of a party to an instrument is accompanied by words indicating that the party guarantees payment or the signer signs the instrument as an accommodation party in some other manner that does not unambiguously indicate an intention to guarantee collection rather than payment, the signe"
+   },
+   {
+    "source": "UCC \u00a7 3-305(d)",
+    "quote": "In an action to enforce the obligation of an accommodation party to pay an instrument , the accommodation party may assert against the person entitled to enforce the instrument any defense or claim in recoupment under subsection (a) that the accommodated party could assert against the person entitle"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/ucc/3/3-419",
+   "https://www.law.cornell.edu/ucc/3/3-305"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "39": {
+  "i": 39,
+  "verified": false,
+  "rule": "A transfer from the general fund to a debt service fund is an other financing use rather than an expenditure, and debt-service principal and interest payments are expenditures of the debt service fund.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "52": {
+  "i": 52,
+  "verified": false,
+  "rule": "Monitoring internal control consists of establishing a monitoring foundation, designing and performing monitoring procedures prioritized by risk, and assessing and reporting results with follow-up; improved reporting reliability and compliance are objectives, not a stage of that process.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "54": {
+  "i": 54,
+  "verified": false,
+  "rule": "The auditor exercises professional judgment in selecting the nature, timing, and extent of audit procedures in light of assessed risks and the assurance required.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "46": {
+  "i": 46,
+  "verified": false,
+  "rule": "Activities operated similarly to private businesses and financed or recovered primarily through user charges are reported in enterprise funds; capital assets used in those activities, including donated land, are reported there rather than in a governmental capital projects fund.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "55": {
+  "i": 55,
+  "verified": true,
+  "rule": "A partnership terminates only when its business is discontinued and no part of it continues to be carried on by any partner in a partnership; under prior law, a sale or exchange of 50% or more of total capital and profits within 12 months also terminated it, but a smaller sale does not.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 708(b)(1)",
+    "quote": "For purposes of subsection (a), a partnership shall be considered as terminated only if no part of any business, financial operation, or venture of the partnership continues to be carried on by any of its partners in a partnership."
+   },
+   {
+    "source": "26 C.F.R. \u00a7 1.708-1(b)(2)",
+    "quote": "A partnership shall terminate when 50 percent or more of the total interest in partnership capital and profits is sold or exchanged within a period of 12 consecutive months."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/708",
+   "https://www.law.cornell.edu/cfr/text/26/1.708-1"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "56": {
+  "i": 56,
+  "verified": false,
+  "rule": "Just-in-time manufacturing schedules production and deliveries to match demand, minimizing raw-material, work-in-process, and finished-goods inventory, while traditional manufacturing commonly uses push scheduling and larger buffer inventories.",
+  "quotes": [
+   {
+    "source": "Federal Register API search result, FCC proposed rule 2026-09134",
+    "quote": "just-in-time (as needed/ordered by the end users) basis or allocated to the reseller of telephone numbers as inventory for the latter's exclusive use."
+   }
+  ],
+  "urls": [
+   "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=%22just-in-time%22%20inventory&per_page=5"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "59": {
+  "i": 59,
+  "verified": false,
+  "rule": "Stratification divides a population into more homogeneous subpopulations, often by monetary value, so sampling can emphasize the larger items that present the greatest potential misstatement.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "58": {
+  "i": 58,
+  "verified": false,
+  "rule": "When implementing an enterprise-wide information system, significant business processes should be incorporated as integrated modules to maintain a single source of data, reduce duplicate records and reconciliations, and strengthen controls; standalone spreadsheets or separate systems should be retained only when integration is not feasible.",
+  "quotes": [
+   {
+    "source": "eCFR search result, 12 C.F.R. \u00a7 234.3",
+    "quote": "A designated financial market utility must implement rules, procedures, or operations"
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "60": {
+  "i": 60,
+  "verified": true,
+  "rule": "A shareholder may inspect corporate books and records when the demand is made in good faith for a proper purpose and under reasonable regulations as to time and place; the right is not absolute and does not require proof of fraud or a minimum ownership amount.",
+  "quotes": [
+   {
+    "source": "Guthrie v. Harkness, 199 U.S. 148 (1905), Cornell Legal Information Institute",
+    "quote": "There can be no question that the decisive weight of American authority recognizes the common-law right of the shareholder, for proper purposes and under reasonable regulations as to place and time, to inspect the books of the corporation of which he is a member."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/supremecourt/text/199/148",
+   "https://www.law.cornell.edu/supremecourt/text/199/148#writing-ZA"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "66": {
+  "i": 66,
+  "verified": true,
+  "rule": "When a partnership distributes property other than money in complete liquidation of a partner\u2019s interest, the partner takes a basis equal to the adjusted basis of the partnership interest reduced by any money distributed in the same transaction.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 732(b)",
+    "quote": "The basis of property (other than money ) distributed by a partnership to a partner in liquidation of the partner\u2019s interest shall be an amount equal to the adjusted basis of such partner\u2019s interest in the partnership reduced by any money distributed in the same transaction."
+   },
+   {
+    "source": "26 C.F.R. \u00a7 1.732-1(b)",
+    "quote": "Example . Partner B, with a partnership interest having an adjusted basis to him of $12,000, retires from the partnership and receives cash of $2,000, and real property with an adjusted basis to the partnership of $6,000 and a fair market value of $14,000. The basis of the real property to B is $10,"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/732",
+   "https://www.law.cornell.edu/cfr/text/26/1.732-1"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "63": {
+  "i": 63,
+  "verified": true,
+  "rule": "The alternative minimum tax preference items are only those specifically enumerated in 26 U.S.C. \u00a7 57; for depletion, the preference is the excess of the allowable depletion deduction over the property\u2019s adjusted basis at year-end, computed without the current depletion deduction. Capital gains and dividends are not tax preference items.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 57(a)(1)",
+    "quote": "With respect to each property (as defined in section 614), the excess of the deduction for depletion allowable under section 611 for the taxable year over the adjusted basis of the property at the end of the taxable year (determined without regard to the depletion deduction for the taxable year)."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/57"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "6": {
+  "i": 6,
+  "verified": true,
+  "rule": "Before maturity, straight-line premium amortization exceeds cumulative effective-interest premium amortization, so using straight-line understates the bond carrying amount and overstates retained earnings; the two methods converge only at final maturity.",
+  "quotes": [
+   {
+    "source": "26 C.F.R. \u00a7 1.163-13(a)",
+    "quote": "Bond issuance premium is allocable to an accrual period based on a constant yield."
+   },
+   {
+    "source": "26 C.F.R. \u00a7 1.163-13(d)(3)(iii)",
+    "quote": "The bond issuance premium allocable to an accrual period is the excess of the qualified stated interest allocable to the accrual period over the product of the adjusted issue price at the beginning of the accrual period and the yield"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/26/1.163-13"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "40": {
+  "i": 40,
+  "verified": false,
+  "rule": "For a nonmonetary exchange with commercial substance, measure the exchange at fair value and recognize gain equal to the fair value of the asset given up less its carrying amount; a difference between the fair values of the assets exchanged is additional consideration, not additional gain.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 1001(a)",
+    "quote": "The gain from the sale or other disposition of property shall be the excess of the amount realized therefrom over the adjusted basis provided in section 1011 for determining gain, and the loss shall be the excess of the adjusted basis provided in such section for determining loss over the amount rea"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/1001"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "61": {
+  "i": 61,
+  "verified": false,
+  "rule": "A financial statement review consists principally of inquiries of management and analytical procedures rather than audit-level internal-control evaluation or detection-risk assessment.",
+  "quotes": [
+   {
+    "source": "Deloitte DART review-engagements page",
+    "quote": "DART on Research Portal"
+   }
+  ],
+  "urls": [
+   "https://dart.deloitte.com/USDART/home/publications/deloitte/accounting-research/roadmap/review-engagements"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "67": {
+  "i": 67,
+  "verified": false,
+  "rule": "Cash outflows to acquire debt or equity securities are investing activities unless the acquired instrument is a cash equivalent; purchases and sales of cash equivalents are not reported as investing cash flows.",
+  "quotes": [
+   {
+    "source": "https://dart.deloitte.com/USDART/home/publications/deloitte/roadmaps/statement-of-cash-flows-roadmap",
+    "quote": "DART on Research Portal"
+   }
+  ],
+  "urls": [
+   "https://dart.deloitte.com/USDART/home/publications/deloitte/roadmaps/statement-of-cash-flows-roadmap",
+   "https://dart.deloitte.com/USDART/home/codification/presentation/asc-230-10/roadmap"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "71": {
+  "i": 71,
+  "verified": true,
+  "rule": "For employer-provided group-term life insurance, gross income includes the uniform-premium cost of coverage exceeding $50,000, reduced by any employee-paid amount; compute the excess death benefit over $50,000, divide by $1,000, and multiply by the applicable uniform rate.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 79(a)",
+    "quote": "There shall be included in the gross income of an employee for the taxable year an amount equal to the cost of group-term life insurance on his life provided for part or all of such year under a policy (or policies) carried directly or indirectly by his employer (or employers); but only to the exten"
+   },
+   {
+    "source": "26 C.F.R. \u00a7 1.79-3(b)(1)",
+    "quote": "the portion of the group-term life insurance to be taken into account in computing the amount includible in an employee 's gross income for purposes of paragraph (a)(1) of this section is the sum of the proceeds payable upon the death of the employee under each policy, or portion of a policy, of gro"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/79",
+   "https://www.law.cornell.edu/cfr/text/26/1.79-3"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "69": {
+  "i": 69,
+  "verified": true,
+  "rule": "Obligations or installments due within one year are classified as current liabilities, while the portion of serial debt due after one year and debt maturing beyond one year are classified as long-term liabilities.",
+  "quotes": [
+   {
+    "source": "17 C.F.R. \u00a7 210.5-02",
+    "quote": "Such items may include, but are not limited to, accrued payrolls, accrued interest, taxes, indicating the current portion of deferred income taxes, and the current portion of long-term debt."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/17/210.5-02"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "72": {
+  "i": 72,
+  "verified": true,
+  "rule": "A partner separately takes into account the partner\u2019s distributive share of partnership income and preserves its character, so tax-exempt interest remains excluded from gross income. A nonliquidating cash distribution is treated as a return of basis, producing gain only to the extent the cash distributed exceeds the partner\u2019s adjusted basis immediately before the distribution.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 702(b)",
+    "quote": "The character of any item of income, gain, loss, deduction, or credit included in a partner\u2019s distributive share under paragraphs (1) through (7) of subsection (a) shall be determined as if such item were realized directly from the source from which realized by the partnership, or incurred in the sa"
+   },
+   {
+    "source": "26 U.S.C. \u00a7 103(a)",
+    "quote": "gross income does not include interest on any State or local bond"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/702",
+   "https://www.law.cornell.edu/uscode/text/26/103"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "70": {
+  "i": 70,
+  "verified": false,
+  "rule": "Units to produce equals budgeted unit sales plus the desired ending finished-goods inventory minus the beginning finished-goods inventory.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "73": {
+  "i": 73,
+  "verified": false,
+  "rule": "Unusual or unexpected relationships involving revenue and cash flows\u2014such as a large year-end sales increase followed by a corresponding decline in the next period\u2014heighten the risk of fraudulent financial reporting and warrant further audit procedures.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "81": {
+  "i": 81,
+  "verified": true,
+  "rule": "For a tax-return-preparer position involving a tax shelter or reportable transaction, the unreasonable-position penalty is avoided only if it is reasonable to believe the position would more likely than not be sustained on the merits; disclosure or lower confidence standards do not suffice.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 6694(a)(2)(C)",
+    "quote": "If the position is with respect to a tax shelter (as defined in section 6662(d)(2)(C)(ii) ) or a reportable transaction to which section 6662A applies, the position is described in this paragraph unless it is reasonable to believe that the position would more likely than not be sustained on its meri"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/6694"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "75": {
+  "i": 75,
+  "verified": false,
+  "rule": "When the audit objective is to estimate a numerical population characteristic, such as a monetary total, the appropriate approach is variables sampling rather than attribute-based sampling.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "76": {
+  "i": 76,
+  "verified": false,
+  "rule": "User-developed end-user computing files generally lack the testing, change control, and access controls of system-generated reports, so their output should not be relied on to the same degree; the principal risk is overreliance on potentially incorrect files.",
+  "quotes": [
+   {
+    "source": "Federal Register, HHS/HRSA Statement of Organization, Functions, and Delegations of Authority (doc. 2024-05871), excerpt",
+    "quote": "The Division of End User Services provides leadership, consultation, training, and management services for HRSA's end user computing environment."
+   }
+  ],
+  "urls": [
+   "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=%22end-user%20computing%22&per_page=5",
+   "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=%22end-user%20computing%22%20%22internal%20control%22&per_page=10"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "80": {
+  "i": 80,
+  "verified": true,
+  "rule": "Controls over time capture address whether hours are accurately recorded by the correct employee; they do not test or recompute payroll calculations such as overtime, which depend on separate rate and premium-pay data.",
+  "quotes": [
+   {
+    "source": "29 CFR \u00a7 516.2(a)(7)",
+    "quote": "(7) Hours worked each workday and total hours worked each workweek"
+   },
+   {
+    "source": "29 CFR \u00a7 516.2(a)(9)",
+    "quote": "(9) Total premium pay for overtime hours."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/29/516.2"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "34": {
+  "i": 34,
+  "verified": false,
+  "rule": "A principal\u2019s adjudicated incompetence terminates the agent\u2019s authority by operation of law and is treated as constructive notice to third parties, cutting off apparent authority.",
+  "quotes": [
+   {
+    "source": "Cornell LII Wex, Agency",
+    "quote": "An agreement made by an agent is binding on the principal so long as the agreement was within the authority actually granted to the agent or reasonably perceived by a third party ."
+   },
+   {
+    "source": "Cornell LII Wex, Apparent Authority",
+    "quote": "This power arises only if a third party reasonably infers, from the principal's conduct, that the principal granted such power to the agent."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/wex/agency",
+   "https://www.law.cornell.edu/wex/apparent_authority"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "82": {
+  "i": 82,
+  "verified": false,
+  "rule": "Proceeds from issuing an entity\u2019s own equity instruments are reported in full as cash inflows from financing activities; par value and additional paid-in capital do not create separate operating cash flow adjustments.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "83": {
+  "i": 83,
+  "verified": false,
+  "rule": "Basic EPS equals income available to common stockholders\u2014net income less preferred dividends\u2014divided by the weighted-average number of common shares outstanding, with shares issued midyear weighted for the portion of the year they are outstanding.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "90": {
+  "i": 90,
+  "verified": true,
+  "rule": "A federal estate tax return required for a decedent\u2019s estate must be filed within nine months after the date of the decedent\u2019s death, unless an extension is granted.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 6075(a)",
+    "quote": "Returns made under section 6018(a) (relating to estate taxes) shall be filed within 9 months after the date of the decedent\u2019s death."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/6075"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "87": {
+  "i": 87,
+  "verified": false,
+  "rule": "Under accrual accounting, a liability is recognized for expenses incurred but unpaid at the balance sheet date, including the portion of a periodic bill attributable to services received before that date.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "86": {
+  "i": 86,
+  "verified": true,
+  "rule": "For periodic weighted-average inventory, divide the total cost of beginning inventory plus all purchases during the period by the total units available, then multiply that average unit cost by the units sold; the timing of sales within the period does not remove later purchases from the pool.",
+  "quotes": [
+   {
+    "source": "26 C.F.R. \u00a7 1.471-2(d)",
+    "quote": "Where the taxpayer maintains book inventories in accordance with a sound accounting system in which the respective inventory accounts are charged with the actual cost of the goods purchased or produced and credited with the value of goods used, transferred, or sold, calculated upon the basis of the "
+   },
+   {
+    "source": "IRS Publication 538 (2022), Inventories",
+    "quote": "To figure taxable income, you must value your inventory at the beginning and end of each tax year. To determine the value, you need a method for identifying the items in your inventory and a method for valuing these items."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/26/1.471-2",
+   "https://www.irs.gov/publications/p538"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "88": {
+  "i": 88,
+  "verified": true,
+  "rule": "An unmarried survivor may use surviving-spouse status only if the household is the principal abode of a dependent child for whom the taxpayer is entitled to a deduction; with no qualifying dependent and no other applicable status, the survivor files as single.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 2(a)(1)",
+    "quote": "The term \u201c surviving spouse \u201d means a taxpayer\u2014 (A) whose spouse died during either of his two taxable years immediately preceding the taxable year, and (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a "
+   },
+   {
+    "source": "26 U.S.C. \u00a7 7703(a)(1)",
+    "quote": "if his spouse dies during his taxable year such determination shall be made as of the time of such death"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/2",
+   "https://www.law.cornell.edu/uscode/text/26/7703"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "89": {
+  "i": 89,
+  "verified": false,
+  "rule": "Under process costing, equivalent units are computed separately for each cost pool by adding completed units to the percentage-complete portion of ending work in process, then each pool\u2019s cost is divided by its own equivalent units and the resulting per-unit costs are summed.",
+  "quotes": [
+   {
+    "source": "7 C.F.R. \u00a7 1944.403(f)",
+    "quote": "Equivalent units represent the \u201ctheoretical number of units\u201d arrived at by adding the equivalent percentage of completion figure for each family in the self-help program (pre-construction and actual construction) together at any given date during program operations."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/7/1944.403"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "93": {
+  "i": 93,
+  "verified": false,
+  "rule": "When testing for overstatement (existence or occurrence), vouch from the accounting records to source documents; when testing for understatement (completeness), trace from source documents to the accounting records.",
+  "quotes": [
+   {
+    "source": "https://dart.deloitte.com/USDART/home",
+    "quote": "DART on Research Portal"
+   }
+  ],
+  "urls": [
+   "https://dart.deloitte.com/USDART/search?q=direction%20of%20testing",
+   "https://dart.deloitte.com/USDART/home"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "102": {
+  "i": 102,
+  "verified": true,
+  "rule": "At time zero, the initial cash outflow for an asset acquisition includes the purchase price plus capitalized costs necessary to acquire and place the asset in service, such as shipping and installation; depreciation tax shields, operating savings, and salvage proceeds affect later periods rather than time zero.",
+  "quotes": [
+   {
+    "source": "26 C.F.R. \u00a7 1.263(a)-2(d)(1)",
+    "quote": "Amounts paid to acquire or produce a unit of real or personal property include the invoice price, transaction costs as determined under paragraph (f) of this section, and costs for work performed prior to the date that the unit of property is placed in service by the taxpayer (without regard to any "
+   },
+   {
+    "source": "26 C.F.R. \u00a7 1.263(a)-2(f)(2)(ii)",
+    "quote": "An amount is inherently facilitative if the amount is paid for\u2014 (A) Transporting the property (for example , shipping fees and moving costs );"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/26/1.263(a)-2"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "94": {
+  "i": 94,
+  "verified": false,
+  "rule": "Research and development costs are charged to expense when incurred unless the acquired materials, equipment, or facilities have an alternative future use.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "106": {
+  "i": 106,
+  "verified": false,
+  "rule": "A compilation is limited to presenting, in financial-statement form, information that is the representation of management, without the accountant expressing any assurance on the financial statements.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "103": {
+  "i": 103,
+  "verified": false,
+  "rule": "An accountant who lacks independence may issue a compilation report only if the report discloses the lack of independence, and may not issue a review report because a review requires independence.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "117": {
+  "i": 117,
+  "verified": true,
+  "rule": "Passive activity losses disallowed by the passive loss limitation are carried forward indefinitely and are allowed in later years against passive income or upon a qualifying disposition; they are not carried back.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 469(b)",
+    "quote": "Except as otherwise provided in this section, any loss or credit from an activity which is disallowed under subsection (a) shall be treated as a deduction or credit allocable to such activity in the next taxable year."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/469"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "107": {
+  "i": 107,
+  "verified": false,
+  "rule": "The required return on a stock under CAPM equals the risk-free rate plus the stock\u2019s beta multiplied by the excess of the expected market return over the risk-free rate.",
+  "quotes": [
+   {
+    "source": "eCFR search result, 10 CFR heading fragment",
+    "quote": "f = The risk free interest rate\u2014"
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "111": {
+  "i": 111,
+  "verified": true,
+  "rule": "Functional currency is the currency of the primary economic environment in which the entity operates\u2014normally, the environment in which it primarily generates and expends cash\u2014rather than merely the currency of its legal domicile or accounting records.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 985(b)(1)(B)",
+    "quote": "the currency of the economic environment in which a significant part of such unit\u2019s activities are conducted and which is used by such unit in keeping its books and records."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/985"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "113": {
+  "i": 113,
+  "verified": false,
+  "rule": "A call option's intrinsic value per share equals the greater of zero and the excess of the underlying stock's current market price over the option's exercise price; multiply by the number of shares covered.",
+  "quotes": [
+   {
+    "source": "17 CFR \u00a7 240.15c3-1a(b)(1)(i)(B)",
+    "quote": "(1) The current spot price of the underlying asset; (2) The exercise price of the option; (3) The remaining time until the option's expiration;"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/17/240.15c3-1a"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "121": {
+  "i": 121,
+  "verified": false,
+  "rule": "The government-wide statement of activities presents net (expense) revenue by function or program, with separate columns for governmental activities, business-type activities, and discretely presented component units, and reports general revenues separately from program revenues.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "122": {
+  "i": 122,
+  "verified": false,
+  "rule": "An agreed-upon procedures report should identify the AICPA attestation standards as the applicable standards and should not express an opinion or any negative assurance.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "119": {
+  "i": 119,
+  "verified": false,
+  "rule": "When the assessed risk of material misstatement increases, the auditor must strengthen the overall audit response by assigning more experienced staff or specialists, providing more supervision, and changing the nature, timing, or extent of audit procedures to obtain more persuasive evidence.",
+  "quotes": [
+   {
+    "source": "PCAOB Auditing Standard No. 10 (AS 2301), The Auditor's Responses to the Risks of Material Misstatement, \u00b6 .06",
+    "quote": "The auditor should adopt an overall response to address the assessed risks of material misstatement at the financial statement level. This response should include: a. Assigning more experienced staff or those with specialized skills or using specialists; b. Providing more supervision; c. Incorporati"
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "127": {
+  "i": 127,
+  "verified": true,
+  "rule": "When prices are rising, LIFO produces a lower ending inventory and a higher cost of goods sold than FIFO, which reduces taxable income and the resulting income tax liability.",
+  "quotes": [
+   {
+    "source": "IRS Publication 538 (01/2022), Accounting Periods and Methods, \u201cDifferences Between FIFO and LIFO\u201d",
+    "quote": "In times of inflation, when prices are rising, LIFO will produce a larger cost of goods sold and a lower closing inventory. Under FIFO, the cost of goods sold will be lower and the closing inventory will be higher."
+   },
+   {
+    "source": "IRS Publication 538 (01/2022), Accounting Periods and Methods, \u201cValuing Inventory\u201d",
+    "quote": "The value of your inventory is a major factor in figuring your taxable income."
+   }
+  ],
+  "urls": [
+   "https://www.irs.gov/publications/p538"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "129": {
+  "i": 129,
+  "verified": true,
+  "rule": "When no return has been filed, a claim for credit or refund of an overpayment must be filed within two years from the time the tax was paid.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 6511(a)",
+    "quote": "Claim for credit or refund of an overpayment of any tax imposed by this title in respect of which tax the taxpayer is required to file a return shall be filed by the taxpayer within 3 years from the time the return was filed or 2 years from the time the tax was paid, whichever of such periods expire"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/6511"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "126": {
+  "i": 126,
+  "verified": false,
+  "rule": "Responsibility accounting evaluates managers using performance reports that emphasize controllable revenues and costs, rather than assigning blame, allocating every service cost, or requiring investigation of all variances.",
+  "quotes": [
+   {
+    "source": "Deloitte DART search page",
+    "quote": "DART on Research Portal"
+   }
+  ],
+  "urls": [
+   "https://dart.deloitte.com/search?query=responsibility%20accounting"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "116": {
+  "i": 116,
+  "verified": true,
+  "rule": "One who intentionally makes a material misrepresentation in financial statements is subject to fraud liability to persons who justifiably rely on the misrepresentation for pecuniary loss, regardless of a direct contractual relationship.",
+  "quotes": [
+   {
+    "source": "17 CFR \u00a7 240.10b-5",
+    "quote": "To make any untrue statement of a material fact or to omit to state a material fact necessary in order to make the statements made, in the light of the circumstances under which they were made, not misleading"
+   },
+   {
+    "source": "Cornell LII Wex, Fraud",
+    "quote": "Intentional misrepresentation occurs when a person makes a false statement of fact knowing that it is false or recklessly disregarding whether it is true, intending that another person rely on the statement."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/17/240.10b-5",
+   "https://www.law.cornell.edu/wex/fraud"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "138": {
+  "i": 138,
+  "verified": true,
+  "rule": "The present value of a level annuity paid at each year-end equals the annual cash flow multiplied by the annuity factor, which is one minus the term-certain remainder factor divided by the discount rate. Net present value then subtracts the initial investment from that present value.",
+  "quotes": [
+   {
+    "source": "26 C.F.R. \u00a7 20.2031-7(d)(2)(iv)(A)",
+    "quote": "The appropriate annuity factor for an annuity payable for a term of years is computed by subtracting from 1.000000 the factor for an ordinary remainder interest following the same term certain that is determined under the formula in paragraph (d)(2)(ii)(A) of this section and then dividing the resul"
+   },
+   {
+    "source": "26 C.F.R. \u00a7 20.2031-7(d)(6), Table B",
+    "quote": "Table B\u2014Term Certain Remainder Factors Applicable After April 30, 1989 Years Interest rate 8.2% 8.4% 8.6% 8.8% 9.0% 9.2% 9.4% 9.6% 9.8% 10.0%"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/26/20.2031-7"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "130": {
+  "i": 130,
+  "verified": false,
+  "rule": "A firm\u2019s auditing quality-control system includes acceptance and continuance of client relationships and specific engagements as one of its elements.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "136": {
+  "i": 136,
+  "verified": true,
+  "rule": "Working capital equals total current assets minus total current liabilities. Cash, marketable securities, receivables, and inventories are classified as current assets, while property, equipment, accumulated depreciation, and intangible assets such as patents are presented outside the current-asset section.",
+  "quotes": [
+   {
+    "source": "17 C.F.R. \u00a7 210.5-02 (Regulation S-X, Balance sheets)",
+    "quote": "Assets and Other Debits Current Assets, when appropriate 1. Cash and cash items."
+   },
+   {
+    "source": "17 C.F.R. \u00a7 210.5-02 (Regulation S-X, Balance sheets)",
+    "quote": "2. Marketable securities. The accounting and disclosure requirements for current marketable equity securities are specified by generally accepted accounting principles. With respect to all other current marketable securities, state, parenthetically or otherwise, the basis of determining the aggregat"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/17/210.5-02"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "140": {
+  "i": 140,
+  "verified": false,
+  "rule": "Quality-cost measurement classifies defect costs by where defects are detected: pre-shipment internal failure costs are evidenced by rework or scrap, while post-shipment returns and warranty are external failure costs and inspection is an appraisal activity.",
+  "quotes": [
+   {
+    "source": "14 CFR 1.1 (eCFR search result)",
+    "quote": "all causes: for example, flameout, internal failure, flightcrew initiated shutdown, foreign"
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "141": {
+  "i": 141,
+  "verified": true,
+  "rule": "A return preparer may generally rely without independent verification on information furnished by the client, but must make reasonable or appropriate inquiries when the information appears incomplete or when a deduction or credit depends on specific substantiation facts; failing to do so can expose the preparer to preparer penalties if an understatement results.",
+  "quotes": [
+   {
+    "source": "26 C.F.R. \u00a7 1.6694-1(e)(1)",
+    "quote": "Additionally, some provisions of the Code or regulations require that specific facts and circumstances exist (for example , that the taxpayer maintain specific documents) before a deduction or credit may be claimed. The tax return preparer must make appropriate inquiries to determine the existence o"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/26/1.6694-1"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "146": {
+  "i": 146,
+  "verified": false,
+  "rule": "When a compilation client refuses to revise financial statements containing material misapplications or unreasonable estimates, and modifying the compilation report would not adequately communicate the deficiencies, the accountant must withdraw from the engagement and provide no further services concerning those financial statements.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "148": {
+  "i": 148,
+  "verified": false,
+  "rule": "Benchmarking is the process of measuring and evaluating an entity\u2019s products, services, or processes against the best attainable or best-in-class levels of performance.",
+  "quotes": [
+   {
+    "source": "GAO-05-734SP, A Glossary of Terms Used in the Federal Budget Process",
+    "quote": "This glossary is a basic reference document for the Congress, federal agencies, and others interested in the federal budget-making process."
+   }
+  ],
+  "urls": [
+   "https://www.govinfo.gov/content/pkg/GAOREPORTS-GAO-05-734SP/html/GAOREPORTS-GAO-05-734SP.htm"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "143": {
+  "i": 143,
+  "verified": false,
+  "rule": "In consolidated financial statements, intercompany balances between entities included in the consolidation are eliminated in full, so a subsidiary payable to its parent is removed from consolidated liabilities regardless of the ownership percentage.",
+  "quotes": [
+   {
+    "source": "Cornell LII, 17 C.F.R. \u00a7 210.3A-04 (page as retrieved)",
+    "quote": "210.3A-04 CFR CFR Toolbox Law about... Articles from Wex Table of Popular Names Parallel Table of Authorities"
+   },
+   {
+    "source": "eCFR, 17 C.F.R. \u00a7 210.3A-04 (page as retrieved)",
+    "quote": "Due to aggressive automated scraping of FederalRegister.gov and eCFR.gov, programmatic access to these sites is limited to access to our extensive developer APIs."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/17/210.3A-04",
+   "https://www.ecfr.gov/current/title-17/chapter-II/part-210/subpart-A/section-210.3A-04"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "144": {
+  "i": 144,
+  "verified": false,
+  "rule": "Confirmation exceptions arise when the confirming party's balance differs from the recorded receivable, and such differences may be caused by timing differences, errors, or fraud; an unrecorded payment in transit is a timing difference that must be investigated.",
+  "quotes": [
+   {
+    "source": "AICPA AU-C 505, External Confirmations, definition of exception",
+    "quote": "A response that indicates a difference between information requested to be confirmed, or contained in the entity's records, and information provided by the confirming party."
+   },
+   {
+    "source": "AICPA AU-C 505, External Confirmations, application guidance",
+    "quote": "Exceptions may be caused by timing differences, errors, or fraud."
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "145": {
+  "i": 145,
+  "verified": false,
+  "rule": "Accrual accounting recognizes economic effects when they occur rather than when cash changes hands; accruals generally precede future cash flows, while deferrals generally follow cash already received or paid.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "149": {
+  "i": 149,
+  "verified": false,
+  "rule": "Contribution margin equals sales minus all variable costs, so target variable manufacturing cost equals the selling price less the target contribution margin and less any variable nonmanufacturing costs.",
+  "quotes": [
+   {
+    "source": "eCFR access page for title 39, section 3015.7",
+    "quote": "programmatic access to these sites is limited to access to our extensive developer APIs."
+   }
+  ],
+  "urls": [
+   "https://www.ecfr.gov/current/title-39/section-3015.7"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "153": {
+  "i": 153,
+  "verified": false,
+  "rule": "When financial statements are prepared using a special purpose framework (an other comprehensive basis of accounting), the accountant does not treat it as a departure warranting withdrawal or a forced GAAP conversion; instead the review report is modified to describe the framework used and state that it is not generally accepted accounting principles.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "151": {
+  "i": 151,
+  "verified": false,
+  "rule": "In professional negligence, the plaintiff must prove a failure to exercise the skill and care ordinarily possessed and used by members of the profession; compliance with that due-care standard negates breach.",
+  "quotes": [
+   {
+    "source": "eCFR search result for 'accountant negligence failure to exercise due care'",
+    "quote": "a Respondent does not appear to be <strong>exercising</strong> <strong>due</strong> diligence in assuring compliance with"
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "156": {
+  "i": 156,
+  "verified": false,
+  "rule": "An audit engagement letter ordinarily records management's responsibility to make all financial records and related information available to the auditor.",
+  "quotes": [
+   {
+    "source": "AICPA, AU-C Section 210, Terms of Engagement (illustrative audit engagement letter)",
+    "quote": "Management is responsible for making all financial records and related information available to us."
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "159": {
+  "i": 159,
+  "verified": true,
+  "rule": "Under the LIFO inventory method, goods on hand at year-end are treated as consisting first of opening-inventory goods in acquisition order and then of goods acquired during the year; once elected, the method continues in later years unless the IRS approves a change, and it must generally conform to the taxpayer's financial reporting.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 472(b)(1)",
+    "quote": "First, those included in the opening inventory of the taxable year (in the order of acquisition) to the extent thereof; and second, those acquired in the taxable year;"
+   },
+   {
+    "source": "26 U.S.C. \u00a7 472(e)",
+    "quote": "If a taxpayer, having complied with subsection (a), uses the method described in subsection (b) for any taxable year, then such method shall be used in all subsequent taxable years unless\u2014"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/472"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "160": {
+  "i": 160,
+  "verified": true,
+  "rule": "A nontaxable stock dividend requires allocating the old stock\u2019s adjusted basis between the old and new shares in proportion to fair market value, so same-class shares receive equal per-share basis; a later stock split does not change aggregate basis but divides it among the increased number of shares.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 305(a)",
+    "quote": "Except as otherwise provided in this section, gross income does not include the amount of any distribution of the stock of a corporation made by such corporation to its shareholders with respect to its stock."
+   },
+   {
+    "source": "26 U.S.C. \u00a7 307(a)",
+    "quote": "determined by allocating between the old stock and the new stock the adjusted basis of the old stock."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/307",
+   "https://www.law.cornell.edu/uscode/text/26/305"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "166": {
+  "i": 166,
+  "verified": true,
+  "rule": "For gifted property, the donee generally carries over the donor\u2019s basis for gain, but uses the property\u2019s fair market value at the date of gift as the basis for loss when that value is lower; a sale price between those two amounts produces no recognized gain or loss.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 1015(a)",
+    "quote": "the basis shall be the same as it would be in the hands of the donor or the last preceding owner by whom it was not acquired by gift, except that if such basis (adjusted for the period before the date of the gift as provided in section 1016) is greater than the fair market value of the property at t"
+   },
+   {
+    "source": "26 C.F.R. \u00a7 1.1015-1(a)(2)",
+    "quote": "The basis for determining loss is $90,000; therefore, there is no loss . Furthermore, there is no gain , since the basis for determining gain is $100,000."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/1015",
+   "https://www.law.cornell.edu/cfr/text/26/1.1015-1"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "118": {
+  "i": 118,
+  "verified": true,
+  "rule": "Research and development expense includes preproduction prototype/model construction and design testing, while legal costs of patent applications are excluded from R&D.",
+  "quotes": [
+   {
+    "source": "26 CFR \u00a7 1.174-2(a)(4)",
+    "quote": "The term includes a fully-functional representation or model of the product"
+   },
+   {
+    "source": "26 CFR \u00a7 1.174-2(a)(7)",
+    "quote": "However, quality control testing does not include testing to determine if the design of the product is appropriate."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/26/1.174-2"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "164": {
+  "i": 164,
+  "verified": false,
+  "rule": "Tests of details are substantive procedures designed to obtain sufficient appropriate audit evidence that the planned level of assurance at the relevant assertion level is achieved; tests of controls address the assessed level of control risk and the operating effectiveness of controls.",
+  "quotes": [
+   {
+    "source": "AICPA AU-C 330, Substantive Procedures",
+    "quote": "The auditor should design and perform tests of details or substantive analytical procedures to obtain sufficient appropriate audit evidence that the planned level of assurance at the relevant assertion level is achieved."
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "172": {
+  "i": 172,
+  "verified": true,
+  "rule": "An S corporation shareholder increases stock basis for pass-through income, including tax-exempt municipal interest, before applying current-year distributions and then losses; distributions reduce basis before losses, and losses cannot reduce basis below zero.",
+  "quotes": [
+   {
+    "source": "26 C.F.R. \u00a7 1.1367-1(f)",
+    "quote": "For any taxable year of a corporation beginning on or after August 18, 1998, except as provided in paragraph (g) of this section, the adjustments required by section 1367(a) are made in the following order\u2014 (1) Any increase in basis attributable to the income items described in section 1367(a)(1)(A)"
+   },
+   {
+    "source": "26 U.S.C. \u00a7 1366(a)(1)(A)",
+    "quote": "items of income (including tax-exempt income), loss, deduction, or credit the separate treatment of which could affect the liability for tax of any shareholder"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/1366",
+   "https://www.law.cornell.edu/cfr/text/26/1.1367-1"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "161": {
+  "i": 161,
+  "verified": false,
+  "rule": "A longer credit period ordinarily increases the average collection period because customers are permitted more time before payment is due, but the sources reviewed do not directly establish that relationship.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "168": {
+  "i": 168,
+  "verified": true,
+  "rule": "For annual compounding, present value equals the future payment divided by one plus the discount rate raised to the number of years until payment.",
+  "quotes": [
+   {
+    "source": "7 CFR \u00a7 1786.153",
+    "quote": "Present Value = \u2211 k = 1 n P k \u220f i = 1 k [ 1.0 + ( D 1 i 365 + D 2 i 366 ) I ]"
+   },
+   {
+    "source": "48 CFR \u00a7 9904.415-60",
+    "quote": "1 $1,000 \u00d7 0.8573 (8 pct for 2 yr) = $857.30"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/7/1786.153",
+   "https://www.law.cornell.edu/cfr/text/48/9904.415-60"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "175": {
+  "i": 175,
+  "verified": true,
+  "rule": "A party substantially performs when its performance fulfills the contract\u2019s overall purpose and any deviation is immaterial; material deviations or failures to fulfill that purpose are breaches that preclude the doctrine.",
+  "quotes": [
+   {
+    "source": "Cornell Legal Information Institute, Wex, \u201csubstantial performance\u201d",
+    "quote": "Under the substantial performance rule, the actions of the parties do not need to explicitly match the terms of the contract as long as said actions fulfill the purpose of the contract."
+   },
+   {
+    "source": "Cornell Legal Information Institute, Wex, \u201csubstantial performance\u201d",
+    "quote": "However, the substantial performance doctrine only applies to immaterial performance variations of the contract\u2019s terms."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/wex/substantial_performance"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "170": {
+  "i": 170,
+  "verified": false,
+  "rule": "A search for unrecorded liabilities should examine receiving reports and unmatched vendor invoices for goods or services received before the period end but not yet recorded as payables.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "176": {
+  "i": 176,
+  "verified": false,
+  "rule": "In statistical tests of controls, the tolerable rate of deviations is assessed considering desired assurance and the expected deviation rate; control deviations generally translate into financial statement misstatements at a lower rate, while increasing sample size reduces sampling risk rather than increasing the tolerable deviation rate.",
+  "quotes": [
+   {
+    "source": "Deloitte DART, AU-C 530 Audit Sampling page",
+    "quote": "DART on Research Portal"
+   }
+  ],
+  "urls": [
+   "https://dart.deloitte.com/USDART/home/aud-and-attestation/aicpa-auditing-standards/au-c-530-audit-sampling"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "180": {
+  "i": 180,
+  "verified": false,
+  "rule": "In governmental fund reporting, capital grants and special assessments for capital improvements are reported as revenues, while interfund transfers are reported as other financing sources rather than revenues.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "174": {
+  "i": 174,
+  "verified": false,
+  "rule": "An accountant should decline a compilation engagement when management\u2019s conduct indicates a lack of integrity or that the financial statements may mislead users; compilation standards permit omitted disclosures only when the omission is disclosed and not misleading, and they do not require evaluating internal controls.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "182": {
+  "i": 182,
+  "verified": false,
+  "rule": "When management validly requests that a selected account balance not be confirmed, the auditor should apply alternative audit procedures to obtain sufficient appropriate evidence supporting that balance.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "177": {
+  "i": 177,
+  "verified": false,
+  "rule": "Beta is the covariance between a stock\u2019s return and the market return divided by the variance of the market return, with both measures expressed in consistent units.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "183": {
+  "i": 183,
+  "verified": false,
+  "rule": "When a loss contingency is probable and reasonably estimable but the estimate is a range in which no amount is a better estimate than any other, accrue the minimum amount in the range.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "181": {
+  "i": 181,
+  "verified": false,
+  "rule": "Before performing a compilation engagement, an accountant must obtain an understanding of the entity's business and operations, its accounting system and records, the basis of accounting, and any specialized financial reporting framework or accounting practices used in its industry; a compilation does not require verification or analytical procedures.",
+  "quotes": [
+   {
+    "source": "AICPA AR-C \u00a7 80.18",
+    "quote": "The accountant should obtain an understanding of any specialized financial reporting framework and accounting practices used in the entity's industry."
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "186": {
+  "i": 186,
+  "verified": false,
+  "rule": "The nominal risk-free rate and cost of equity include an inflation premium; a decline in expected inflation lowers that premium and the cost of equity, which increases valuation under a dividend discount model.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "187": {
+  "i": 187,
+  "verified": false,
+  "rule": "The standard deviation of a two-asset portfolio is the square root of each asset's squared weighted standard deviation plus twice the weighted covariance between the assets.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "193": {
+  "i": 193,
+  "verified": false,
+  "rule": "Quality control standards govern a firm's own policies and procedures\u2014including client and engagement acceptance and continuance, personnel management, engagement performance, and monitoring\u2014rather than an engagement-level assessment of a client's internal controls.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "192": {
+  "i": 192,
+  "verified": false,
+  "rule": "The market-price exchange ratio equals the acquirer\u2019s per-share offer value\u2014the exchange ratio times the acquirer\u2019s market price\u2014divided by the target\u2019s market price; a result above one means the offer exceeds the target\u2019s market price.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "196": {
+  "i": 196,
+  "verified": false,
+  "rule": "For a fixed product sales mix, compute a composite-unit contribution margin by multiplying each product's unit contribution by its number of units in the package, divide total fixed costs by that composite margin, then multiply the package count by the units of the product whose break-even volume is requested.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "199": {
+  "i": 199,
+  "verified": false,
+  "rule": "A confirmation form that omits the recorded balance and requires the recipient to supply it is more burdensome to complete, so it generally produces fewer responses than a form that states the balance to be confirmed.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "198": {
+  "i": 198,
+  "verified": false,
+  "rule": "When financial statements are prepared on an income tax basis, the notes must describe the basis of presentation and its differences from GAAP, but the dollar effects of those differences need not be quantified.",
+  "quotes": [
+   {
+    "source": "AICPA AU-C 800, Special Considerations\u2014Audits of Financial Statements Prepared in Accordance with Special Purpose Frameworks",
+    "quote": "The dollar amount of the effects of the differences need not be quantified."
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "189": {
+  "i": 189,
+  "verified": false,
+  "rule": "Foreign-currency revenue and costs are translated into dollars at the stated exchange rates, and profit is translated revenue less translated cost; if the exact result is not offered, the problem lacks a stated rounding convention and is ambiguous.",
+  "quotes": [
+   {
+    "source": "IRS, Foreign Currency and Currency Exchange Rates (irs.gov)",
+    "quote": "If your functional currency is the U.S. dollar, you must immediately translate into dollars all items of income, expense, etc. (including taxes), that you receive, pay, or accrue in a foreign currency and that will affect computation of your income tax. Use the exchange rate prevailing when you rece"
+   },
+   {
+    "source": "IRS, Foreign Currency and Currency Exchange Rates (irs.gov)",
+    "quote": "An exchange rate is the rate at which one currency may be converted into another, also called rate of exchange of foreign exchange rate or currency exchange rate."
+   }
+  ],
+  "urls": [
+   "https://www.irs.gov/individuals/international-taxpayers/foreign-currency-and-currency-exchange-rates"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "201": {
+  "i": 201,
+  "verified": false,
+  "rule": "A stock dividend exceeding 20\u201325% of outstanding shares is a large stock dividend treated like a stock split and capitalized at the par or stated value of the additional shares, not at fair value.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "188": {
+  "i": 188,
+  "verified": false,
+  "rule": "Remeasurement exchange gains and losses are recognized in current earnings, whereas translation adjustments for a foreign operation are reported in other comprehensive income rather than net income.",
+  "quotes": [
+   {
+    "source": "Deloitte DART",
+    "quote": "DART on Research Portal"
+   }
+  ],
+  "urls": [
+   "https://dart.deloitte.com/USDART/home/codification/liabilities/asc830",
+   "https://dart.deloitte.com/USDART/home/publications/deloitte/roadmap/foreign-currency-transactions-and-translations"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "200": {
+  "i": 200,
+  "verified": false,
+  "rule": "Profit margin on sales equals return on assets divided by asset turnover when return on assets equals profit margin multiplied by asset turnover.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "212": {
+  "i": 212,
+  "verified": true,
+  "rule": "An accounting firm may provide factual testimony or factual accounts explaining work it performed and conclusions it reached for an audit client, but it may not provide expert opinions advocating the client's interests in litigation or regulatory proceedings, and it may not provide services that only a licensed lawyer may provide.",
+  "quotes": [
+   {
+    "source": "17 C.F.R. \u00a7 210.2-01(c)(4)(x)",
+    "quote": "In any litigation or regulatory or administrative proceeding or investigation, an accountant's independence shall not be deemed to be impaired if the accountant provides factual accounts, including in testimony, of work performed or explains the positions taken or conclusions reached during the perf"
+   },
+   {
+    "source": "17 C.F.R. \u00a7 210.2-01(c)(4)(x)",
+    "quote": "Providing an expert opinion or other expert service for an audit client, or an audit client's legal representative, for the purpose of advocating an audit client's interests in litigation or in a regulatory or administrative proceeding or investigation."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/17/210.2-01"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "219": {
+  "i": 219,
+  "verified": true,
+  "rule": "Under IRC \u00a7 1221(a), capital assets include property held by the taxpayer, whether or not connected with a trade or business, unless an enumerated exception applies; those exceptions include inventory, depreciable business property, and accounts or notes receivable arising from ordinary business sales or services.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 1221(a)",
+    "quote": "the term \u201c capital asset \u201d means property held by the taxpayer (whether or not connected with his trade or business), but does not include\u2014"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/1221"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "205": {
+  "i": 205,
+  "verified": false,
+  "rule": "For a contingent liability that is both probable and reasonably estimable, the amount accrued is the best estimate of the obligation; under a reimbursement election, that estimate is based on expected actual unemployment claims on eligible wages rather than the statutory alternative rate.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "207": {
+  "i": 207,
+  "verified": true,
+  "rule": "Auditor independence is impaired when an accountant provides a prohibited nonaudit service to an issuer audit client; limited preapproval waivers apply only to otherwise permissible nonaudit services that satisfy all de minimis conditions.",
+  "quotes": [
+   {
+    "source": "17 C.F.R. \u00a7 210.2-01(c)(4)(ii)",
+    "quote": "Financial information systems design and implementation. Any service, unless it is reasonable to conclude that the results of these services will not be subject to audit procedures during an audit of the audit client 's financial statements"
+   },
+   {
+    "source": "17 C.F.R. \u00a7 210.2-01(c)(7)(i)(C)",
+    "quote": "With respect to the provision of services other than audit, review or attest services the pre-approval requirement is waived if: (1) The aggregate amount of all such services provided constitutes no more than five percent of the total amount of revenues paid by the audit client to its accountant dur"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/17/210.2-01"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "204": {
+  "i": 204,
+  "verified": false,
+  "rule": "Unusual cash disbursements, especially large checks payable to cash, are a recognized warning sign of possible illegal acts because they may conceal improper payments; auditors should investigate their authorization and business purpose.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "220": {
+  "i": 220,
+  "verified": false,
+  "rule": "Ethical behavior is communicated most effectively when leaders model the desired conduct and reinforce it through their actions, rather than relying solely on monitoring, target-setting, or job-competence specifications.",
+  "quotes": [
+   {
+    "source": "DART search page (dart.deloitte.com)",
+    "quote": "DART on Research Portal"
+   }
+  ],
+  "urls": [
+   "https://dart.deloitte.com/search?query=COSO%20ethical%20behavior%20example"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "215": {
+  "i": 215,
+  "verified": false,
+  "rule": "Under the revaluation model, an increase in an asset's carrying amount is recognized in other comprehensive income and accumulated in a revaluation surplus, except that it is recognized in profit or loss to the extent it reverses a prior revaluation decrease of the same asset that was recognized in profit or loss.",
+  "quotes": [
+   {
+    "source": "IAS 16, para. 39",
+    "quote": "If an asset's carrying amount is increased as a result of a revaluation, the increase shall be recognised in other comprehensive income and accumulated in equity under the heading of revaluation surplus. However, the increase shall be recognised in profit or loss to the extent that it reverses a rev"
+   },
+   {
+    "source": "IAS 16, para. 40",
+    "quote": "If an asset's carrying amount is decreased as a result of a revaluation, the decrease shall be recognised in profit or loss. However, the decrease shall be recognised in other comprehensive income to the extent of any credit balance existing in the revaluation surplus in respect of that asset. The d"
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "235": {
+  "i": 235,
+  "verified": true,
+  "rule": "A practitioner who knows that a client has not complied with the revenue laws, or has made an error in or omission from a return or other submitted document, must promptly advise the client of the noncompliance, error, or omission and of its consequences under the Code and regulations.",
+  "quotes": [
+   {
+    "source": "31 CFR \u00a7 10.21",
+    "quote": "A practitioner who, having been retained by a client with respect to a matter administered by the Internal Revenue Service , knows that the client has not complied with the revenue laws of the United States or has made an error in or omission from any return, document, affidavit, or other paper whic"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/31/10.21"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "208": {
+  "i": 208,
+  "verified": false,
+  "rule": "An accountant performing a review of interim financial information must be independent in all matters relating to the engagement; a review provides limited assurance and does not require an audit opinion or audit-level evidence.",
+  "quotes": [
+   {
+    "source": "PCAOB AS 4105.02",
+    "quote": "The accountant should not review interim financial information unless the accountant is independent."
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "223": {
+  "i": 223,
+  "verified": false,
+  "rule": "Client-provided hospitality that is modest, reasonable, and in the ordinary course of business generally does not impair objectivity, integrity, or independence, while lavish or frequent gifts, travel, or entertainment that could create self-interest or familiarity threats generally does.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "221": {
+  "i": 221,
+  "verified": false,
+  "rule": "A change from cash basis to accrual basis for a multiperiod prepayment is corrected retrospectively: prior-period overexpense is adjusted against opening retained earnings, current-period expired cost is expensed, and the unexpired balance is reported as a prepaid asset.",
+  "quotes": [
+   {
+    "source": "Deloitte DART page",
+    "quote": "DART on Research Portal"
+   }
+  ],
+  "urls": [
+   "https://dart.deloitte.com/USDART/home/publications/deloitte/accounting-research/accounting-changes-error-corrections",
+   "https://dart.deloitte.com/USDART/home/publications/deloitte/roadmap/accounting-changes-and-error-corrections-roadmap"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "239": {
+  "i": 239,
+  "verified": true,
+  "rule": "A cash sale of additional shares increases assets and equity equally without creating a liability; a debt-to-assets ratio therefore falls, and working capital, measured as current assets minus current liabilities, rises.",
+  "quotes": [
+   {
+    "source": "17 CFR \u00a7 210.5-02",
+    "quote": "Assets and Other Debits Current Assets, when appropriate 1. Cash and cash items."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/17/210.5-02"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "245": {
+  "i": 245,
+  "verified": true,
+  "rule": "Premiums paid on a life insurance policy are not deductible when the taxpayer is directly or indirectly a beneficiary under the policy, so such book expenses must be added back in reconciling book income to taxable income. Interest on corporate bonds remains taxable and generally requires no Schedule M-1 subtraction.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 264(a)(1)",
+    "quote": "No deduction shall be allowed for\u2014 (1) Premiums on any life insurance policy, or endowment or annuity contract, if the taxpayer is directly or indirectly a beneficiary under the policy or contract."
+   },
+   {
+    "source": "26 U.S.C. \u00a7 103(a)",
+    "quote": "Except as provided in subsection (b), gross income does not include interest on any State or local bond ."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/264",
+   "https://www.law.cornell.edu/uscode/text/26/103"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "246": {
+  "i": 246,
+  "verified": false,
+  "rule": "For a two-asset portfolio, variance equals each asset\u2019s variance times its squared weight, plus twice the product of the weights, standard deviations, and correlation; portfolio standard deviation is the square root of that variance.",
+  "quotes": [
+   {
+    "source": "eCFR search result for 17 C.F.R. \u00a7 240.15c3-1e",
+    "quote": "mathematical model incorporates empirical <strong>correlations</strong> across risk categories, a description<span class=\"ellipsis\">\u2026</span>description of the process for measuring <strong>correlations"
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "249": {
+  "i": 249,
+  "verified": false,
+  "rule": "A comfort letter ordinarily gives negative assurance on specified unaudited financial information and agreed-upon procedures, not positive opinions on fraud risk factors or internal control operating effectiveness.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "254": {
+  "i": 254,
+  "verified": true,
+  "rule": "A payment for services that will be received over multiple periods is expensed only as the services are consumed; any unused portion at year-end is reported as a prepaid asset. When the payment was initially expensed in full, the year-end adjustment reclassifies the unused portion to the prepaid asset account.",
+  "quotes": [
+   {
+    "source": "IRS Publication 538 (2022), Accounting Periods and Methods, Expenses Paid in Advance",
+    "quote": "Expenses Paid in Advance An expense you pay in advance is deductible only in the year to which it applies"
+   }
+  ],
+  "urls": [
+   "https://www.irs.gov/publications/p538"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "252": {
+  "i": 252,
+  "verified": true,
+  "rule": "Average collection period equals average accounts receivable divided by net credit sales, multiplied by the number of days in the year; cash sales are excluded from credit sales. When ending receivables are used as the average balance, receivables equal credit sales times the collection period divided by 365.",
+  "quotes": [
+   {
+    "source": "Cornell LII WEX, Accounts Receivable",
+    "quote": "Accounts receivable (abbreviated AR or A/R ) is an accounting term, which refers to the money owed to a business by another business or individual in exchange for property or services that were provided on credit ."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/wex/accounts_receivable"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "255": {
+  "i": 255,
+  "verified": false,
+  "rule": "In an agreed-upon procedures engagement, the practitioner performs only the procedures specified by the engaging parties and reports the factual findings, without expressing an opinion or providing assurance; the practitioner does not determine whether those procedures are sufficient for the parties' purposes.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "260": {
+  "i": 260,
+  "verified": true,
+  "rule": "A related-party payable owed to a parent must be separately presented or disclosed in the subsidiary's own financial statements, but it is eliminated and not separately reported in the parent's consolidated financial statements.",
+  "quotes": [
+   {
+    "source": "17 C.F.R. \u00a7 210.4-08(k)(1)",
+    "quote": "Amounts of related party transactions should be stated on the face of the balance sheet, statement of comprehensive income, or statement of cash flows."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/17/210.4-08"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "257": {
+  "i": 257,
+  "verified": false,
+  "rule": "For a discount Treasury bill, the bond equivalent yield is computed by dividing the discount by the purchase price and annualizing using 365 divided by the number of days to maturity, rather than dividing the discount by face value.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "259": {
+  "i": 259,
+  "verified": false,
+  "rule": "Nongovernmental not-for-profit organizations measure investments in equity securities with readily determinable fair values at fair value, so the year-end statement of financial position reports each holding at its year-end fair value rather than its cost or beginning fair value.",
+  "quotes": [
+   {
+    "source": "FASB ASC 958-320-35-1",
+    "quote": "Investments in equity securities with readily determinable fair values and all investments in debt securities shall be measured at fair value in the statement of financial position."
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "264": {
+  "i": 264,
+  "verified": false,
+  "rule": "A general partner is personally liable for the obligations of the partnership and does not have liability limited to his or her own negligence.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "271": {
+  "i": 271,
+  "verified": false,
+  "rule": "A capital project should be accepted only when the present value of its expected future cash inflows exceeds its initial cost; a negative net present value means the project should be rejected.",
+  "quotes": [
+   {
+    "source": "eCFR search result, 24 CFR (Public Housing\u2014Net Present Value)",
+    "quote": "The costs used for public housing shall be those necessary"
+   }
+  ],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "unreachable",
+  "history": []
+ },
+ "273": {
+  "i": 273,
+  "verified": false,
+  "rule": "Revenue for products transferred with a right of return is recognized net of the expected returns, with a refund liability recorded for the expected return obligation; actual returns from earlier sales reduce that refund liability rather than current-period revenue from new sales.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "266": {
+  "i": 266,
+  "verified": false,
+  "rule": "For employee benefit pension plan reporting, \u201ccurrent value\u201d means fair market value, and plan investments are measured at fair value under the plan accounting standards.",
+  "quotes": [
+   {
+    "source": "29 C.F.R. \u00a7 2520.103-1(b)(2)(i)",
+    "quote": "A statement of assets and liabilities at current value presented in comparative form for the beginning and end of the year."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/29/2520.103-1"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "280": {
+  "i": 280,
+  "verified": false,
+  "rule": "Price elasticity of demand is the percentage change in quantity demanded divided by the percentage change in price; demand is inelastic when the absolute value of that ratio is less than one.",
+  "quotes": [
+   {
+    "source": "39 CFR \u00a7 3050.26",
+    "quote": "By January 20 of each year, the Postal Service shall provide econometric estimates of demand elasticity for all postal products accompanied by the underlying econometric models and the input data sets used; and a volume forecast for the current fiscal year, and the underlying volume forecasting mode"
+   },
+   {
+    "source": "Cornell LII Wex, demand",
+    "quote": "In economics, demand is a principle referring to the relationship between the quantity of a product produced and the desire of consumers to purchase that product."
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/39/3050.26",
+   "https://www.law.cornell.edu/wex/demand"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "277": {
+  "i": 277,
+  "verified": true,
+  "rule": "An affiliated group exists when a common parent directly owns at least 80% of the voting power and value of at least one includible corporation and each other includible corporation is at least 80% owned directly by one or more members of the group; ownership by multiple group members can be combined to meet the 80% test.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 1504(a)(1)(B)",
+    "quote": "the common parent owns directly stock meeting the requirements of paragraph (2) in at least 1 of the other includible corporations"
+   },
+   {
+    "source": "26 U.S.C. \u00a7 1504(a)(1)(B)(ii)",
+    "quote": "stock meeting the requirements of paragraph (2) in each of the includible corporations (except the common parent) is owned directly by 1 or more of the other includible corporations"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/1504"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "274": {
+  "i": 274,
+  "verified": true,
+  "rule": "Inventory includes goods the reporting entity owns, even if physically held by another party, and its cost includes freight and other costs necessary to bring the goods to their present location and condition; goods held on consignment from another party are not the holder's inventory.",
+  "quotes": [
+   {
+    "source": "26 U.S.C. \u00a7 263A(a)(1)",
+    "quote": "in the case of property which is inventory in the hands of the taxpayer, shall be included in inventory costs"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/uscode/text/26/263A"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ },
+ "278": {
+  "i": 278,
+  "verified": false,
+  "rule": "A reissued auditor's report requires the auditor to update subsequent-events procedures through the reissue date and obtain current written management representations; other procedures are not automatic prerequisites.",
+  "quotes": [],
+  "urls": [],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "no-quote",
+  "history": []
+ },
+ "281": {
+  "i": 281,
+  "verified": true,
+  "rule": "Costs incurred to defend an intangible asset are capitalized when the defense successfully preserves the asset's rights and are expensed when the defense fails to do so.",
+  "quotes": [
+   {
+    "source": "26 CFR \u00a7 1.263(a)-4(b)(1)",
+    "quote": "Except as otherwise provided in this section, a taxpayer must capitalize \u2014 (i) An amount paid to acquire an intangible (see paragraph (c) of this section);"
+   },
+   {
+    "source": "26 CFR \u00a7 1.263(a)-4(b)(1)",
+    "quote": "An amount paid to create or enhance a separate and distinct intangible asset within the meaning of paragraph (b)(3) of this section;"
+   }
+  ],
+  "urls": [
+   "https://www.law.cornell.edu/cfr/text/26/1.263(a)-4"
+  ],
+  "built": "2026-11-24",
+  "checked": "2026-11-24",
+  "state": "fresh",
+  "history": [],
+  "missing": []
+ }
+}
