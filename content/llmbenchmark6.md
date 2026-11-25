@@ -98,6 +98,15 @@ A: Possibly. I tried one method with three notes. Fewer notes, a stricter match,
 I think the weaker model is distracted by text that is not quite about its question, and the control arm is consistent with that. I did not test it. For example, I did not read the 20 broken answers one by one.
 :::
 
+## How this fits what others found
+
+I read the abstracts and search summaries of these papers, not the full texts, so treat the details as provisional.
+
+- **Context that looks relevant can hurt.** [Yoran and colleagues](https://arxiv.org/pdf/2310.01558) report that random passages do not hurt a retrieval-augmented model, but passages that are related to the question and lack the answer do. My notes were retrieved by word overlap, so many were probably of that second kind.
+- **The research disagrees about unrelated text.** [Cuconasu and colleagues](https://arxiv.org/pdf/2401.14887) found that adding random documents raised accuracy, which is the opposite of my control arm for Qwen2.5 14B. A [biomedical study](https://arxiv.org/pdf/2606.04127) found large drops when unrelated documents were added. The effect seems to depend on the setup, the model and how the extra text is added, so I do not claim my result matches a settled finding.
+- **Small models look most at risk.** A recent preprint on models of about 7B or fewer reports that retrieval can be a net negative for them. I have not checked its numbers. That fits Qwen2.5 14B losing answers while the larger models did not, though 14B is bigger than the models that paper studied.
+- **My result is a small test of one retrieval method.** The papers use larger sets and better retrievers. They suggest that filtering the passages, or training the model to ignore irrelevant ones, could change the outcome. I did neither.
+
 ## What I would do with this
 
 - **Do not add a notes base to a model that already scores in the 90s.** There was nothing to fix, and the notes cost a little.
