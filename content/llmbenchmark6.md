@@ -107,6 +107,17 @@ I read the abstracts and search summaries of these papers, not the full texts, s
 - **Small models look most at risk.** A recent preprint on models of about 7B or fewer reports that retrieval can be a net negative for them. I have not checked its numbers. That fits Qwen2.5 14B losing answers while the larger models did not, though 14B is bigger than the models that paper studied.
 - **My result is a small test of one retrieval method.** The papers use larger sets and better retrievers. They suggest that filtering the passages, or training the model to ignore irrelevant ones, could change the outcome. I did neither.
 
+## Why this may differ from a real second brain
+
+Many people find a personal wiki, a "second brain", very useful, and my result does not contradict that. My test differs from a real wiki in ways that I think matter.
+
+- **Coverage was thin.** The 282 questions cover auditing, tax, bonds, inventory, contract law and more, and I built notes from a random half. For each test question I measured the word-overlap similarity (TF-IDF) to the closest build question. The median was 0.24, and only 37 of the 141 were above 0.3. For most questions the three notes were the nearest available, not good matches, and retrieval always returns three. A wiki built around your own work has far denser coverage.
+- **The models already knew the subject.** These are public exam questions, and the models scored 94% to 99% without help. A wiki pays off most for what the model cannot know, such as your decisions, your clients, your conventions and anything after its training cutoff. I did not test that.
+- **I scored only the letter.** A wiki's benefits can be speed, consistency, provenance and not redoing work. My test could not see any of them. The notes also carry citations, which is the gain Part 5 tested.
+- **The notes were written by a model, one per question, for no particular reader.** A wiki you curate has structure and links. In [Part 3](/posts/llmbenchmark3/) notes written for a specific question lifted models a lot, so a note that fits the question matters more than having notes.
+
+What I can say is narrow: a random, machine-written, loosely retrieved set of notes does not help models that already know the subject, and it can hurt a weaker one. Two tests would be fairer to the idea: questions where the model lacks the knowledge, and attaching notes only when retrieval finds a close match. I have not run either.
+
 ## What I would do with this
 
 - **Do not add a notes base to a model that already scores in the 90s.** There was nothing to fix, and the notes cost a little.
