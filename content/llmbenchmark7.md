@@ -56,11 +56,13 @@ Overall that is 14 of 18 right when asking was allowed on the incomplete questio
 
 I ran the same three conditions on two local models:
 
-| Model | Guess, fact removed | Ask, fact removed: asked | Ask, fact removed: right | Ask, complete: asked | Ask, complete: right |
-|---|---|---|---|---|---|
-| `deepseek-flash` | 3 | 14 | 14 | 0 | 18 |
-| Qwen3.8 27B | 3 | 0 | 4 | 0 | 18 |
-| Qwen2.5 14B | 2 | 5 | 7 | 0 | 14 |
+| Model | Asked | Right | Right on the complete questions |
+|---|---|---|---|
+| `deepseek-flash` | 14 | 14 | 18 |
+| Qwen3.8 27B | 0 | 4 | 18 |
+| Qwen2.5 14B | 5 | 7 | 14 |
+
+(Asked and Right are on the 18 incomplete questions. When forced to guess, the three models got 3, 3 and 2 right.)
 
 Qwen3.8 27B never wrote a `QUESTION:` line. In one case (the perpetuity question, with no discount rate) it wrote in its reasoning that it would need "the annual discount rate" and then answered anyway. Qwen2.5 14B asked in 5 questions and was right after 4 of them. In the 13 where it did not ask, it was right in 3.
 
@@ -93,10 +95,12 @@ A: Possibly. It is the same model family as the one asking, it sees the missing 
 
 Because the local models rarely asked, I changed the instruction. Instead of "if a fact you need is missing, reply with QUESTION", the firm version says: "Before you answer, check every number, date, rate and status you need. If even one of them is not stated in the question, you must not assume it: reply with exactly one line in the form QUESTION: ... and nothing else." I ran it on the same questions for both local models, and again on the complete questions to check for over-asking.
 
-| Model, firm instruction | Incomplete: asked | Incomplete: right | Right after asking | Complete: asked | Complete: right |
-|---|---|---|---|---|---|
-| Qwen3.8 27B | 7 | 9 | 7 of 7 | 0 | 18 |
-| Qwen2.5 14B | 6 | 6 | 1 of 6 | 2 | 12 |
+| Model, firm instruction | Asked | Right | Right after asking |
+|---|---|---|---|
+| Qwen3.8 27B | 7 | 9 | 7 of 7 |
+| Qwen2.5 14B | 6 | 6 | 1 of 6 |
+
+On the complete questions, Qwen3.8 27B asked in none and got 18 right. Qwen2.5 14B asked in 2 and got 12 right.
 
 Qwen3.8 27B went from asking in none to asking in 7, and every question it asked was answered correctly afterwards. It asked nothing on the complete questions. It still answered the other 11 without asking.
 
