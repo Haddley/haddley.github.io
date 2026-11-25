@@ -114,6 +114,15 @@ I tried one wording and did not tune it. The result says the instruction can mat
 - **Do not trust an answer that arrives without a question when the question looks thin.** In this test, every answer that skipped the question was wrong. A rule such as "list the facts you assumed" would at least expose the guess.
 - **Test it on your own incomplete questions.** My 18 are few, and I wrote them to be decisive.
 
+## How this fits what others found
+
+I read the abstracts and search summaries of these papers, not the full texts, so treat the details as provisional.
+
+- **Models answer instead of asking.** [Ambig-SWE](https://arxiv.org/html/2502.13069v2) tested agents on underspecified software tasks. The models defaulted to not asking unless encouraged, and even then found it hard to tell vague tasks from clear ones. Where they did ask, results improved a lot. That matches my local models, and `deepseek-flash`.
+- **Knowing is not the same as asking.** ["Knowing but Not Showing"](https://arxiv.org/abs/2605.25284) reports that models can recognise ambiguity when asked to judge it and still answer directly. Qwen3.8 27B did exactly that on the perpetuity question. The same paper reports that adding retrieved context makes models less likely to ask. I did not test asking together with notes, so I cannot say whether that holds here.
+- **Simple problems may be the easy case.** [QuestBench](https://arxiv.org/pdf/2503.22674) found that models are better at spotting missing information in simple algebra than in harder logic and planning tasks. Most of my 18 questions are a missing number, so my results may flatter the models.
+- **I found no test on accounting or tax questions.** That is the result of a few searches, not proof, and I would be glad to be corrected.
+
 ## Keeping the notes up to date
 
 A notes base is only useful while it is current, and tax rules and standards change. I treat that as a maintenance job done in place, not a rebuild.
