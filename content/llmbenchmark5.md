@@ -149,6 +149,22 @@ I ran the calibrated gate again on 85 questions: the 40 law and tax questions pl
 On the paywalled questions, nearly everything the gate refused was correct. The gate told me the agent could not verify the answer from sources it could reach. It did not tell me the answer was wrong. For auditing and accounting standards, the gate is only as useful as the sources the agent is allowed to read.
 :::
 
+### Would more free sources help?
+
+I ran the 40 paywalled questions again with `deepseek-flash` and a wider list of free sites the agent may fetch: PCAOB, GAO, FASB, Deloitte DART, PwC Viewpoint, IAASB, IFAC and AICPA-CIMA, as well as the earlier government sites. The agent proposes a page and my code fetches it and checks every quote, so a source the model only names does not count.
+
+| | Narrow list | Wider list |
+|---|---|---|
+| Accepted by the gate | 10, all right | 10, with 9 right and 1 wrong |
+| Unresolved | 30 | 30 |
+| Final answer right | 39 of 40 | 37 of 40 |
+
+The wider list did not help. Five questions became accepted and five that were accepted before no longer were. The agent did use the new sites: it fetched PCAOB 63 times, PwC Viewpoint 41, Deloitte DART 37 and GAO 30. Cost per question fell a little, from about 34,000 tokens to 28,600.
+
+It also produced the first accepted answer that was wrong. On the consignment question (question 274), the gate accepted C against the key D. The quote was real: the tax inventory regulation says goods out on consignment stay in the consignor's inventory. It says nothing on whether the $1,800 freight is an inventory cost, and the agent's own explanation said so. A verified quote supports a point. It does not settle the question.
+
+This was one run of 40, and the differences are within noise. It says that widening the free sources did not close the paywall gap for this model, and I have not tested paid access.
+
 ## Does it work with local models?
 
 I ran the same agent on three models on my Mac, on 10 law and tax questions. I picked these 10 because the hosted models found them hard: 5 where both needed research to get them right, and 5 more where one did. They are not a random sample, so treat the table as a check on direction.
