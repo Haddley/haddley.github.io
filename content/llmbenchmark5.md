@@ -172,6 +172,8 @@ I ran the same agent on three models on my Mac, on 10 law and tax questions. I p
 - **Keep a human for what the sources cannot settle.** The wrong answers were questions with no accessible primary source. Where the standards are paywalled, nearly every answer ends up in the person's pile, so licensed access to the standards would help more than a better reviewer.
 - **Give it a budget, and enforce it.** 8 tool calls were enough here. A research loop with no limit is a bill, and a local model may ignore a message that says the budget is gone. Take the tools away.
 
+[Part 6](/posts/llmbenchmark6/) tests the shortcut of keeping the notes and handing them to a local model, and [Part 7](/posts/llmbenchmark7/) tests letting the model ask follow-up questions.
+
 ## The code
 
 [agent.py](/assets/files/llmbenchmark2/agent.py) holds the whole agent, and [agent_report.py](/assets/files/llmbenchmark2/agent_report.py) produces the tables. `python3 agent.py deepseek-flash gate` runs one arm. The answers are in `agent_runs/`, and the 85-question test is in [agent2.py](/assets/files/llmbenchmark2/agent2.py) and `agent_runs2/`, which also holds the local-model runs.
@@ -181,4 +183,6 @@ I ran the same agent on three models on my Mac, on 10 law and tax questions. I p
 - [Part 2](/posts/llmbenchmark2/): the ranking of the fifteen models
 - [Part 3](/posts/llmbenchmark3/): the questions they miss
 - [Part 4](/posts/llmbenchmark4/): how far I trust these numbers
+- [Part 6](/posts/llmbenchmark6/): keeping the notes, and giving them to a local model
+- [Part 7](/posts/llmbenchmark7/): letting the model ask follow-up questions
 - [Cornell Legal Information Institute](https://www.law.cornell.edu): the source for the Internal Revenue Code, the UCC and the Code of Federal Regulations

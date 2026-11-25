@@ -1,6 +1,61 @@
 {
   "posts": [
     {
+      "slug": "llmbenchmark7",
+      "title": "LLM Benchmarking (Part 7)",
+      "description": "On 18 accounting questions with one decisive fact removed, a hosted model that was allowed to ask a follow-up asked in 14 and got all 14 right, but Qwen3.8 27B never asked until I told it firmly to, and Qwen2.5 14B asked but could not use the answers. A notes base can also be kept up to date in place.",
+      "date": "2026-11-24",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "benchmarking, evaluation, clarifying-questions, ai-agents, deepseek"
+    },
+    {
+      "slug": "llmbenchmark6",
+      "title": "LLM Benchmarking (Part 6)",
+      "description": "A cheap hosted model read the sources for half of the 282 accounting questions and wrote a note for each. I gave the other half to three models with the three most similar notes attached. The strong models did not improve, and the weaker Qwen2.5 14B got 7 to 13 fewer right, even with irrelevant notes.",
+      "date": "2026-11-24",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "benchmarking, evaluation, knowledge-base, retrieval, deepseek, qwen"
+    },
+    {
+      "slug": "llmbenchmark5",
+      "title": "LLM Benchmarking (Part 5)",
+      "description": "A model asked for its authority cites real sections but sometimes the wrong one. A model that reads the sources first gets 39 or 40 of 40 law and tax questions right, local models gain 4 to 5 of 10 hard ones, and a reviewer that may reject unconvincing answers accepts only right ones, but where the standards are paywalled it cannot verify most answers.",
+      "date": "2026-11-21",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "benchmarking, evaluation, ai-agents, citations, deepseek, research"
+    },
+    {
+      "slug": "llmbenchmark4",
+      "title": "LLM Benchmarking (Part 4)",
+      "description": "Rerunning a model moves its score by a few questions, a small token allowance throws answers away, and a judge model that holds the answer key misses planted arithmetic errors. What I would check before trusting a benchmark.",
+      "date": "2026-11-20",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "benchmarking, evaluation, llm-judge, ollama, deepseek"
+    },
+    {
+      "slug": "llmbenchmark3",
+      "title": "LLM Benchmarking (Part 3)",
+      "description": "Out of 282 accounting questions, 61 were answered correctly by all fifteen models and none was missed by all. The eleven hardest show how models fail together, and whether a vote or a hint of the rule helps.",
+      "date": "2026-11-19",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "benchmarking, evaluation, accounting, llm-ensembles, mmlu"
+    },
+    {
       "slug": "bcmcp7",
       "title": "Business Central and DeepSeek Harness (Part 7)",
       "description": "The rules the posting tool checks in code, the review card a person reads, what happens when the person approves, what happens when a rule fails, and what this design does not do.",
@@ -79,8 +134,8 @@
     },
     {
       "slug": "llmbenchmark2",
-      "title": "LLM Benchmarking, Part 2: Fifteen Models, 282 Questions",
-      "description": "I ran 282 accounting multiple-choice questions through fifteen models, first answering at once with a single letter, then with brief reasoning, had a judge mark the working, and measured which questions every model gets right.",
+      "title": "LLM Benchmarking (Part 2)",
+      "description": "I gave 282 accounting exam questions to fifteen models, from a 3B model on my Mac to hosted DeepSeek, and worked out what to run, what to skip, and which settings matter.",
       "date": "2026-11-13",
       "categories": [
         "AI",
@@ -90,7 +145,7 @@
     },
     {
       "slug": "llmbenchmark",
-      "title": "LLM Benchmarking",
+      "title": "LLM Benchmarking (Part 1)",
       "description": "A from-scratch version of my accounting benchmark: 30 questions that know their own answers, a checker instead of a judge, and six models run through Ollama",
       "date": "2026-11-12",
       "categories": [
@@ -3412,5 +3467,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-17T21:09:45.039Z"
+  "generatedAt": "2026-11-25T00:17:49.970Z"
 }
