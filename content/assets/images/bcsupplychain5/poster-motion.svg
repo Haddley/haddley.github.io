@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Three tiles appear in turn: payment terms, a purchase receipt, and a question across documents</title>
-<style>.a{animation-duration:4s;animation-iteration-count:1;animation-fill-mode:both;animation-timing-function:ease-out}
+<style>.a{animation-duration:6s;animation-iteration-count:infinite;animation-fill-mode:both;animation-timing-function:ease-out}
 .t1{animation-name:i1}.t2{animation-name:i2}.t3{animation-name:i3}.bar{animation-name:b;transform-box:fill-box;transform-origin:left}
-@keyframes i1{0%,5%{opacity:0;transform:translateY(6px)}25%,100%{opacity:1;transform:none}}
-@keyframes i2{0%,28%{opacity:0;transform:translateY(6px)}48%,100%{opacity:1;transform:none}}
-@keyframes i3{0%,51%{opacity:0;transform:translateY(6px)}71%,100%{opacity:1;transform:none}}
-@keyframes b{0%,70%{transform:scaleX(0)}95%,100%{transform:scaleX(1)}}
+@keyframes i1{0%{opacity:0;transform:translateY(6px)}3.3%{opacity:0;transform:translateY(6px)}16.7%{opacity:1;transform:none}92%{opacity:1;transform:none}100%{opacity:0;transform:translateY(6px)}}
+@keyframes i2{0%{opacity:0;transform:translateY(6px)}18.7%{opacity:0;transform:translateY(6px)}32%{opacity:1;transform:none}92%{opacity:1;transform:none}100%{opacity:0;transform:translateY(6px)}}
+@keyframes i3{0%{opacity:0;transform:translateY(6px)}34%{opacity:0;transform:translateY(6px)}47.3%{opacity:1;transform:none}92%{opacity:1;transform:none}100%{opacity:0;transform:translateY(6px)}}
+@keyframes b{0%{transform:scaleX(0)}46.7%{transform:scaleX(0)}63.3%{transform:scaleX(1)}92%{transform:scaleX(1)}100%{transform:scaleX(0)}}
 @media (prefers-reduced-motion:reduce){.a{animation:none!important}}</style>
 <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g class="a t1"><rect x="8" y="32" width="32" height="48" rx="5" fill="#e0f2fe"/><g fill="#7dd3fc"><rect x="13" y="40" width="22" height="3" rx="1.5"/><rect x="13" y="47" width="16" height="3" rx="1.5"/></g><rect x="13" y="58" width="22" height="14" rx="7" fill="#fbbf24"/><text x="24" y="69" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#0f1b2d">1M</text></g>

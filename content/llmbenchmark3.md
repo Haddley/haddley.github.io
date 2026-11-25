@@ -6,7 +6,7 @@ date: "2026-11-19"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark3/poster.svg"
 tags: "benchmarking, evaluation, accounting, llm-ensembles, mmlu"
-hidden: false
+hidden: true
 slug: "llmbenchmark3"
 ---
 In [Part 2](/posts/llmbenchmark2/) I ranked fifteen models on 282 accounting exam questions. A ranking hides something more useful: which questions the models get wrong, and whether they get the same ones wrong. If they fail on different questions, asking several models should help. If they fail together, it will not.

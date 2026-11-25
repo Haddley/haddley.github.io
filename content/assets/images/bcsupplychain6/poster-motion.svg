@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A shield cracks, then the YES button pulses</title>
-<style>.a{animation-duration:4s;animation-iteration-count:1;animation-fill-mode:both;animation-timing-function:ease-out;transform-box:fill-box;transform-origin:center}
+<style>.a{animation-duration:6s;animation-iteration-count:infinite;animation-fill-mode:both;animation-timing-function:ease-out;transform-box:fill-box;transform-origin:center}
 .c{animation-name:c;stroke-dasharray:90;stroke-dashoffset:90}.y{animation-name:y}
-@keyframes c{0%,20%{stroke-dashoffset:90}60%,100%{stroke-dashoffset:0}}
-@keyframes y{0%,60%{transform:scale(1)}75%{transform:scale(1.18)}90%,100%{transform:scale(1)}}
+@keyframes c{0%{stroke-dashoffset:90}13.3%{stroke-dashoffset:90}40%{stroke-dashoffset:0}92%{stroke-dashoffset:0}100%{stroke-dashoffset:90}}
+@keyframes y{0%{transform:scale(1)}40%{transform:scale(1)}50%{transform:scale(1.18)}60%{transform:scale(1)}92%{transform:scale(1)}100%{transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.a{animation:none!important;stroke-dashoffset:0}}</style>
 <rect width="120" height="120" rx="22" fill="#0f1b2d"/><path d="M60 14 L96 28 V58 C96 80 80 94 60 104 C40 94 24 80 24 58 V28 Z" fill="#e0f2fe"/><path d="M60 14 L96 28 V58 C96 80 80 94 60 104 Z" fill="#7dd3fc"/>
 <path class="a c" d="M56 22 L66 44 L54 58 L68 80" fill="none" stroke="#dc2626" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>

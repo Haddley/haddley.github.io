@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A request for 10,000 slides in and is stopped by a no-entry sign, then a sensible order gets a green tick</title>
-<style>.a{animation-duration:4.5s;animation-iteration-count:1;animation-fill-mode:both;animation-timing-function:ease-out;transform-box:fill-box;transform-origin:center}
+<style>.a{animation-duration:6s;animation-iteration-count:infinite;animation-fill-mode:both;animation-timing-function:ease-out;transform-box:fill-box;transform-origin:center}
 .rq{animation-name:rq}.st{animation-name:st}.ln{animation-name:ln}.dc{animation-name:dc}.tk{animation-name:tk}
-@keyframes rq{0%{opacity:0;transform:translateX(-14px)}20%,100%{opacity:1;transform:none}}
-@keyframes ln{0%,15%{opacity:0}30%,100%{opacity:1}}
-@keyframes st{0%,28%{opacity:0;transform:scale(.4)}42%{opacity:1;transform:scale(1.2)}52%,100%{opacity:1;transform:scale(1)}}
-@keyframes dc{0%,50%{opacity:0;transform:translateY(6px)}68%,100%{opacity:1;transform:none}}
-@keyframes tk{0%,68%{opacity:0;transform:scale(.4)}82%{opacity:1;transform:scale(1.15)}92%,100%{opacity:1;transform:scale(1)}}
+@keyframes rq{0%{opacity:0;transform:translateX(-14px)}15%{opacity:1;transform:none}92%{opacity:1;transform:none}100%{opacity:0;transform:translateX(-14px)}}
+@keyframes ln{0%{opacity:0}11.2%{opacity:0}22.5%{opacity:1}92%{opacity:1}100%{opacity:0}}
+@keyframes st{0%{opacity:0;transform:scale(.4)}21%{opacity:0;transform:scale(.4)}31.5%{opacity:1;transform:scale(1.2)}39%{opacity:1;transform:scale(1)}92%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.4)}}
+@keyframes dc{0%{opacity:0;transform:translateY(6px)}37.5%{opacity:0;transform:translateY(6px)}51%{opacity:1;transform:none}92%{opacity:1;transform:none}100%{opacity:0;transform:translateY(6px)}}
+@keyframes tk{0%{opacity:0;transform:scale(.4)}51%{opacity:0;transform:scale(.4)}61.5%{opacity:1;transform:scale(1.15)}69%{opacity:1;transform:scale(1)}92%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.4)}}
 @media (prefers-reduced-motion:reduce){.a{animation:none!important}}</style>
 <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g class="a rq"><path d="M14 22 h46 a8 8 0 0 1 8 8 v12 a8 8 0 0 1 -8 8 h-30 l-8 8 v-8 h-8 a8 8 0 0 1 -8 -8 v-12 a8 8 0 0 1 8 -8 z" fill="#e0f2fe"/><text x="39" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#0f1b2d">10,000</text></g>

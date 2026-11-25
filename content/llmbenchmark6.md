@@ -6,7 +6,7 @@ date: "2026-11-24"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark6/poster.svg"
 tags: "benchmarking, evaluation, knowledge-base, retrieval, deepseek, qwen"
-hidden: false
+hidden: true
 slug: "llmbenchmark6"
 ---
 Professionals do not answer from memory alone. They keep notes and precedents, and they look things up. [Part 5](/posts/llmbenchmark5/) had a model read primary sources before it answered. This post tries the shortcut: do the reading once, keep the notes, and let a local model use them.

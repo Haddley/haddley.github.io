@@ -6,7 +6,7 @@ date: "2026-11-21"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark5/poster.svg"
 tags: "benchmarking, evaluation, ai-agents, citations, deepseek, research"
-hidden: false
+hidden: true
 slug: "llmbenchmark5"
 ---
 

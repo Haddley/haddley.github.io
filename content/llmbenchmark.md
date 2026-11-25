@@ -6,7 +6,7 @@ date: "2026-11-12"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark/poster.svg"
 tags: "benchmarking, evaluation, ollama, accounting, qwen, gemma"
-hidden: false
+hidden: true
 slug: "llmbenchmark"
 ---
 I already have a benchmarking tool for accounting questions. [llm-accounting-benchmark](https://github.com/Haddley/llm-accounting-benchmark) is a Streamlit app. It holds 285 prompts, sends them to local and cloud models, asks a second model to mark every answer against a rubric (accuracy, completeness and clarity, ten points each), and keeps the results in SQLite. It works. It is also a lot of machinery, and the idea gets lost in it.

@@ -6,7 +6,7 @@ date: "2026-11-13"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark2/poster.svg"
 tags: "benchmarking, evaluation, ollama, deepseek, accounting, qwen"
-hidden: false
+hidden: true
 slug: "llmbenchmark2"
 ---
 In [LLM Benchmarking](/posts/llmbenchmark/) I had AI generate a set of 30 questions with answers, so that a few lines of code could mark them. This post runs the same idea on something bigger: 282 multiple-choice questions from a professional accounting exam, answered by fifteen models. Thirteen ran on my own Mac and two were hosted by DeepSeek.

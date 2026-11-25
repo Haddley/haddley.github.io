@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A short prompt appears, then a follow-up question, then a draft order and a tick</title>
-<style>.a{animation-duration:4s;animation-timing-function:ease-out;animation-fill-mode:both;animation-iteration-count:1}
+<style>.a{animation-duration:6s;animation-timing-function:ease-out;animation-fill-mode:both;animation-iteration-count:infinite}
 .p{animation-name:p}.q{animation-name:q}.d{animation-name:d}.t{animation-name:t;transform-box:fill-box;transform-origin:center}
-@keyframes p{0%,5%{opacity:0;transform:translateX(-8px)}22%,100%{opacity:1;transform:none}}
-@keyframes q{0%,28%{opacity:0;transform:translateX(8px)}46%,100%{opacity:1;transform:none}}
-@keyframes d{0%,52%{opacity:0;transform:translateY(6px)}70%,100%{opacity:1;transform:none}}
-@keyframes t{0%,72%{opacity:0;transform:scale(.4)}84%{opacity:1;transform:scale(1.15)}92%,100%{opacity:1;transform:scale(1)}}
+@keyframes p{0%{opacity:0;transform:translateX(-8px)}3.3%{opacity:0;transform:translateX(-8px)}14.7%{opacity:1;transform:none}92%{opacity:1;transform:none}100%{opacity:0;transform:translateX(-8px)}}
+@keyframes q{0%{opacity:0;transform:translateX(8px)}18.7%{opacity:0;transform:translateX(8px)}30.7%{opacity:1;transform:none}92%{opacity:1;transform:none}100%{opacity:0;transform:translateX(8px)}}
+@keyframes d{0%{opacity:0;transform:translateY(6px)}34.7%{opacity:0;transform:translateY(6px)}46.7%{opacity:1;transform:none}92%{opacity:1;transform:none}100%{opacity:0;transform:translateY(6px)}}
+@keyframes t{0%{opacity:0;transform:scale(.4)}48%{opacity:0;transform:scale(.4)}56%{opacity:1;transform:scale(1.15)}61.3%{opacity:1;transform:scale(1)}92%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.4)}}
 @media (prefers-reduced-motion:reduce){.a{animation:none!important}}</style>
 <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g class="a p"><rect x="14" y="22" width="52" height="24" rx="8" fill="#e0f2fe"/><rect x="22" y="31" width="30" height="4" rx="2" fill="#7dd3fc"/></g>

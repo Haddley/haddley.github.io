@@ -6,7 +6,7 @@ date: "2026-11-24"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark7/poster.svg"
 tags: "benchmarking, evaluation, clarifying-questions, ai-agents, deepseek"
-hidden: false
+hidden: true
 slug: "llmbenchmark7"
 ---
 Every question in this series so far arrived complete. A real client does not do that. They leave out the date, the amount or the status, and an assistant that guesses sounds just as sure as one that knows. This post tests the other option: letting the model ask.

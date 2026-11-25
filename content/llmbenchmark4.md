@@ -6,7 +6,7 @@ date: "2026-11-20"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark4/poster.svg"
 tags: "benchmarking, evaluation, llm-judge, ollama, deepseek"
-hidden: false
+hidden: true
 slug: "llmbenchmark4"
 ---
 [Part 2](/posts/llmbenchmark2/) ranked fifteen models on 282 accounting questions, and [Part 3](/posts/llmbenchmark3/) looked at the questions they miss. Both rest on numbers that I produced with code, a token allowance and a judge model. This post checks those numbers: how much they move when I repeat a run, what a bad setting costs, and what a judge can and cannot see.
