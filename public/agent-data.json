@@ -1,6 +1,29 @@
 {
   "posts": [
     {
+      "slug": "copilotagentsreality",
+      "title": "Copilot Agents: Impressive in the Demo, Disappointing on Monday?",
+      "description": "Copilot agents can look excellent in a demo and disappoint in real work.",
+      "date": "2026-11-26",
+      "categories": [
+        "AI",
+        "Microsoft 365"
+      ],
+      "tags": "copilot-agents, copilot-studio, consultants, knowledge-sources, grounding, evaluation"
+    },
+    {
+      "slug": "copilotstudiostl",
+      "title": "I Asked a Microsoft Copilot Harness Agent to Turn a Gingerbread Man into an STL File",
+      "description": "I created an agent in Copilot Studio, powered by the Microsoft Copilot harness, with one line of instructions, gave it two photos of a gingerbread man, and asked for a 3D printing file. The first test stopped because I had not set up billing, so I turned on pay-as-you-go, and the agent then produced two STL files. I sliced the textured one and sent it to my Bambu Lab P1S.",
+      "date": "2026-11-26",
+      "categories": [
+        "AI",
+        "Power Platform",
+        "3D printing"
+      ],
+      "tags": "copilot-studio, stl, image-to-3d, bambu-lab, pay-as-you-go, agents"
+    },
+    {
       "slug": "bcmcp7",
       "title": "Business Central and DeepSeek Harness (Part 7)",
       "description": "The rules the posting tool checks in code, the review card a person reads, what happens when the person approves, what happens when a rule fails, and what this design does not do.",
@@ -3390,5 +3413,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-25T07:37:24.584Z"
+  "generatedAt": "2026-11-26T07:28:29.218Z"
 }

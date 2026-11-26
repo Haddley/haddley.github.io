@@ -3,36 +3,36 @@ type: post
 slug: topics
 title: "Copilot Studio"
 date: "2024-02-25"
-builds_on: []
-topics: [copilot-studio, business-central-connector, dynamics-365-integration, variable-management]
-tools: [Copilot Studio, Business Central, Dynamics 365]
+builds_on: ["ashorthistory"]
+topics: ["copilot-studio", "business-central-connector", "variable-management", "dynamics-365-integration"]
+tools: ["Microsoft Copilot Studio", "Power Virtual Agents", "Dynamics 365 Business Central", "Microsoft Dataverse"]
 status: current
-checked: "2026-11-06"
-source_hash: "03d620ec1422"
+checked: "2026-11-26"
+source_hash: "07d34526e6f4"
 generated_by: gemma4:12b
 ---
 
-**Summary.** I built a custom Copilot Studio topic to retrieve live company data from Dynamics 365. The integration successfully returned the list of companies from the production environment to the user.
+**Summary.** I explain how to integrate Microsoft Dynamics 365 data into a chatbot using Copilot Studio. I built a custom topic that successfully retrieves and displays live company data from a production environment.
 
 ## What I did
 - I built a custom Topic to call the Business Central Connector.
-- I configured the environment and variable management.
-- I mapped the company list to a specific variable.
-- I added a message to display the results.
-- I ended the topic to complete the flow.
+- I retrieved the company list from my production environment.
+- I managed variables to store the returned data.
+- I added a message to display the results to the user.
+- I ended the topic after the data was returned.
 
 ## Claims
-- The initial Copilot configuration did not provide a response.
-  > "By default the Copilot had no idea how to respond — so I built a custom Topic that called the Business Central Connector, retrieved the company list from my PRODUCTION environment, and returned the results to the user."
-- The production environment contained exactly three companies.
+- The platform was previously known as Power Virtual Agents.
+  > "Microsoft Copilot Studio was called Power Virtual Agents from its launch in November 2019 until Microsoft renamed it in November 2023."
+- I confirmed that there were three companies in the production environment.
   > "*I confirmed there were three Companies in my PRODUCTION environment*"
-- I defined the variable type as a table.
+- I set the variable type to table by selecting the value from the picker.
   > "*I selected GetCompaniesV3.value from the variable picker, which set Var1's type to table*"
 - The system successfully returned the three company names.
   > "It returned the three company names.*"
 
 ## Outcome
-I built a Copilot Studio topic that successfully retrieves and displays live company data from Business Central.
+I built a Copilot Studio topic that retrieves and displays live company data from Business Central. The process successfully returned three company names to the user.
 
 ## Caveats
-The post does not show the specific configuration steps for the Business Central Connector authentication.
+The post does not provide the full history of Microsoft Dynamics or Microsoft Dataverse.

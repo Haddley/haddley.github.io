@@ -4,22 +4,22 @@ slug: sklearn20
 title: "Scikit-Learn (Part 20)"
 date: "2026-10-13"
 part: 20
-builds_on: [sklearn2, sklearn3, sklearn15, sklearn16, sklearn17]
-topics: [machine-learning-fundamentals, model-evaluation, backpropagation, training-stability]
-tools: [Scikit-Learn, Keras, TensorFlow, PyTorch, Mac]
+builds_on: ["sklearn2", "sklearn3", "sklearn15", "sklearn16", "sklearn17"]
+topics: ["machine-learning-fundamentals", "model-evaluation", "training-optimization", "backpropagation"]
+tools: ["Scikit-Learn", "PyTorch", "TensorFlow", "MiniGPT"]
 status: current
-checked: "2026-11-06"
-source_hash: "43366b8e8cea"
+checked: "2026-11-26"
+source_hash: "1adb2355ea61"
 generated_by: gemma4:12b
 ---
 
-**Summary.** I reflect on the nineteen chapters of Hands-On Machine Learning to identify what remains relevant and what I would change. I conclude that while most of machine learning relies on the core idea of iterative nudging, training processes are often fragile and require careful execution.
+**Summary.** I reflect on the nineteen chapters of the Hands-On Machine Learning series to evaluate what remains relevant and what I would change. I identify core principles of machine learning and share specific technical decisions regarding training durations and hardware usage.
 
 ## What I did
 - I read Aurélien Géron's book chapter by chapter.
 - I ran the notebooks on my Mac.
-- I wrote a survey of the material.
-- I identified which parts of the curriculum I would prioritize.
+- I wrote a summary of what I learned and what I would skip.
+- I evaluated the results of different training methods.
 
 ## Claims
 - A model must be judged on data it has not seen to avoid memorization.
@@ -28,13 +28,13 @@ generated_by: gemma4:12b
   > "A decision tree scored an error of $0 on its own training houses, and $67,153 on new ones (Part 2)."
 - Small and decisive changes can significantly improve model performance.
   > "**Fixes can be small and decisive.** Telling a review model to ignore padding took it from 50.0% to 87.5% (Part 16)."
-- Shortening long training runs can lead to poor results.
+- Shortening long training runs leads to poor results.
   > "In Part 16 and Part 17 I first shortened the longest ones to save time, and the results were poor: a picture-drawing model that made one picture, and another that made dark blurs."
-- The PyTorch and TensorFlow implementations produced the same results.
+- The PyTorch and TensorFlow implementations produced identical results.
   > "The two gave the same results."
 
 ## Outcome
-I concluded that while the core principles of the field are consistent, specific training choices like run length and batch size are critical for success. I also confirmed that different frameworks can yield identical results for the same logic.
+I concluded that most of machine learning is based on the single idea of nudging parameters to reduce error. I also determined that running training at full length is necessary for high-quality results.
 
 ## Caveats
-This post is a survey and includes what was current at the time it was written.
+The post has no notebook of its own.

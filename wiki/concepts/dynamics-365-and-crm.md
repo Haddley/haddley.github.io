@@ -2,45 +2,45 @@
 type: concept
 slug: dynamics-365-and-crm
 title: "Dynamics 365 and CRM"
-description: "I explore the evolution and practical application of Microsoft Dynamics 365 and Dataverse as a comprehensive CRM and business solution."
+description: "I explore the evolution of Microsoft Dynamics and the Dataverse platform while providing practical guides on configuring Dynamics 365 Sales."
 posts: [dynamicssales4, hubspotquotetemplate, microsoftdynamics365appforoutlook, dynamicssales1, dynamicssales2, dynamicssales3, ashorthistory, dynamicstrialsignup]
 status: current
-checked: "2026-11-16"
-source_hash: "8796349b7fd9"
+checked: "2026-11-26"
+source_hash: "e2f17fba5ab2"
 generated_by: gemma4:12b
 ---
 
-**Summary.** I explore the evolution and practical application of Microsoft Dynamics 365 and Dataverse as a comprehensive CRM and business solution. My posts provide step-by-step guides on configuring data structures, customizing user interfaces, and integrating Dynamics 365 with other Microsoft tools.
+**Summary.** I explore the evolution of Microsoft Dynamics and the Dataverse platform while providing practical guides on configuring Dynamics 365 Sales. I demonstrate how to customize forms, manage business processes, and integrate Dynamics with other tools like Outlook.
 
 ## The idea
-- Dynamics 365 allows for deep customization of tables, forms, and business processes.
-- Dataverse serves as the underlying low-code data platform for the Dynamics 365 ecosystem.
-- Users can establish complex relationships between records, such as Many-to-one connections.
-- The platform integrates with Outlook to sync emails and records directly into the Dynamics timeline.
-- Dynamics 365 evolved from historical acquisitions like Great Plains and Navision.
+- The history of Dynamics shows a transition from early acquisitions to the modern Dataverse platform.
+- I show how to customize the user interface by removing unnecessary fields and organizing data.
+- I demonstrate how to establish many-to-one relationships between records like accounts and products.
+- I explain how to manage the sales pipeline by converting leads and modifying business process flows.
+- I show how to integrate Dynamics 365 with Outlook to sync emails and records.
 
 ## Claims
-- Dynamics 365 became generally available in November 2016.
-  > "Today, we are excited to announce that Dynamics 365 is generally available." — ashorthistory
-- Dataverse was introduced in 2020 as a low-code data platform.
-  > "Introducing Dataverse, a new low-code data platform for Microsoft Teams" — ashorthistory
-- I used the Power Apps portal to create the Warranty table.
-  > "I used https://make.powerapps.com to add a Warranty table to Microsoft Dynamics 365 Sales." — dynamicssales3
-- The Account lookup column generated a new Many-to-one relationship.
-  > "*I noted that adding the Account Lookup column created a new Many-to-one relationship*" — dynamicssales3
-- I converted a lead into an opportunity.
-  > "*I created the (Lead) Opportunity*" — dynamicssales2
+- Microsoft introduced Dataverse as a low-code data platform in 2020.
+  > "In late 2023 Microsoft folded Power Virtual Agents into Microsoft Copilot Studio, and stopped using the old name." — ashorthistory
+- Dynamics 3.0 introduced the xRM concept to allow for more than just contact management.
+  > "Dynamics 3.0 introduced the idea of XRM – CRM could be extended beyond simple contact and sales management." — ashorthistory
+- I removed the Fax element and the Shipping section to streamline the user interface.
+  > "*I deleted the Fax element from the Account|Sales Insights form*" — dynamicssales1
+- I added a Many-to-one relationship for the Product record.
+  > "*I added a Many-to-one relationship (Column) for Product (record)*" — dynamicssales4
+- I modified the existing Business Process Flow and converted a lead into an opportunity.
+  > "*I clicked the Edit button to edit the Business Process Flow*" — dynamicssales2
+- I changed the name column from a text field to an autonumber.
+  > "*I updated the name column to be an autonumber*" — dynamicssales3
 - The app connects a Dataverse Model Driven app to Outlook.
   > "**Microsoft Dynamics 365 App for Outlook** connects a Dataverse Model Driven app to Outlook." — microsoftdynamics365appforoutlook
-- I removed the Fax element from the form.
-  > "*I deleted the Fax element from the Account|Sales Insights form*" — dynamicssales1
-- I added a new tab to the Account table's Main form.
-  > "*I added a 1-column tab to the Account table's Main form*" — dynamicssales4
+- I confirmed the related email was displayed in the Timeline.
+  > "*I confirmed the related email was displayed*" — microsoftdynamics365appforoutlook
 
 ## Where the posts differ
-- The name column changed from a text field to an autonumber in the Warranty table, but later became a non-required single line of text in the Sales Trial application.
-  > "*I updated the name column to be an autonumber*" — dynamicssales3
-  > "*I updated the name column to be an autonumber*" — dynamicssales4
+- The system evolved from simple contact management to a complex ecosystem involving Dataverse and xRM.
+  > "Dynamics 3.0 introduced the idea of XRM – CRM could be extended beyond simple contact and sales management." — ashorthistory
+  > "In late 2023 Microsoft folded Power Virtual Agents into Microsoft Copilot Studio, and stopped using the old name." — ashorthistory
 
 ## What I concluded
-Dynamics 365 provides a robust framework for managing sales processes and data through extensive customization and integration capabilities. By leveraging Dataverse, users can build tailored applications that streamline business operations and improve data visibility.
+Dynamics 365 provides a robust framework for managing sales and customer relationships through extensive customization and integration. The platform has evolved significantly over time to become a comprehensive business application ecosystem.

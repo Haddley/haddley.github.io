@@ -2,37 +2,45 @@
 type: concept
 slug: business-central-development
 title: "Business Central development"
-description: "Business Central development involves creating complex integrations with external systems, AI agents, and cloud services."
-posts: [deepseekharnessaccounting, deepseekharnessbusinesscentral, businesscentralbusinessevents, azurefunctionsbc2, azurefunctionsbc, azurelogicappbc, devenv, copilotstudiobctools, mcpserver2, customercopilotstudio]
+description: "I explore advanced Business Central development by integrating AI models through the Model Context Protocol (MCP) to automate complex tasks."
+posts: [bcmcp1, bcmcp2, bcmcp3, bcmcp4, bcmcp5, bcmcp6, bcmcp7, deepseekharnessaccounting, deepseekharnessbusinesscentral, businesscentralbusinessevents]
 status: current
-checked: "2026-11-16"
-source_hash: "92e0e5784a58"
+checked: "2026-11-26"
+source_hash: "fe2b348940ee"
 generated_by: gemma4:12b
 ---
 
-**Summary.** Business Central development involves creating complex integrations with external systems, AI agents, and cloud services. I demonstrate how to extend the platform using Azure Functions, Logic Apps, and custom API events to automate workflows and enhance data accessibility.
+**Summary.** I explore advanced Business Central development by integrating AI models through the Model Context Protocol (MCP) to automate complex tasks. I also demonstrate how to use specific attributes to trigger real-time notifications for external systems.
 
 ## The idea
-- Integrate Business Central with AI and LLMs using the Model Context Protocol and Copilot Studio.
-- Automate business processes using Azure Functions, Logic Apps, and custom event attributes.
-- Develop custom extensions to handle specific tasks like QR code generation and container management.
-- Leverage external tools and web interfaces to manage complex accounting tasks and data retrieval.
+- Use specific tool configurations to limit AI access and improve performance.
+- Integrate Microsoft Learn documentation to help AI understand procedures.
+- Implement human-in-the-loop workflows to safely bridge AI drafts and final actions.
+- Utilize sandbox environments to test AI capabilities without risking production data.
+- Leverage the ExternalBusinessEvent attribute for real-time external integrations.
 
 ## Claims
+- A small, specific list of tools is more effective and manageable than providing the AI with every available option.
+  > "Ten tools you understand are better than four hundred you do not." — bcmcp1
+- A full configuration with 414 tools is inefficient and breaks the harness.
+  > "The harness gave up on it, so the harness had no tools at all." — deepseekharnessbusinesscentral
+- The AI can now access official documentation to understand specific actions.
+  > "Microsoft runs a second MCP server for exactly this: **Microsoft Learn**." — bcmcp3
+- The AI correctly identified the stock level and list price for a specific item.
+  > "It found the item, read the stock (586) and the list price (192.80) and answered." — bcmcp2
+- The tool ensures that a human must review and approve a transaction before the system executes a web API call to post the order.
+  > "That is on purpose, but a draft that nobody can post is only half a job." — bcmcp6
+- The system blocks any order that fails a predefined rule.
+  > "Any fail means the order is blocked." — bcmcp7
 - The [ExternalBusinessEvent] attribute makes custom events available for external integration.
   > "This attribute marks a business event as available for external integration through the Business Central API." — businesscentralbusinessevents
-- The extension handles both base64 and binary image formats.
-  > "✅ **Dual Format Support:** Handles both base64 and binary image responses" — azurefunctionsbc2
-- A Logic App is a cloud service that connects different applications through a trigger and action mechanism.
-  > "Uses **triggers** (when something happens) → **actions** (then do something)" — azurelogicappbc
-- The server provides a standard way for AI clients to access specific tools.
-  > "A: A small program that offers tools to an AI client in a standard way." — mcpserver2
-- The BCContainerHelper module simplifies the management of Business Central containers.
-  > "A: A PowerShell module that makes it simple to create and manage Business Central containers." — devenv
-- The system automatically creates QR codes when they are missing.
-  > "✅ **Auto-Generation:** Creates QR codes on-demand when missing" — azurefunctionsbc2
-- The event only fires if the new project manager is different from the old one and is not empty.
-  > "The new Project Manager must be different from the old one, and it must not be empty." — businesscentralbusinessevents
+- The AI followed the rule and placed the correct date in the field.
+  > "It followed this one: the question was asked, and the date is in a field I can see." — bcmcp4
+
+## Where the posts differ
+- The posts transition from discussing the inefficiency of large tool lists to implementing specific, restricted configurations for better AI performance.
+  > "It took 148 seconds just to list them and about 390,000 tokens to describe them." — bcmcp1
+  > "The harness gave up on it, so the harness had no tools at all." — deepseekharnessbusinesscentral
 
 ## What I concluded
-Modern Business Central development relies on a robust ecosystem of external cloud services and AI integrations. Developers can extend the platform's capabilities by combining custom API events, Azure services, and containerized environments.
+Effective Business Central development involves creating controlled environments where AI can perform complex tasks under human supervision. Developers can also enhance system connectivity by using specific attributes to notify external applications of real-time changes.

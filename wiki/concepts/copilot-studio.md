@@ -2,41 +2,45 @@
 type: concept
 slug: copilot-studio
 title: "Copilot Studio"
-description: "I explore how to build and customize Copilot Studio agents to interact with Business Central and Dynamics 365 data."
-posts: [powerapps9, copilotstudiobctools, customercopilotstudio, blogcopilotstudio, customcopilotstudio, configurecopilotsinglesignonforweb, topics, createactionbasedonaflow]
+description: "I explore the capabilities of Copilot Studio as a versatile platform for building intelligent agents that integrate with various systems like Business Central and Dynamics 365."
+posts: [copilotagentsreality, copilotstudiostl, powerapps9, copilotstudiobctools, customercopilotstudio, blogcopilotstudio, customcopilotstudio, configurecopilotsinglesignonforweb, topics, createactionbasedonaflow]
 status: current
-checked: "2026-11-16"
-source_hash: "a3722b7ece17"
+checked: "2026-11-26"
+source_hash: "e04797e4a47a"
 generated_by: gemma4:12b
 ---
 
-**Summary.** I explore how to build and customize Copilot Studio agents to interact with Business Central and Dynamics 365 data. My posts demonstrate how to use tools, global variables, and Power Automate flows to provide context-aware responses and perform actions like creating records.
+**Summary.** I explore the capabilities of Copilot Studio as a versatile platform for building intelligent agents that integrate with various systems like Business Central and Dynamics 365. My posts demonstrate how to use custom topics, tools, and global variables to provide context-aware responses and automate business processes.
 
 ## The idea
-- Copilot Studio was called Power Virtual Agents until November 2023.
-- Use Copilot Studio agents to extend standard functionality in model-driven apps and Business Central.
-- Leverage global variables and generative AI to provide personalized responses based on active records.
-- Configure tools and Power Automate flows to allow the Copilot to find, create, and update data.
-- Implement authentication and single sign-on to secure access to private company data.
-- Use custom topics and token endpoints to connect Copilots to specific content like blog posts.
+- Copilot Studio allows for the creation of agents that can perform specific actions using tools and custom topics.
+- Integration with external data sources like Business Central requires careful configuration of variables and authentication.
+- Successful implementation depends on high-quality data preparation and clear tool definitions rather than just adding more knowledge sources.
+- Copilot Studio can power the built-in Copilot panels in model-driven apps to extend standard functionality.
+- Advanced features like generative AI and global variables enable agents to provide personalized, context-aware information.
 
 ## Claims
 - The Copilot in a model-driven app is actually a Copilot Studio agent.
   > "**Q: So the Copilot panel in my app is a Copilot Studio agent?**" — powerapps9
+- Copilot Studio can automatically generate a topic canvas from a description.
+  > "Copilot Studio generated a topic canvas with trigger phrases and a message node containing the answer — no manual canvas editing needed." — powerapps9
 - A tool is an action that the agent chooses to call based on its name and description.
   > "A: An action that the agent can choose to call." — copilotstudiobctools
-- I used global variables and generative AI features to build a solution that recognizes the specific customer record currently open in Business Central.
-  > "I used the Global Variable and Generative AI features in Copilot studio." — customercopilotstudio
 - The generative answers feature allows the Copilot to respond when no specific topic matches.
   > "A: It lets the Copilot answer with generated text when no Topic matches the question." — customercopilotstudio
-- Microsoft Copilot Studio supports single sign-on to allow users to stay signed in across the page and the copilot.
-  > "SSO allows copilots on your website to sign customers in if they're already signed in to the page or app where the copilot is deployed." — configurecopilotsinglesignonforweb
-- Power Automate flows can be initiated directly from the Business Central interface.
-  > "Power Automate flows can be created from the Business Central user interface." — createactionbasedonaflow
-- The system successfully returned the three company names from the production environment.
-  > "It returned the three company names.*" — topics
-- The Token Endpoint is the address the extension uses to reach the Copilot.
-  > "A: The address that the Business Central extension uses to reach the published Copilot." — blogcopilotstudio
+- I used global variables and generative AI features to build the solution.
+  > "I used the Global Variable and Generative AI features in Copilot studio." — customcopilotstudio
+- The Copilot uses the custom data variable to provide answers based on the specific customer information.
+  > "A CustomData variable holds the customer's data, and the generative answers action reads it as its data source, so the Copilot answers from that customer's information." — customercopilotstudio
+- More knowledge sources do not automatically improve agent performance.
+  > "More knowledge sources are not automatically better." — copilotagentsreality
+- The agent was not the problem in the demo because it only had good documents.
+  > "It just needed good documents." — copilotagentsreality
+
+## Where the posts differ
+- One post notes that no authentication is not suitable for private data, while another shows a specific case where no authentication was used for public blog content.
+  > "That is acceptable when it only draws on public blog posts, but do not choose it for a Copilot that can see private or company data." — blogcopilotstudio
+  > "A: The Copilot only answers questions about the content of this public blog, so I did not need to sign anyone in." — blogcopilotstudio
 
 ## What I concluded
-Copilot Studio provides a versatile framework for creating intelligent agents that can interact with specific business data and perform complex actions. By combining global variables, custom tools, and Power Automate, you can create highly contextual and secure AI experiences.
+Copilot Studio is a powerful engine for creating functional, integrated agents, but success requires rigorous data preparation and specific configuration. You must move beyond simple demos by implementing robust tools and clear logic to ensure the agent performs reliably in real-world scenarios.
