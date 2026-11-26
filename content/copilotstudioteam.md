@@ -529,7 +529,7 @@ A: I cannot say. Each pair handled my test conversation, but the test sets were 
 - **The routing label is part of the design.** The description of the connected agent decides whether placeholder cases reach the specialist at all.
 - **Clarification is a convention.** Both prompts have to agree, and nothing warns you when they stop agreeing. Microsoft's `findings` and `openQuestions` are a good pair to agree on, but on this harness they travel as text.
 - **Give both agents a rule for follow-ups, and test it.** Thanks, confirmations and "say that again" all need an answer.
-- **Use each field for what it means.** `findings` is for a specialist that stays silent, and `interactionSummary` is for one that talks to the user. My first version used the wrong one.
+- **Use each field for what it means.** `findings` is for a specialist that stays silent, and `interactionSummary` is for one that talks to the user.
 - **Read the conversations.** A pass told me a reply seemed relevant, and a fail sometimes told me the judge was wrong. I still read the totals and the transcripts.
 
 ## References
