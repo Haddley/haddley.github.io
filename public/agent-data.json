@@ -24,6 +24,17 @@
       "tags": "copilot-studio, stl, image-to-3d, bambu-lab, pay-as-you-go, ai-agent"
     },
     {
+      "slug": "copilotstudioteam",
+      "title": "Building a Team of Agents in Copilot Studio and Handling Clarification",
+      "description": "A Math Agent hands every sum to an Addition Agent. When a value such as Z is missing, the Addition Agent asks for it, the Math Agent asks me, and the sum finishes. The clarification is a convention that I wrote into two sets of instructions. I then rebuilt the two agents with Microsoft's findings and openQuestions outputs, and both passed every conversation in their evaluations.",
+      "date": "2026-11-26",
+      "categories": [
+        "AI",
+        "Power Platform"
+      ],
+      "tags": "copilot-studio, connected-agents, clarification, evaluation, ai-agent"
+    },
+    {
       "slug": "bcmcp7",
       "title": "Business Central and DeepSeek Harness (Part 7)",
       "description": "The rules the posting tool checks in code, the review card a person reads, what happens when the person approves, what happens when a rule fails, and what this design does not do.",
@@ -3413,5 +3424,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-26T08:08:10.472Z"
+  "generatedAt": "2026-11-26T13:00:46.307Z"
 }
