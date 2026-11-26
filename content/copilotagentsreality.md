@@ -3,7 +3,7 @@ title: "Copilot Agents: Impressive in the Demo, Disappointing on Monday?"
 description: "Copilot agents can look excellent in a demo and disappoint in real work."
 date: "2026-11-26"
 categories: ["AI", "Microsoft 365"]
-tags: "copilot-agents, copilot-studio, consultants, knowledge-sources, grounding, evaluation"
+tags: "copilot-agents, copilot-studio, consultants, knowledge-sources, grounding, ai-agent"
 slug: "copilotagentsreality"
 image: "/assets/images/copilotagentsreality/poster.svg"
 hidden: false

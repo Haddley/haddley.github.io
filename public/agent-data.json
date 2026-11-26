@@ -9,7 +9,7 @@
         "AI",
         "Microsoft 365"
       ],
-      "tags": "copilot-agents, copilot-studio, consultants, knowledge-sources, grounding, evaluation"
+      "tags": "copilot-agents, copilot-studio, consultants, knowledge-sources, grounding, ai-agent"
     },
     {
       "slug": "copilotstudiostl",
@@ -21,7 +21,7 @@
         "Power Platform",
         "3D printing"
       ],
-      "tags": "copilot-studio, stl, image-to-3d, bambu-lab, pay-as-you-go, agents"
+      "tags": "copilot-studio, stl, image-to-3d, bambu-lab, pay-as-you-go, ai-agent"
     },
     {
       "slug": "bcmcp7",
@@ -3413,5 +3413,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-26T07:52:39.153Z"
+  "generatedAt": "2026-11-26T08:08:10.472Z"
 }

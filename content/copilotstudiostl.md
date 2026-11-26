@@ -3,7 +3,7 @@ title: "I Asked a Microsoft Copilot Harness Agent to Turn a Gingerbread Man into
 description: "I created an agent in Copilot Studio, powered by the Microsoft Copilot harness, with one line of instructions, gave it two photos of a gingerbread man, and asked for a 3D printing file. The first test stopped because I had not set up billing, so I turned on pay-as-you-go, and the agent then produced two STL files. I sliced the textured one and sent it to my Bambu Lab P1S."
 date: "2026-11-26"
 categories: ["AI", "Power Platform", "3D printing"]
-tags: "copilot-studio, stl, image-to-3d, bambu-lab, pay-as-you-go, agents"
+tags: "copilot-studio, stl, image-to-3d, bambu-lab, pay-as-you-go, ai-agent"
 slug: "copilotstudiostl"
 image: "/assets/images/copilotstudiostl/poster.svg"
 hidden: false

@@ -4,22 +4,22 @@ slug: copilotagentsreality
 title: "Copilot Agents: Impressive in the Demo, Disappointing on Monday?"
 date: "2026-11-26"
 builds_on: ["powerapps9", "bcmcp1", "copilotstudiostl", "deepseekharnessollama", "claudecode11"]
-topics: ["copilot-agents", "data-readiness", "expectation-management", "ai-governance"]
+topics: ["copilot-agents", "data-readiness", "pre-sales-strategy", "ai-governance"]
 tools: ["Microsoft Copilot", "Copilot Studio", "SharePoint", "OneDrive", "Claude Code", "DeepSeek"]
 status: current
 checked: "2026-11-26"
-source_hash: "fb49a53e98eb"
+source_hash: "a723f8420145"
 generated_by: gemma4:12b
 ---
 
-**Summary.** I explore why Microsoft Copilot agents often perform well in demonstrations but fail during real-world implementation. I find that the gap between a demo and Monday results usually stems from poor data preparation and inadequate scope management.
+**Summary.** I explore why Microsoft Copilot agents often perform well in controlled demonstrations but fail during real-world implementation. I conclude that the gap between a demo and 'Monday' results is usually caused by poor data preparation and inadequate scope management.
 
 ## What I did
-- I analyzed the difference between controlled demo environments and messy real-world data.
-- I examined Gartner forecasts regarding the failure rates of agentic AI projects.
-- I reviewed Microsoft's official documentation on agent limitations and best practices.
-- I compared different Copilot products and their underlying capabilities.
+- I analyzed the difference between demo environments and real-world office workflows.
+- I examined Microsoft's official documentation regarding agent limitations and best practices.
+- I compared different agent implementations and their respective success rates.
 - I identified the specific roles and responsibilities that lead to successful project delivery.
+- I provided actionable steps for technical pre-sales professionals to manage client expectations.
 
 ## Claims
 - Agents are generally unreliable when performing realistic office tasks.
@@ -32,15 +32,15 @@ generated_by: gemma4:12b
   > "A demo hides the work that sits behind the agent."
 - More knowledge sources do not automatically result in a better agent.
   > "More knowledge sources are not automatically better."
-- The agent was not the problem in the demo because it only needed good documents.
-  > "It just needed good documents."
-- A disclaimer is not a sufficient deliverable for a paying customer.
+- A disclaimer is not a sufficient substitute for a functional deliverable.
   > "**A disclaimer is not a deliverable.** A delivery team cannot develop an AI for a paying customer, add a line saying that generative AI results may be wrong, and walk away calling it good."
-- Microsoft guidance points toward narrow agents with clear purposes and human verification.
-  > "Microsoft's guidance and the evidence both point to narrow agents that are grounded on a known source, have a clear purpose and whose work a person checks."
+- The real work lies in the documents and tools rather than the agent itself.
+  > "**The demo:** Then the real work is the documents and the tools, not the agent."
+- A person must still check the output because it does not explain everything.
+  > "It does not explain everything, so a person still has to check the output."
 
 ## Outcome
-I concluded that the success of an agent depends on the quality of the underlying data and tools rather than the agent itself. I also determined that technical pre-sales professionals must set clear expectations to protect the delivery team.
+I concluded that successful agent deployment requires high-quality data grounding and clear expectations set during the pre-sales phase. I also demonstrated that while agents can perform specific tasks well, they require human verification to ensure accuracy.
 
 ## Caveats
-The post does not explain everything, so a human must still check the output of the agent.
+The post notes that while some agents perform well in specific tests, they do not represent the performance of every individual Copilot configuration.
