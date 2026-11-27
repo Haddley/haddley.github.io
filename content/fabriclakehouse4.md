@@ -218,6 +218,8 @@ Two things looked wrong with my setup.
 - **The instructions named only three tables**, but I had selected ten. The agent repeated the same three in its refusal.
 - **The tutorial's table list has a gap.** `dimproduct` has a `ProductSubcategoryKey` and no category key. The only route from a product to its category goes through `dimproductsubcategory`, and the tutorial's list does not include it.
 
+This gap does not break the tutorial as written. Its two example queries use only the sales, customer, date and geography tables, and neither asks about product categories. The gap shows only with my product question, which I wrote in the style of the tutorial's examples and which is not one of them.
+
 I ticked `dimproductsubcategory` and rewrote the instructions to describe all ten tables, with the join from product to subcategory to category.
 
 ![](assets/images/fabriclakehouse4/instructions-corrected.jpg)
@@ -266,7 +268,7 @@ JOIN dbo.dimproductcategory c ON s.ProductCategoryKey = c.ProductCategoryKey
 ORDER BY p.ListPrice DESC
 ```
 
-`TOP 5` cannot show whether a sixth product also has the highest price. This query would show it, because it returns every product at the highest list price. I wrote it after I had deleted the workspace, so I have not run it.
+`TOP 5` cannot show whether a sixth product also has the highest price. This query would show it, because it returns every product at the highest list price. I wrote it after I had deleted the workspace, so I have not run it here. In [Part 5](/posts/fabriclakehouse5/) I ran it on a second copy of the data, and it returned exactly five rows.
 
 ```sql
 SELECT p.EnglishProductName, p.ListPrice, c.EnglishProductCategoryName
@@ -277,10 +279,10 @@ WHERE p.ListPrice = (SELECT MAX(ListPrice) FROM dbo.dimproduct)
 ORDER BY p.EnglishProductName
 ```
 
-My SQL check agreed: the five rows it returned all have the highest list price I saw, 3,578.27, and all are Road-150 Red bikes in the Bikes category. The agent listed the same five. I did not check whether a sixth product has the same price, so I cannot say the tie is exactly five.
+My SQL check agreed: the five rows it returned all have the highest list price I saw, 3,578.27, and all are Road-150 Red bikes in the Bikes category. The agent listed the same five. I did not check whether a sixth product has the same price in this post. Part 5 did, and found that the tie is exactly five.
 
 :::watch-it I cannot say which change fixed it
-I changed four things before the answer came: the instructions, the extra table, a refresh and a new chat. Microsoft's concept page warns that earlier chat history can influence later responses, and my third refusal came in a chat that already held two. I did not test the changes one at a time, so I cannot say which one mattered. A tie also makes "top 5" ambiguous: any five of the tied products would be a valid answer.
+I changed four things before the answer came: the instructions, the extra table, a refresh and a new chat. Microsoft's concept page warns that earlier chat history can influence later responses, and my third refusal came in a chat that already held two. I did not test the changes one at a time, so I cannot say which one mattered. Part 5 later showed that exactly five products share that price, so this tie did not make the answer ambiguous.
 :::
 
 ## Tear down
@@ -299,7 +301,7 @@ The agent is gone, so I cannot add to it. Redoing it would repeat the long table
 - **Add the tutorial's example queries.**
 - **Call the agent from a notebook** through the MCP endpoint that the tutorial describes.
 - **Connect it to Copilot Studio.** That could be a later post.
-- **Compare it with anything else.** I measured nothing about accuracy beyond two questions, and one of them failed three times.
+- **Compare it with anything else.** I measured nothing about accuracy beyond two questions, and one of them failed three times. [Part 5](/posts/fabriclakehouse5/) asks the same two questions of DeepSeek Harness over the same tables.
 
 :::bullet-points What I learned
 - The free trial could not create a data agent. An F2 capacity could, for about $0.22 of compute by Microsoft's list price.
@@ -312,6 +314,7 @@ The agent is gone, so I cannot add to it. Redoing it would repeat the long table
 
 ## References
 
+- [Part 5: DeepSeek Harness over the AdventureWorks Lakehouse](/posts/fabriclakehouse5/)
 - [Fabric data agent example with the AdventureWorks dataset (Microsoft Learn)](https://learn.microsoft.com/fabric/data-science/data-agent-end-to-end-tutorial)
 - [Fabric data agent concepts (Microsoft Learn)](https://learn.microsoft.com/fabric/data-science/concept-data-agent)
 - [Create a Fabric data agent (Microsoft Learn)](https://learn.microsoft.com/fabric/data-science/how-to-create-data-agent)
