@@ -1,44 +1,178 @@
 ---
 title: "Microsoft Fabric"
 part: 6
-description: "I rebuilt for DeepSeek Harness what one person needs from a Fabric data agent: example queries, running as the asker, and a callable endpoint. I did not build the controls that an organisation needs around an agent, and I say what each would take. I also found that the tutorial's own example SQL is ambiguous, and that the harness can read other sign-ins."
+description: "I asked DeepSeek Harness all of Microsoft's Fabric data agent questions, 48 runs over the AdventureWorks sample on my free trial, in the same two setups as the Fabric agent. Where a question has a right answer the harness matched my SQL every time; where it does not, the answers diverged."
 date: "2026-11-28"
 categories: ["Azure", "AI"]
-tags: "deepseek-harness, mcp, example-queries, permissions, data-governance"
+tags: "deepseek-harness, mcp, lakehouse, adventureworks, natural-language-query"
 hidden: false
 slug: "fabriclakehouse6"
 image: "/assets/images/fabriclakehouse6/posts-meta.svg"
 ---
 
-# Rebuilding what a Fabric Data Agent adds
 
-In [Part 5](/posts/fabriclakehouse5/) I gave DeepSeek Harness one small SQL tool over the AdventureWorks Lakehouse, and it answered the same questions that I asked the Fabric data agent in [Part 4](/posts/fabriclakehouse4/). The Lakehouse and its SQL endpoint gave the harness tables, a standard SQL interface and column names. They declare no joins and carry no descriptions, as the missing-table runs showed. The Fabric data agent adds more on top of the tables. In this part I rebuild what one person needs to ask questions of one Lakehouse: example queries, running as the asker, and a callable endpoint. I did not build the controls that an organisation needs around an agent: auditing of prompts and answers, policy that outranks the builder, and keeping data inside a chosen boundary. Fabric meets them with Purview and tenant settings. They are needs and not a Microsoft feature, so other tools can meet them too. I did not build or test any of those, and I say below what each would take.
+# DeepSeek Harness over the AdventureWorks Lakehouse
 
-## Permissions are the real boundary
+In [Part 4](/posts/fabriclakehouse4/) I asked a Fabric data agent all of Microsoft's own questions over the tutorial's AdventureWorks sample, in two setups. In [Part 5](/posts/fabriclakehouse5/) I called that agent from Copilot Studio. In this part I take the same sample data, the same eight questions and the same two setups, and I point [DeepSeek Harness](/posts/deepseekharness/) at them instead. It is a general harness that is not part of Fabric, and it gets one small MCP server of mine that runs read-only SQL. The free trial could not create the Fabric agent, but it can hold the whole data layer, so this part needs no F2.
 
-In [Part 5](/posts/fabriclakehouse5/) the tool has a scope that works like ticking tables. It narrows what the agent looks at, and the harness signs in as me, with my full permissions. A scope is not security, and a second user shows the difference. I am the workspace admin and can read every table, so a limit on a person needs a second identity. Part 4 did not need one, because only I ever asked the Fabric agent.
+I ran 48 sessions: eight questions, two setups and three runs each. I scored them against the answer keys that I built from my own SQL where a key was possible, and I read the rest.
 
-I used a temporary service principal, `fabric-harness-demo-temp`, added to the workspace as a Viewer. As myself, I then denied it `SELECT` on the 18 tables outside the ten tutorial tables, with one statement per table:
+## Part 4 and Part 6 side by side
 
-```sql
-DENY SELECT ON OBJECT::dbo.dimproductsubcategory TO [fabric-harness-demo-temp];
+| | Part 4: Fabric data agent | Part 6: DeepSeek Harness |
+|---|---|---|
+| Sample data | The tutorial's AdventureWorks, 28 tables, loaded on an F2 | The same sample, loaded with the same code on my free trial |
+| Questions | Microsoft's seven, plus my country-totals question | The same eight, word for word |
+| Setup A | The tutorial's three-table instructions, ten tables, no examples | The same instructions in `AGENTS.md`, ten tables in scope |
+| Setup B | Corrected instructions, eleven tables, the tutorial's two example queries | The same instructions and the same two examples |
+| Runs | One chat per question and setup, then two MCP calls per question | Three runs per question and setup |
+| Needed an F2 | Yes | No |
+
+The main findings:
+
+- **Where an answer is checkable, they agree.** Country totals, the top five products and "no 2023 data" came out the same in all 6 runs of each.
+- **The tutorial's instructions did not stop the harness.** It treated them as advice and looked at the data. The Fabric agent refused two questions in setup A.
+- **Question 1 has no single right answer, and the two systems disagreed on what to do.** The tutorial's own SQL is ambiguous on ties, and the harness's runs used two different definitions.
+- **Question 7, the root cause of a sales spike, produced three different stories.** The Fabric agent gave two more.
+- **The harness took far longer on the open-ended question.** Question 7 took 204 to 419 seconds, against 46 to 68 for the Fabric agent. On the simple questions the two were close.
+
+
+## Load the AdventureWorks sample on the trial
+
+I created a workspace, `AdventureWorks Harness`, on my trial capacity, and a Lakehouse called `AdventureWorksLH` in it. I made them, and a load notebook, through the Fabric REST API, so I have no screenshots of those steps. [Part 4](/posts/fabriclakehouse4/) shows the same steps in the web page, and the notebook holds the same loading code.
+
+![](assets/images/fabriclakehouse6/workspace-trial.jpg)
+*The workspace on my trial: a Lakehouse, its SQL analytics endpoint and the load notebook*
+
+The notebook job completed in 5 minutes 34 seconds. In Part 4, all 28 tables were there after about 19 minutes on the F2.
+
+![](assets/images/fabriclakehouse6/lakehouse-tables.jpg)
+*The 28 tables in the Lakehouse, with a preview of dimproductcategory*
+
+:::watch-it The SQL endpoint lagged behind the Lakehouse
+When the job finished, the Fabric API listed all 28 tables, but the SQL endpoint listed only 25 or 26 of them. A tool that reads the SQL endpoint can see fewer tables than the Lakehouse holds for a few minutes after a load.
+:::
+
+## The harness has no Fabric tools, so I wrote one MCP server with three tools
+
+DeepSeek Harness can call tools that speak the Model Context Protocol (MCP). It has no Fabric tool, so I wrote a small MCP server with three tools:
+
+- **list_tables** lists the tables.
+- **describe_table** lists the columns of one table.
+- **run_select** runs one T-SQL `SELECT` and returns at most 25 rows, as the Fabric data agent does. It refuses anything else.
+
+In [Part 7](/posts/fabriclakehouse7/), I add a fourth tool, `export_query`, for questions that need more than 25 rows. The runs in this part used these three.
+
+It runs `sqlcmd` with the Azure sign-in of whoever runs it, so the database applies that person's permissions and no password is stored in the tool. It has an optional scope, a list of tables that it works with, which I describe below. It is a plain Python script with no packages.
+
+```python
+#!/usr/bin/env python3
+"""A small read-only MCP server (stdio) for a Fabric Lakehouse SQL endpoint.
+
+Tools: list_tables, describe_table, run_select. They run sqlcmd with the Azure CLI sign-in of whoever runs them
+(set AZURE_CONFIG_DIR to use another sign-in), so the database applies that person's permissions and no password is stored.
+Settings come from FABRIC_SQL_SERVER and FABRIC_DATABASE. If FABRIC_SCOPE_TABLES (comma separated) is set, the tools
+work only with those tables, as ticking tables does for a Fabric data agent. That is a scope that narrows what the
+agent looks at. It is not security: what a person can read is decided by the database permissions of the signed-in user.
+"""
+import json, os, re, subprocess, sys
+
+SERVER = os.environ["FABRIC_SQL_SERVER"]
+DATABASE = os.environ["FABRIC_DATABASE"]
+MAX_ROWS = 25
+SCOPE = {t.strip().lower() for t in os.environ.get("FABRIC_SCOPE_TABLES", "").split(",") if t.strip()}
+_all_tables = None
+BLOCKED = re.compile(r"\b(insert|update|delete|drop|alter|create|truncate|merge|exec|execute|grant|revoke|deny|into)\b", re.I)
+
+
+def sql(query, limit=MAX_ROWS):
+    out = subprocess.run(
+        ["sqlcmd", "-S", SERVER, "-d", DATABASE, "--authentication-method=ActiveDirectoryAzCli", "-W", "-s", "|", "-Q", query],
+        capture_output=True, text=True, timeout=120)
+    lines = [l for l in (out.stdout + out.stderr).splitlines()
+             if l.strip() and not l.startswith("Statement ID") and "rows affected" not in l]
+    lines = [l for l in lines if not set(l.replace("|", "").replace(" ", "")) <= {"-"}]   # drop the dashed line under the header
+    header, rows = lines[:1], lines[1:]
+    note = f"\n(first {limit} rows shown)" if limit and len(rows) > limit else ""
+    return "\n".join(header + (rows[:limit] if limit else rows)) + note
+
+
+def out_of_scope(query):
+    """The tables outside the scope that the query names anywhere, as whole words."""
+    global _all_tables
+    if _all_tables is None:
+        _all_tables = {l.strip().lower() for l in sql("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES", limit=None).splitlines()[1:]}
+    return sorted(t for t in _all_tables - SCOPE if re.search(rf"\b{re.escape(t)}\b", query, re.I))
+
+
+def run_select(query):
+    q = query.strip().rstrip(";")
+    if not re.match(r"(select|with)\b", q, re.I) or ";" in q or BLOCKED.search(q):
+        return "Refused: only a single read-only SELECT statement is allowed."
+    if SCOPE and (out_of_scope(q) or re.search(r"\b(?:sys|information_schema)\b", q, re.I)):
+        return "Refused: that query uses a table that is not in scope. Tables in scope: " + ", ".join(sorted(SCOPE))
+    return sql(q)
+
+
+def describe_table(table):
+    if not re.fullmatch(r"[A-Za-z0-9_]+", table):
+        return "Refused: give a plain table name."
+    if SCOPE and table.lower() not in SCOPE:
+        return "Refused: that table is not in scope. Tables in scope: " + ", ".join(sorted(SCOPE))
+    return sql("SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS "
+               f"WHERE TABLE_NAME = '{table}' ORDER BY ORDINAL_POSITION")
+
+
+TOOLS = {
+    "list_tables": ("List the tables in the Lakehouse SQL endpoint.", {}, lambda a: ("TABLE_NAME\n" + "\n".join(sorted(SCOPE))) if SCOPE else sql(
+        "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' ORDER BY TABLE_NAME")),
+    "describe_table": ("List the columns and data types of one table.",
+                       {"table": {"type": "string", "description": "Table name, for example dimproduct"}},
+                       lambda a: describe_table(a["table"])),
+    "run_select": (f"Run one read-only T-SQL SELECT statement. At most {MAX_ROWS} rows come back.",
+                   {"query": {"type": "string", "description": "A T-SQL SELECT statement"}},
+                   lambda a: run_select(a["query"])),
+}
+
+
+def reply(id_, result=None, error=None):
+    msg = {"jsonrpc": "2.0", "id": id_}
+    msg["error" if error else "result"] = error or result
+    sys.stdout.write(json.dumps(msg) + "\n"); sys.stdout.flush()
+
+
+for line in sys.stdin:
+    try:
+        m = json.loads(line)
+    except ValueError:
+        continue
+    method, id_ = m.get("method"), m.get("id")
+    if id_ is None:
+        continue                                   # notifications need no reply
+    if method == "initialize":
+        reply(id_, {"protocolVersion": m["params"].get("protocolVersion", "2024-11-05"),
+                    "capabilities": {"tools": {}}, "serverInfo": {"name": "fabric-sql", "version": "1.0"}})
+    elif method == "tools/list":
+        reply(id_, {"tools": [{"name": n, "description": d,
+                               "inputSchema": {"type": "object", "properties": p, "required": list(p)}}
+                              for n, (d, p, _) in TOOLS.items()]})
+    elif method == "tools/call":
+        name, args = m["params"]["name"], m["params"].get("arguments") or {}
+        try:
+            text = TOOLS[name][2](args)
+            reply(id_, {"content": [{"type": "text", "text": text}]})
+        except Exception as e:
+            reply(id_, {"content": [{"type": "text", "text": f"Error: {e}"}], "isError": True})
+    else:
+        reply(id_, error={"code": -32601, "message": "Method not found"})
 ```
 
-Then I signed in as it and tried things:
+I tested it by hand: it listed the tables, and it refused a `DELETE`. Its own check only allows a single `SELECT` statement.
 
-| As the service principal | Result |
-|---|---|
-| Count the tables in `INFORMATION_SCHEMA` | 10 |
-| `SELECT TOP 1 * FROM dbo.dimproductsubcategory` | Msg 373: the SELECT permission was denied on the object |
-| A comma join to `dimproductsubcategory` | The same denial |
-| `SELECT COUNT(*) FROM dbo.dimproduct` | 606 |
-
-The database hid the 18 denied tables and refused every route to them. The scope in my tool does the same job for a focused agent, but it relies on the tool noticing table names, and the database does not.
-
-To run the harness as that user, I made a profile that points the tool at the service principal's Azure sign-in, with the setting `AZURE_CONFIG_DIR`. Without that line, the tool uses mine:
+I did not edit my existing harness profile. I made two new profiles, each with one row, so that the Business Central tools from my other posts do not load. The profile `fabricscope10` sets the scope to the ten tutorial tables. The profile `fabricscope11` adds `dimproductsubcategory`. The setting is `FABRIC_SCOPE_TABLES`:
 
 ```yaml
-# The fabricsp profile: one row that adds the read-only Fabric SQL tools, signed in as the limited user. Use: dsh --profile fabricsp "task"
+# The fabricscope10 profile: one row that adds the read-only Fabric SQL tools. Use: dsh --profile fabricscope10 "task"
 - insert:
     - id: mcp-fabric-sql
       name: '@deepseek-ai/dsh-mcp-client'
@@ -51,219 +185,188 @@ To run the harness as that user, I made a profile that points the tool at the se
         env:
           FABRIC_SQL_SERVER: <the Lakehouse SQL endpoint connection string>
           FABRIC_DATABASE: AdventureWorksLH
-          AZURE_CONFIG_DIR: <home>/.config/fabric-harness/az-analyst
+          FABRIC_SCOPE_TABLES: dimcustomer,dimdate,dimgeography,dimproduct,dimproductcategory,dimpromotion,dimreseller,dimsalesterritory,factinternetsales,factresellersales
         toolCallTimeoutMs: 120000
 ```
 
-As a check on the whole idea, I ran the same 12 runs as this limited user, with no scope in the tool, so the database alone decided what it could see. 11 of 12 matched the key. In the other run, a ten-table product question, the harness grouped the bikes into models and gave the top five models, which is a different reading of "top 5 products". It still flagged the missing category link, as the other runs did.
+## Scope the tool to the ticked tables
 
-## Example queries
+In the Fabric agent, ticking tables narrows what the agent uses. It is a convenience for whoever builds the agent. It does not change what I can read. I was the workspace admin, and I could read every table, which is why the agent's "there is no product table" was about the agent, not about me. I wanted the same idea in the harness, so the tool has a scope, a list of tables, set in the profile. The harness itself signs in as me, with my full permissions, as the Fabric agent did.
 
-I wrote an `examples.md` file with the tutorial's two example pairs, a question and the SQL that answers it. I changed the SQL slightly so that I could read the results: I added the postal code to the first query's output, and an `ORDER BY` to the end of the second. The first pair looks like this:
-
-```sql
--- Question: Calculate the average percentage increase in sales amount for repeat purchases for every zipcode.
--- Repeat purchase is a purchase subsequent to the first purchase (the average should always be computed
--- relative to the first purchase)
-SELECT g.PostalCode,
-       AVG((s.SalesAmount - first_purchase.SalesAmount) / first_purchase.SalesAmount * 100) AS AvgPercentageIncrease
-FROM factinternetsales s
-INNER JOIN dimcustomer c ON s.CustomerKey = c.CustomerKey
-INNER JOIN dimgeography g ON c.GeographyKey = g.GeographyKey
-INNER JOIN (
-    SELECT * FROM (
-        SELECT CustomerKey, SalesAmount, OrderDate,
-               ROW_NUMBER() OVER (PARTITION BY CustomerKey ORDER BY OrderDate) AS RowNumber
-        FROM factinternetsales
-    ) AS t
-    WHERE RowNumber = 1
-) first_purchase ON s.CustomerKey = first_purchase.CustomerKey
-WHERE s.OrderDate > first_purchase.OrderDate
-GROUP BY g.PostalCode
-```
-
-I asked a question that uses the same words: "What is the average percentage increase in sales amount for repeat purchases in postal code 91940?" I ran it three times without `examples.md` and three times with it, as the limited user. In these runs, the prompt told the harness to read the files. Putting them in `AGENTS.md`, as Part 5 does, would do the same job. Both setups had my corrected instructions.
-
-| Setup | Definition the harness used | Answer | Time |
-|---|---|---|---|
-| Without `examples.md` | Each order against the customer's previous order | +28.1% in 3 of 3 runs | 76 to 109 s |
-| With `examples.md` | Each later purchase against the customer's first purchase | −51.48% in 3 of 3 runs | 26 to 33 s |
-
-The example file changed the definition that the harness used, and it made the runs faster and more alike. That is what example queries are for.
-
-:::watch-it Example SQL carries hidden assumptions
-The tutorial's repeat-purchase example picks the "first purchase" with `ROW_NUMBER() ... ORDER BY OrderDate`. Many customers have several order lines on their first date, and then the SQL does not say which line is first. In my data, 10,514 customers have more than one line on their first order date, and 50 of the 90 customers in postal code 91940 do.
-
-Run as written, the query gave −65.08% for postal code 91940 when run for all postal codes, and −51.48% when I added a filter for 91940 to the same query. Each was stable over repeated runs. Once I stated the assumption, by adding `SalesOrderNumber, SalesOrderLineNumber` to the `ORDER BY`, both forms gave −51.48%. That is the point: an example query carries assumptions, and stating them, here as a tie-break, is what makes a result reproducible. Other reasonable rules give other numbers, so a result should always travel with its assumption.
-
-The harness never stated the tie-break. It ran the tutorial's SQL and got −51.48%, the same as the tie-broken value, but its own query was still ambiguous, so that match is not guaranteed. I first used the tutorial's example as my answer key without the tie-break. It gave −65.08%, which is why my key disagreed with the harness. I did not inspect the database's query plan, and I did not run this example through the Fabric agent, so I cannot say what it would do.
-:::
-
-## The tool runs as the current user
-
-I wanted the tool to behave as the person who asks, so that the answer is what that person would get by running the same SQL. The tool already works that way, because `sqlcmd` signs in with the Azure CLI account of whoever runs it. For the limited second user, I signed the service principal in to its own Azure folder and pointed the tool at it with `AZURE_CONFIG_DIR`.
-
-| Signed in as | `USER_NAME()` | Tables visible |
-|---|---|---|
-| Me | my own account name | 28 |
-| The service principal | `fabric-harness-demo-temp` | 10 |
-
-Then I tested the claim itself. I took the SQL that the harness generated in two runs, and replayed each query by hand with `sqlcmd` as each user. For each query, I compared the result with what the harness saw.
-
-| Harness run | Replayed as | Same result as the harness saw |
-|---|---|---|
-| Asked as the service principal (13 queries) | The service principal | 13 of 13 |
-| Asked as the service principal | Me | 10 of 13, the other 3 returned data that the service principal was denied |
-| Asked as me (3 queries) | Me | 3 of 3 |
-| Asked as me | The service principal | 0 of 3, all denied |
-
-So the harness gets what the signed-in user would get, and no more. In the service principal's run, the harness tried `dimproductsubcategory` and was denied, then worked around it, and it listed ten tables in `INFORMATION_SCHEMA` where I would see 28.
-
-## Publishing an endpoint
-
-A Fabric data agent can be published and called by other tools. I wrote a small web service that does the same for the harness. It uses only the standard library:
-
-```python
-#!/usr/bin/env python3
-"""A small local web service that publishes DeepSeek Harness as an endpoint.
-
-POST /ask  {"question": "..."}  with  Authorization: Bearer <api key>
-Each API key belongs to one caller, and each caller maps to a harness profile, so the caller decides which
-database identity the Fabric tools use. The harness runs in a new empty folder per request, with the
-instructions and example queries copied in. Standard library only.
-"""
-import json, os, shutil, subprocess, tempfile, time
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-
-HERE = os.path.dirname(os.path.abspath(__file__))
-CALLERS = json.load(open(os.path.expanduser("~/.config/fabric-harness/callers.json")))   # {api key: {name, profile}}
-FILES = ["instructions-corrected.md", "examples.md"]
-TIMEOUT = 300
-
-
-def ask(question, profile):
-    d = tempfile.mkdtemp(prefix="fh-ask-")
-    try:
-        shutil.copy(f"{HERE}/instructions-corrected.md", f"{d}/instructions.md")
-        shutil.copy(f"{HERE}/examples.md", d)
-        subprocess.run(["git", "init", "-q"], cwd=d)
-        prompt = ("Read instructions.md and examples.md, which describe the data source. Then answer this question: "
-                  f"{question} Use the fabricsql tools to look at the data. Do not change anything.")
-        r = subprocess.run(["dsh", "--profile", profile, prompt], cwd=d, capture_output=True, text=True, timeout=TIMEOUT)
-        return r.stdout.strip()
-    finally:
-        shutil.rmtree(d, ignore_errors=True)
-
-
-class Handler(BaseHTTPRequestHandler):
-    def send(self, code, body):
-        data = json.dumps(body).encode()
-        self.send_response(code); self.send_header("Content-Type", "application/json")
-        self.send_header("Content-Length", str(len(data))); self.end_headers(); self.wfile.write(data)
-
-    def do_GET(self):
-        self.send(200, {"status": "ok"}) if self.path == "/health" else self.send(404, {"error": "not found"})
-
-    def do_POST(self):
-        caller = CALLERS.get(self.headers.get("Authorization", "").removeprefix("Bearer ").strip())
-        if self.path != "/ask":
-            return self.send(404, {"error": "not found"})
-        if not caller:
-            return self.send(401, {"error": "unknown API key"})
-        try:
-            question = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0)))).get("question", "").strip()
-        except ValueError:
-            question = ""
-        if not question:
-            return self.send(400, {"error": "send a JSON body with a question"})
-        t = time.time()
-        answer = ask(question, caller["profile"])
-        print(f"{time.strftime('%H:%M:%S')} {caller['name']} ({caller['profile']}) {time.time() - t:.0f}s: {question[:70]}", flush=True)
-        self.send(200, {"caller": caller["name"], "seconds": round(time.time() - t, 1), "answer": answer})
-
-    def log_message(self, *args):
-        pass
-
-
-if __name__ == "__main__":
-    print("listening on http://127.0.0.1:8765", flush=True)
-    ThreadingHTTPServer(("127.0.0.1", 8765), Handler).serve_forever()
-```
-
-Each API key belongs to a caller, and each caller maps to a harness profile that signs in as a different user. I made two callers, `analyst` (the service principal) and `admin` (me). I called it with `curl`:
+When the scope is set, `list_tables` shows only those tables, `describe_table` refuses the others, and `run_select` refuses a query that names any table outside the scope. My first version only looked at the names after `FROM` and `JOIN`, so a comma join slipped through and returned data from a table that I had not scoped in. I changed it to refuse a query if any out-of-scope table name appears anywhere in it. With the ten tutorial tables in scope, I tried it:
 
 | Call | Result |
 |---|---|
-| No key, or a wrong key | `{"error": "unknown API key"}` |
-| `admin`, the product question | The five Road-150 Red bikes with Bikes, joined through the subcategory table, in 24 s |
-| `analyst`, the same question | The same five bikes, in 74 s and 85 s on two tries. The subcategory table was denied, so the harness worked the category out from the subcategory key and product names, and said so. |
+| `list_tables` | The ten tables |
+| `describe_table` on `dimproductsubcategory` | Refused: not in scope |
+| A comma join to `dimproductsubcategory` | Refused: not in scope |
+| `SELECT COUNT(*) FROM dbo.dimproduct` | 606 |
 
-I also wrote a tiny MCP server, `fabric_ask_mcp.py`, with one tool, `ask_adventureworks`, that calls the service. Any MCP client could then use the harness as a tool. I tested it with a short Python script, not with Claude Code. It listed its tool, and answered the country question with the six correct totals in 18 seconds.
+With `dimproductsubcategory` added to the scope, the same join returned `Road Bikes`.
 
-The service builds a longer prompt that tells the harness to read the two files. After the runs in Part 5, I found that `dsh` loads an `AGENTS.md` file from its working folder by itself, so the service could write the instructions and examples into `AGENTS.md` and pass only the question. I did not change the service.
+A scope is not security. It narrows what the agent looks at, and it relies on the tool noticing table names. What a person can read is decided by the database permissions, and [Part 7](/posts/fabriclakehouse7/) shows that with a second user.
 
-This is not true pass-through. My service gives each caller a sign-in that I set up in advance. A service for many people would need each person's own sign-in passed through, and it would need hosting with HTTPS, which I did not build.
+## The answer key
 
-## The harness can reach more than its tools
+Before I ran the harness, I ran the questions as SQL with `sqlcmd` against the same endpoint, and kept the results in a `key` folder. Not every question has a key.
 
-An agent that can run commands can try to read files. I asked the harness, without printing any contents, whether it could open the service principal's secret file, list my `~/.azure` folder, and list the service principal's Azure folder. It could do all three, using `bash`. It printed none of the contents, and the secret did not appear in its answer. It said that its file policy allowed reads outside its folder and blocked writes.
-
-So the database limit only holds against the identity that the tool uses. On my laptop, an agent could read my own sign-in cache and use it outside the tool. A production setup would run the harness in a container or a separate account that holds only the asker's sign-in.
-
-## What I did not reproduce
-
-| Claim on the concept page | Why not |
+| Question | Key |
 |---|---|
-| Purview auditing, search and risk checks on prompts and responses | These work inside Fabric. My harness runs outside it. I could log queries myself, which is not the same. |
-| Tenant and workspace policy outranks the builder's instructions | The harness has database permissions, which instructions cannot override, but there is no tenant policy layer. |
-| Outbound access protection and the capacity-region rule | These are workspace boundaries. My laptop is outside them. |
-| Data stays inside Microsoft's service | The harness sends query results to DeepSeek's API. That is my choice of model and not a limit of the harness. DeepSeek Harness can use a local model, as [DeepSeek Harness with Ollama](/posts/deepseekharnessollama/) showed for a coding task, and that would keep the data on the machine. Its model plugin also lists an Azure-hosted OpenAI protocol, which would keep the data inside the organisation's own Azure tenant. I read that in the plugin's documentation and did not try either option on these questions, so I cannot say how well they write this SQL. |
-| Microsoft 365 Copilot integration and ontologies | These are first-party Fabric features. |
-| The product team's quality and safety evaluation | I cannot reproduce or check it. I tested a handful of questions. |
-| Several source types: semantic models (DAX), KQL databases, Microsoft Graph | Possible with one more tool each. I did not build or test them. |
-| Called by Copilot Studio, Teams or Foundry | Possible in principle with a hosted, authenticated endpoint. I did not try. |
+| 1 repeat purchases | None that I trust. The tutorial's SQL orders ties by `OrderDate` only, and 10,514 customers have a first purchase date shared by several order lines. Two executions of the same SQL can pick different first lines. I ran it with and without a tie-break, and I got a mean of 45.67% in one and -17.23% in the other, over the same 289 zip codes |
+| 2 monthly and year-to-date | The tutorial's example SQL: internet sales only, 38 months |
+| 3 California 2023 | None needed: the sales tables end in January 2014. California by year: 2010 to 2014 only |
+| 4 top five products | Exactly five rows tie: Road-150 Red in sizes 44, 48, 52, 56 and 62, at 3,578.27, in Bikes |
+| 5 never sold | The top ten never sold in either channel: four HL Road Frames at 1,431.50, the HL Mountain Frames at 1,364.50 and 1,349.60, then four HL Road Frames at 1,301.36 |
+| 6 factory productivity | No data exists, so the right answer is a refusal |
+| 7 sales spike | No key: the question does not say which spike, and the data cannot show a cause |
+| 8 countries | Six totals, below |
 
-These are needs of an organisation, and Fabric meets them with Microsoft products. Each can be met in other ways: logging every query for audit, passing the asker's own sign-in through to the database, running a model inside the organisation's boundary, such as a local model or an Azure-hosted one, and applying policy at the data layer so that it holds for any agent. I did not build or test those equivalents. One detail matters for the boundary: the model sees more than the SQL that it writes, because the rows that each query returns go back to it, so that it can check them and write the answer. What leaves the boundary is the data that comes back, and not only the schema. The trade-off is integration against independence. Fabric's controls come ready made, and they tie your governance to Fabric. Building your own gives you portability and more work.
+| Country | Fabric agent | My SQL | Harness, 6 of 6 runs |
+|---|---|---|---|
+| United States | 9,389,789.94 | 9,389,789.94 | 9,389,789.94 |
+| Australia | 9,061,000.72 | 9,061,000.72 | 9,061,000.72 |
+| United Kingdom | 3,391,712.24 | 3,391,712.24 | 3,391,712.24 |
+| Germany | 2,894,312.36 | 2,894,312.36 | 2,894,312.36 |
+| France | 2,644,017.74 | 2,644,017.74 | 2,644,017.74 |
+| Canada | 1,977,844.89 | 1,977,844.89 | 1,977,844.89 |
 
-The page also says that you cannot change the language model that the Fabric agent uses. With the harness, I chose `deepseek-v4-flash`. That is a trade-off, not a plain advantage. A fixed model means Microsoft tests and updates it, and your data stays in the service. A model that you choose gives you control over cost and where the data goes, and you then own the testing, the safety checks and the effect of every change.
+## The 48 runs
 
-## A natural split: the data layer and the agent layer
+The prompt was only the question, word for word as in the table in Part 4. The instructions are in a file called `AGENTS.md` in the harness's working folder, which the harness reads at the start of every session, so I did not repeat them in the prompt, and I did not name the Fabric tools. Each run is a new headless session in its own empty folder, signed in as me. The model was `deepseek-v4-flash`. I ran three at a time.
 
-The harness ran against Fabric with no change to Fabric, and I could not tell where one ended and the other began until I built the tool. The boundary is the SQL endpoint, plus the sign-in and its permissions.
-
-| | Data layer (Fabric) | Agent layer (DeepSeek Harness) |
+| Setup | Tables in scope | `AGENTS.md` |
 |---|---|---|
-| What it holds | Tables, the SQL endpoint, who can read what | The model, the tools, the instructions, the example queries |
-| Who decides access | Fabric permissions, such as `DENY` | Nobody. It inherits the signed-in user's access. |
-| What can change on its own | Data, schema, permissions | Model, prompts, tools |
-| The contract between them | T-SQL over the endpoint, with an Entra sign-in | A thin tool: my MCP server |
+| A | The ten tutorial tables | Microsoft's tutorial instructions, which name three tables |
+| B | Those ten plus `dimproductsubcategory` | My corrected instructions, plus the tutorial's two example queries |
 
-The split gives you three things. I can swap the model without touching the data, and the database says what a person can read, as the `DENY` and the replay check showed. The same tables also serve Power BI, a notebook, the Fabric agent and the harness at once.
+These runs used the final version of my server, which has a fourth tool, `export_query`, that writes a long result to a CSV file in the working folder. I added it in [Part 7](/posts/fabriclakehouse7/) because the 25-row cap makes a question like question 1 impossible without it.
 
-It has costs too. The tables declare no joins and no descriptions, so the meaning had to come from my instructions, and the missing table in Part 4 shows what happens when it does not. Meaning belongs in the data layer, for example in views or a semantic model, so that every agent benefits. A small view layer, with the product-to-category join built in, would make sense: it gives the person asking and the harness less to do. I left it out so that the Fabric setup stays the same as in Part 4. Governance also crosses the boundary, because prompts, responses and the model provider sit on the agent side, and Fabric's auditing does not see them unless I add logging. Publishing and sharing are mine to build.
+## The results
 
-The Fabric data agent blurs this line. It sits inside the data platform and owns both the data access and the model, which makes it convenient and governed, and fixes the model and the behaviour inside Fabric.
+| # | Question | Setup A | Setup B | Median time A | Median time B |
+|---|---|---|---|---|---|
+| 1 | Repeat purchases | 3 of 3 gave an answer, using order totals | 3 of 3 gave an answer, using the example's SQL | 79.0 s | 28.9 s |
+| 2 | Monthly and year-to-date | 2 of 3 match the key. One combined internet and reseller | 3 of 3 match the key | 25.4 s | 13.2 s |
+| 3 | California 2023 | 3 of 3 said there is no 2023 data | 3 of 3 said so | 42.1 s | 32.5 s |
+| 4 | Top five products | 3 of 3 match the key | 3 of 3 match the key | 46.0 s | 19.7 s |
+| 5 | Never sold | 3 of 3 lead with the key's rows | 3 of 3 lead with the key's rows | 57.6 s | 40.7 s |
+| 6 | Factory productivity | 3 of 3 refused | 3 of 3 refused | 30.1 s | 26.7 s |
+| 7 | Sales spike | 3 of 3 named a cause, 3 different ones | 3 of 3 named a cause | 271.6 s | 283.6 s |
+| 8 | Countries | 3 of 3 match the key | 3 of 3 match the key | 14.1 s | 12.6 s |
 
-The Microsoft route for a chat front end adds a second agent layer on top of the first: a Copilot Studio agent calls the Fabric data agent as a tool. That means two models and two sets of instructions before the data layer is reached. I have not tried it, so I cannot say how much it costs in time, money or accuracy. My endpoint is an MCP server, so a Copilot Studio agent could call the harness in place of the Fabric agent, and a later post could compare the two.
+The 48 runs took a total of about 53 minutes.
 
-## Limits of these tests
+### The questions with a clear answer: 3, 4, 5, 6 and 8
 
-- **One admin and one limited identity.** I could not test the Fabric agent with a second person, so I do not know what identity it uses for me.
-- **A handful of questions.** The example-query question is the only one that I used to test example queries.
-- **An earlier version of the tool.** The first endpoint calls and the replay used a version of the tool that could also sign in with a stored secret. I removed that option afterwards and reran the analyst call and the MCP test with the final code.
+All 30 runs gave the right kind of answer. Question 3, California in 2023, found that the sales tables end in January 2014 and reported no sales, without inventing a figure. Several runs added California by year as context. In both setups every run said so, so the tutorial's instructions did not make the harness say there were no sales tables, as it did the Fabric agent in setup A. Question 4 gave the five Road-150 Red bikes every time. Question 6 refused every time and said that the source has no factory data and no 2024 data. Question 8 matched to the cent.
+
+### Question 2
+
+Setup B copied the example's SQL, as the Fabric agent did, and matched the key three times. In setup A, runs 2 and 3 summed internet sales only and matched. Run 1 summed internet and reseller sales and gave 532,749.60 for December 2010 and 2,008,232.31 for January 2011. That is a defensible reading of "sales", and it is not the tutorial's reading. It stated which tables it used.
+
+### Question 1
+
+I cannot score question 1 against a key, so I compared the runs.
+
+- **Setup A** treated a purchase as one sales order, summing the order's lines, and attached the customer's zip code. Each run said so in its method, and said that it broke ties by order number. The three runs used the same definition.
+- **Setup B** used the example's SQL, line by line, with the tie-break left as in the example. All three runs gave the same figures: 289 zip codes, a lowest average of -90.89%, a highest of 1,870.48% and a mean of 13.54%. Run 3 wrote its 289 rows to a CSV file.
+
+So the harness was self-consistent in each setup and used two different definitions between them. The tutorial's own question does not decide between them. The Fabric agent in Part 4 truncated its answer to 200 zip codes in setup A and returned 0% for every zip code in setup B. The harness's runs returned all 289.
+
+### Question 5
+
+Both setups gave a defined "never sold" as a product that appears in neither `factinternetsales` nor `factresellersales`, and all six led with the HL Road Frame at 1,431.50, as the key does. Several also found that 256 of the 606 products have never been sold, and that 211 of those have no list price at all.
+
+### Question 7
+
+This is where the runs diverged most, and they took the longest: 204 to 419 seconds, with 44 to 78 tool calls.
+
+| Run | Its root cause |
+|---|---|
+| A1 | There is no real spike. It is a structural break in the internet-channel data feed in December 2012 |
+| A2 | Two things: a real surge in the internet channel in 2013, and "fake spikes" in company-wide figures |
+| A3 | A catalog launch in the week of 28 December 2012, when the internet store went from 31 to 102 SKUs |
+| B1 | The 2013 step-change, with a decomposition by product, price and promotion |
+| B2 | The launch of the Touring bike line on 28 December 2012, 83% of the year-over-year increase |
+| B3 | The same: the Touring Bikes launch on 28 December 2012 |
+
+I did not verify these claims against the data. Five of the six point at the end of December 2012, and the Fabric agent in Part 4 chose a different spike altogether, May 2011. The question does not say which spike it means. A good answer to this question is to ask. None of the six did, and neither did the Fabric agent. The Part 5 Copilot answer came closest, because it put the caveat that the data cannot prove why in bold.
+
+### One run left its folder
+
+The question 7 runs used the shell heavily: 26 shell calls in run A2 and 25 in A3, mostly Python over the CSV files that `export_query` wrote. One of them, A2, ran `ls -la /private/tmp/fh-ms/` to list the sibling run folders. That showed the names of the other runs. It did not open any of them, and the only paths in its session were its own folder and that listing. I mention it because [Part 7](/posts/fabriclakehouse7/) shows that a harness with a shell can reach more than its tools.
+
+## What happens if I tell it to refuse
+
+The Fabric agent refused, and the harness did not. I wanted to know whether refusing is something that I can switch on. I added one rule to the tutorial's instructions in `AGENTS.md`:
+
+```text
+If a question needs a join or a column that the tables in scope do not support, do not answer that part. Say that you cannot answer it, name the missing table or column, and do not fill the gap with knowledge from outside the data. Answer the parts of the question that the data does support.
+```
+
+I asked the ten-table product question three times, with only the question as the prompt.
+
+| Run | What it did | Time |
+|---|---|---|
+| 1 | Refused. It said that only three tables are in scope, and named `dimproduct` and `dimproductcategory` as missing | 16 s |
+| 2 | Listed the five bikes, refused the category, and named `dimproductsubcategory` as the missing table | 40 s |
+| 3 | Refused after listing the tables, without querying the data, for the same reason as run 1 | 6 s |
+
+Runs 1 and 3 repeated the three tables from the tutorial's instructions, as the Fabric agent did in Part 4, although `dimproduct` and `dimproductcategory` were in scope. Without the rule, the harness treated those instructions as advice and checked the data itself. With the rule, two runs treated them as the boundary. Run 2 did what I wanted: it gave what the data supports, and it named the real missing table.
+
+So refusing is a setting that I choose in the instructions, and the refusal is only as good as the instructions. That is consistent with the Fabric agent's refusals in Part 4, which blamed the three tables in the instructions. I cannot see how the Fabric agent uses its instructions, so this is a possible explanation and not a finding.
+
+## Compared with Part 4 and Part 5
+
+| # | Fabric agent, setup A | Fabric agent, setup B | Harness, both setups |
+|---|---|---|---|
+| 1 | Truncated to 200 zip codes | 0% for every zip code | All 289 zip codes, in two stated definitions |
+| 2 | Internet sales only | The example's SQL | Internet only in 5 of 6 runs, internet plus reseller in 1 |
+| 3 | Refused: "no sales tables" | Found no 2023 sales | Found no 2023 sales, 6 of 6 |
+| 4 | Refused | The five bikes | The five bikes, 6 of 6 |
+| 5 | Twenty products | Twenty products | The same top rows, with the counts of unsold products |
+| 6 | Refused | Refused, then an outline | Refused, 6 of 6 |
+| 7 | A cause: early 2013 online demand | A cause: May 2011 bikes | A cause, three or four different ones, from 204 to 419 s |
+| 8 | Correct, 14 s | Correct, 9 s | Correct, 6 of 6, 13 to 14 s |
+
+The answers match where the question has an answer. The two disagree about question 7, because that question has none, and they differ on how to handle ties in question 1.
+
+Two things count against the Fabric agent in this comparison, and one for it.
+
+- **Against:** In setup A the Fabric agent refused questions 3 and 4 because of the three-table instructions, and in setup B the example made question 1 return 0% for every zip code. The harness had neither failure.
+- **Against:** It returned a root cause for question 7 in both rounds, and a different one each time. The harness did the same, but it did far more work first.
+- **For:** The Fabric agent was faster on every question. Its median ran from 9 to 27 seconds on the simple questions, and 46 to 68 seconds on question 7.
+
+The Copilot Studio route in [Part 5](/posts/fabriclakehouse5/) gave the Fabric agent's answers and added a caveat to question 7. I did not run it through the 48-run process, so I cannot compare it in the same way.
+
+Matching answers are evidence, not proof, that two systems ran the same SQL. Six country totals matching to the cent is strong evidence, because a different grouping or filter would almost certainly change one of them. The product question is weaker, because many queries return those five rows. I compared answers, not queries. I did open the Fabric agent's SQL for each question in Part 4, and that shows it used the example's SQL for question 2. The harness's full list of queries was in its session logs, which I read for the tool-call counts.
+
+In [Part 7](/posts/fabriclakehouse7/) I rebuild what one person needs from a Fabric data agent on top of tables, which is example queries, the asker's own permissions and a callable endpoint, and I list the enterprise features that I did not rebuild.
+
+## Why this is not a fair test
+
+- **Different models and tools.** I do not know which model the Fabric data agent uses. The harness used `deepseek-v4-flash` and my own tool, which can run any `SELECT` on the tables in its scope.
+- **A handful of questions.** Eight questions, of which five have a single right answer.
+- **Three runs per cell.** That is enough to see no refusals, and not enough to measure a rate. The Fabric agent had one chat per question and setup, plus two MCP calls per question.
+- **The Fabric agent's setup changed with the question.** Setup B was designed to fix questions 3 and 4, and I never tested its effect on question 1 alone.
+- **No cost figure.** I did not read DeepSeek's usage, so I cannot compare costs. The Fabric side cost me about $0.33 of compute in Part 4 and about $0.12 in Part 5, which are also estimates.
+- **Earlier sets.** Before these 48 runs I ran four other sets of 12 to 18 runs on my own two questions. Their results were similar, and they are summarised in [Part 7](/posts/fabriclakehouse7/).
 
 :::bullet-points What I learned
-- An example-query file changed the definition that the harness used, and made the runs faster. The tutorial's own repeat-purchase example is ambiguous: it gives different answers depending on how it is run, and many customers tie on their first order date. A tie-break removes the difference.
-- The harness got exactly the results that the signed-in user would get, and no more.
-- A harness that can run commands can also read your other sign-ins. Run it where only the asker's sign-in is within reach.
-- Data and agents separate cleanly at the SQL endpoint. Fabric holds the tables and the permissions, and the harness holds the model, the instructions and the tools.
-- I did not build the controls that an organisation needs around an agent, such as auditing, policy and keeping data inside a boundary. They are needs, not a Microsoft feature, and other tools could meet them.
+- A Lakehouse and its SQL endpoint run on the free trial. The load took under six minutes, and no F2 was needed.
+- A coding harness needs one small tool to answer questions about a Lakehouse. Mine is a single Python file with four tools, three read-only and one that writes a CSV file.
+- On the questions with a right answer, the harness matched my SQL in every run.
+- The harness did not treat the tutorial's instructions as a boundary, and the Fabric agent did. That is why the Fabric agent refused questions 3 and 4 in setup A.
+- Questions that depend on a definition, such as repeat purchases, and questions that have no data answer, such as the root cause of a spike, gave different answers from every system and from every run.
+- A harness with a shell can reach more than its tools. One run listed its parent folder.
+- A scope on table names works like ticking tables in Fabric. It narrows what the agent looks at, and it is not security. Permissions decide what a person can read.
 :::
 
 ## References
 
-- [Part 5: DeepSeek Harness over the AdventureWorks Lakehouse](/posts/fabriclakehouse5/)
 - [Part 4: A Fabric Data Agent over the AdventureWorks Lakehouse](/posts/fabriclakehouse4/)
-- [Fabric data agent concepts (Microsoft Learn)](https://learn.microsoft.com/fabric/data-science/concept-data-agent)
+- [Part 5: Copilot Studio and the Fabric Data Agent](/posts/fabriclakehouse5/)
+- [Part 7: Rebuilding what a Fabric Data Agent adds](/posts/fabriclakehouse7/)
 - [DeepSeek Harness](/posts/deepseekharness/)
+- [Fabric data agent example with the AdventureWorks dataset (Microsoft Learn)](https://learn.microsoft.com/fabric/data-science/data-agent-end-to-end-tutorial)
 - [Model Context Protocol](https://modelcontextprotocol.io/)

@@ -3,7 +3,7 @@ type: concept
 slug: model-context-protocol
 title: "Model Context Protocol"
 description: "I use the Model Context Protocol (MCP) to connect AI models to external data sources and tools like Business Central and Azure Functions."
-posts: [fabriclakehouse5, fabriclakehouse6, bcmcp1, bcmcp2, bcmcp3, bcmcp6, bcmcp7, azurefoundryagent6, azurefoundryagent4, businesscentralmcpclaudecode]
+posts: [fabriclakehouse6, fabriclakehouse7, bcmcp1, bcmcp2, bcmcp3, bcmcp6, bcmcp7, azurefoundryagent6, azurefoundryagent4, businesscentralmcpclaudecode]
 status: current
 checked: "2026-11-27"
 source_hash: "4e048b342a8d"

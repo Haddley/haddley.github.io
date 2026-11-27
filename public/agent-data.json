@@ -1,9 +1,9 @@
 {
   "posts": [
     {
-      "slug": "fabriclakehouse6",
-      "title": "Microsoft Fabric (Part 6)",
-      "description": "I rebuilt for DeepSeek Harness what one person needs from a Fabric data agent: example queries, running as the asker, and a callable endpoint. I did not build the controls that an organisation needs around an agent, and I say what each would take. I also found that the tutorial's own example SQL is ambiguous, and that the harness can read other sign-ins.",
+      "slug": "fabriclakehouse7",
+      "title": "Microsoft Fabric (Part 7)",
+      "description": "I rebuilt for DeepSeek Harness what one person needs from a Fabric data agent: example queries, running as the asker, and a callable endpoint. I did not build the controls that an organisation needs around an agent. I asked the harness both of the tutorial's own questions, found that the tutorial's repeat-purchase SQL is ambiguous, and watched the harness use its shell and my sign-in to get more rows than my tool returns, until I gave it an export tool.",
       "date": "2026-11-28",
       "categories": [
         "Azure",
@@ -12,9 +12,9 @@
       "tags": "deepseek-harness, mcp, example-queries, permissions, data-governance"
     },
     {
-      "slug": "fabriclakehouse5",
-      "title": "Microsoft Fabric (Part 5)",
-      "description": "I loaded the AdventureWorks sample on my free trial and gave DeepSeek Harness one small SQL tool, scoped to the tables that I ticked for the Fabric data agent in Part 4. It matched my SQL on all 12 runs, and where a table was missing it said what was missing, where the Fabric agent refused.",
+      "slug": "fabriclakehouse6",
+      "title": "Microsoft Fabric (Part 6)",
+      "description": "I asked DeepSeek Harness all of Microsoft's Fabric data agent questions, 48 runs over the AdventureWorks sample on my free trial, in the same two setups as the Fabric agent. Where a question has a right answer the harness matched my SQL every time; where it does not, the answers diverged.",
       "date": "2026-11-28",
       "categories": [
         "Azure",
@@ -23,9 +23,20 @@
       "tags": "deepseek-harness, mcp, lakehouse, adventureworks, natural-language-query"
     },
     {
+      "slug": "fabriclakehouse5",
+      "title": "Microsoft Fabric (Part 5)",
+      "description": "I connected Copilot Studio to the Fabric data agent from Part 4. My first attempt failed, and I traced it to four setup mistakes against Microsoft's own steps. This post covers how and why Copilot calls a data agent, what it cost, and how it compares with calling the same agent from DeepSeek Harness.",
+      "date": "2026-11-28",
+      "categories": [
+        "Azure",
+        "AI"
+      ],
+      "tags": "fabric-data-agent, copilot-studio, mcp, agents, adventureworks"
+    },
+    {
       "slug": "fabriclakehouse4",
       "title": "Microsoft Fabric (Part 4)",
-      "description": "I followed Microsoft's end-to-end tutorial for a Fabric data agent over the AdventureWorks sample. My trial could not create one, so I paid for an F2 capacity for 35 minutes. The agent refused three times before it answered, and I checked its answers against my own SQL.",
+      "description": "I followed Microsoft's tutorial for a Fabric data agent over AdventureWorks, then asked it all of Microsoft's own questions twice: with the tutorial's setup and with its example queries and corrected instructions. I checked the answers against my own SQL, published the agent and called it over MCP.",
       "date": "2026-11-28",
       "categories": [
         "Azure",
@@ -3500,5 +3511,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-27T17:32:28.972Z"
+  "generatedAt": "2026-11-27T20:26:54.333Z"
 }

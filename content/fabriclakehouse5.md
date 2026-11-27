@@ -1,322 +1,236 @@
 ---
 title: "Microsoft Fabric"
 part: 5
-description: "I loaded the AdventureWorks sample on my free trial and gave DeepSeek Harness one small SQL tool, scoped to the tables that I ticked for the Fabric data agent in Part 4. It matched my SQL on all 12 runs, and where a table was missing it said what was missing, where the Fabric agent refused."
+description: "I connected Copilot Studio to the Fabric data agent from Part 4. My first attempt failed, and I traced it to four setup mistakes against Microsoft's own steps. This post covers how and why Copilot calls a data agent, what it cost, and how it compares with calling the same agent from DeepSeek Harness."
 date: "2026-11-28"
 categories: ["Azure", "AI"]
-tags: "deepseek-harness, mcp, lakehouse, adventureworks, natural-language-query"
+tags: "fabric-data-agent, copilot-studio, mcp, agents, adventureworks"
 hidden: false
 slug: "fabriclakehouse5"
 image: "/assets/images/fabriclakehouse5/posts-meta.svg"
 ---
 
-# DeepSeek Harness over the AdventureWorks Lakehouse
+# Copilot Studio and the Fabric Data Agent
 
-In [Part 4](/posts/fabriclakehouse4/) I followed Microsoft's tutorial for a Fabric data agent. I loaded the tutorial's AdventureWorks sample, created a data agent over it, and asked the agent two questions. It needed a paid F2 capacity, and it refused my product question three times before it answered.
+In [Part 4](/posts/fabriclakehouse4/) I built a Fabric data agent over the AdventureWorks Lakehouse, asked it Microsoft's own questions, published it and called it over MCP. In this part I connect that published agent to Copilot Studio, so that a Copilot agent asks the data agent the questions.
 
-In this part I take the same sample data, the same two questions, the same ticked tables and the same instructions, and I point [DeepSeek Harness](/posts/deepseekharness/) at them instead. It is a general harness that is not part of Fabric, and it gets one small SQL tool. **The results are the same.** The free trial could not create the Fabric agent, but it can hold the whole data layer, so this part needs no F2.
+This post is also an account of a failure. My first attempt did not work, I reported it as a failure, and then I read Microsoft's steps properly and found four mistakes of my own. I have kept both attempts.
 
-The two questions are the ones that I asked in Part 4, word for word. I wrote them in the style of the tutorial's example questions. They are not the tutorial's own two example questions, which are about repeat purchases and monthly totals. [Part 6](/posts/fabriclakehouse6/) uses one of those.
+## Is this part of Microsoft's tutorial?
 
-## Part 4 and Part 5 side by side
+No. The [tutorial](https://learn.microsoft.com/fabric/data-science/data-agent-end-to-end-tutorial) ends with publishing and a notebook call. Copilot Studio has its own page: [Add a Fabric data agent as a tool in Microsoft Copilot Studio](https://learn.microsoft.com/fabric/data-science/data-agent-microsoft-copilot-studio-tool). It is an 11-step guide, and it is good. I did not follow it closely enough the first time.
 
-| | Part 4: Fabric data agent | Part 5: DeepSeek Harness |
-|---|---|---|
-| Sample data | The tutorial's AdventureWorks, 28 tables, loaded with the tutorial's notebook on an F2 | The same sample, loaded with the same notebook on my free trial |
-| Questions | Top 5 products by list price with their categories, and total sales by sales territory country | The same two, word for word |
-| Tables | Ten ticked, then eleven | Ten in the tool's scope, then eleven |
-| Instructions | The tutorial's, then my corrected version | The same two files |
-| Country totals | Six, matching my SQL | The same six, to the cent, in 6 of 6 runs |
-| Top 5 products, eleven tables | The five Road-150 Red bikes at 3,578.27, in Bikes, after a refresh and a new chat | The same five, in 3 of 3 runs |
-| Top 5 products, ten tables | Refused three times | The five bikes listed, with the missing category link flagged, in 3 of 3 runs |
-| Time per answer | 5 to 24 seconds | 12 to 46 seconds |
-| Needed an F2 | Yes | No |
+## How and why Copilot calls a data agent
 
-In short:
+A Copilot Studio agent built on the GitHub Copilot harness reasons over its instructions, knowledge sources and tools, and decides which tool to call for each request. Microsoft's page says the Fabric data agent is added as a tool, and that the orchestrator "makes that decision based on the description you write for the data agent."
 
-- **The same data and the same questions give the same answers.** Every country total and every product answer in the table matched my own SQL. Where I left out the table that links products to categories, the Fabric agent refused, and the harness gave the five bikes and said what was missing.
-- **A scope is a convenience, not security.** Scoping the tool to the ticked tables narrows what the agent looks at, as ticking does in Fabric. What a person can read is set by the database permissions, and [Part 6](/posts/fabriclakehouse6/) shows the difference.
-- **Fabric's agent adds more than tables.** In Part 6 I rebuild what one person needs, and list the enterprise features that I did not.
+That sentence explains most of this post. The Copilot agent never sees the Lakehouse. It sees a tool with a name and a description, and the Fabric data agent behind it does the work of turning the question into SQL, running it and returning the answer as a tool result.
 
-## Load the AdventureWorks sample on the trial
+So a question to Copilot goes through two models:
 
-I created a workspace, `AdventureWorks Harness`, on my trial capacity, and a Lakehouse called `AdventureWorksLH` in it. I made them, and a load notebook, through the Fabric REST API, so I have no screenshots of those steps. [Part 4](/posts/fabriclakehouse4/) shows the same steps in the web page, and the notebook holds the same loading code.
+1. **Copilot Studio's model** reads my question, reads its instructions and the tool description, and decides to call the Fabric tool, passing a question.
+2. **The Fabric data agent's model** reads that question with its own instructions, writes the SQL, runs it, and returns the answer.
+3. **Copilot Studio's model** then writes the final reply.
 
-![](assets/images/fabriclakehouse5/workspace-trial.jpg)
-*The workspace on my trial: a Lakehouse, its SQL analytics endpoint and the load notebook*
+Microsoft documents the consequences:
 
-The notebook job completed in 5 minutes 34 seconds. In Part 4, all 28 tables were there after about 19 minutes on the F2.
+- **The description decides routing.** "A short or vague description makes it harder for the orchestrator to pick the right data agent."
+- **Permissions are the Fabric agent's.** In User authentication mode each person needs at least read access to the Fabric data agent and to its data. In Maker mode everyone sees data through the maker's access.
+- **Answers may leave Fabric's boundary.** A warning on the page says responses "might be sent outside the Fabric compliance boundary or geographic region" and are handled under Copilot Studio's terms.
+- **It needs licences.** The prerequisites list a paid F2 or higher capacity, cross-geo AI settings, and a Microsoft 365 Copilot licence for each person who builds agents. I do not know whether my account has that licence, and I did not check it.
 
-![](assets/images/fabriclakehouse5/lakehouse-tables.jpg)
-*The 28 tables in the Lakehouse, with a preview of dimproductcategory*
+There is an older route too: adding the Fabric agent from the Agents category as a connected agent. Microsoft's [older page](https://learn.microsoft.com/fabric/data-science/data-agent-microsoft-copilot-studio) says that route is only validated for Microsoft Teams and "isn't currently supported in Microsoft 365 Copilot". I used the newer tool route and did not try the connected-agent route.
 
-:::watch-it The SQL endpoint lagged behind the Lakehouse
-When the job finished, the Fabric API listed all 28 tables, but the SQL endpoint listed only 25 or 26 of them. A tool that reads the SQL endpoint can see fewer tables than the Lakehouse holds for a few minutes after a load.
-:::
+## First attempt: it never called the tool
 
-## The harness has no Fabric tools, so I wrote one
+I created an agent from the New agent button, named it, opened Tools, searched for Fabric and chose Fabric IQ Data MCP. I added it, and the picker listed `AdventureWorksAgent`, the agent I had published in Part 4.
 
-DeepSeek Harness can call tools that speak the Model Context Protocol (MCP). It has no Fabric tool, so I wrote a small MCP server with three tools:
+![](assets/images/fabriclakehouse5/new-agent-builder.jpg)
+*A new agent in Copilot Studio*
 
-- **list_tables** lists the tables.
-- **describe_table** lists the columns of one table.
-- **run_select** runs one T-SQL `SELECT` and returns at most 25 rows, as the Fabric data agent does. It refuses anything else.
+![](assets/images/fabriclakehouse5/add-tool-fabric-search.jpg)
+*Searching for Fabric in Add a tool offers two Fabric IQ tools*
 
-It runs `sqlcmd` with the Azure sign-in of whoever runs it, so the database applies that person's permissions and no password is stored in the tool. It has an optional scope, a list of tables that it works with, which I describe below. It is a plain Python script with no packages.
+![](assets/images/fabriclakehouse5/fabric-iq-data-mcp.jpg)
+*Fabric IQ Data MCP*
 
-```python
-#!/usr/bin/env python3
-"""A small read-only MCP server (stdio) for a Fabric Lakehouse SQL endpoint.
+![](assets/images/fabriclakehouse5/select-fabric-agent.jpg)
+*The picker lists published data agents. Mine was there, so the connection worked*
 
-Tools: list_tables, describe_table, run_select. They run sqlcmd with the Azure CLI sign-in of whoever runs them
-(set AZURE_CONFIG_DIR to use another sign-in), so the database applies that person's permissions and no password is stored.
-Settings come from FABRIC_SQL_SERVER and FABRIC_DATABASE. If FABRIC_SCOPE_TABLES (comma separated) is set, the tools
-work only with those tables, as ticking tables does for a Fabric data agent. That is a scope that narrows what the
-agent looks at. It is not security: what a person can read is decided by the database permissions of the signed-in user.
-"""
-import json, os, re, subprocess, sys
+![](assets/images/fabriclakehouse5/tool-added.jpg)
+*The Fabric tool was added next to the default Work IQ tool*
 
-SERVER = os.environ["FABRIC_SQL_SERVER"]
-DATABASE = os.environ["FABRIC_DATABASE"]
-MAX_ROWS = 25
-SCOPE = {t.strip().lower() for t in os.environ.get("FABRIC_SCOPE_TABLES", "").split(",") if t.strip()}
-_all_tables = None
-BLOCKED = re.compile(r"\b(insert|update|delete|drop|alter|create|truncate|merge|exec|execute|grant|revoke|deny|into)\b", re.I)
-
-
-def sql(query, limit=MAX_ROWS):
-    out = subprocess.run(
-        ["sqlcmd", "-S", SERVER, "-d", DATABASE, "--authentication-method=ActiveDirectoryAzCli", "-W", "-s", "|", "-Q", query],
-        capture_output=True, text=True, timeout=120)
-    lines = [l for l in (out.stdout + out.stderr).splitlines()
-             if l.strip() and not l.startswith("Statement ID") and "rows affected" not in l]
-    lines = [l for l in lines if not set(l.replace("|", "").replace(" ", "")) <= {"-"}]   # drop the dashed line under the header
-    header, rows = lines[:1], lines[1:]
-    note = f"\n(first {limit} rows shown)" if limit and len(rows) > limit else ""
-    return "\n".join(header + (rows[:limit] if limit else rows)) + note
-
-
-def out_of_scope(query):
-    """The tables outside the scope that the query names anywhere, as whole words."""
-    global _all_tables
-    if _all_tables is None:
-        _all_tables = {l.strip().lower() for l in sql("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES", limit=None).splitlines()[1:]}
-    return sorted(t for t in _all_tables - SCOPE if re.search(rf"\b{re.escape(t)}\b", query, re.I))
-
-
-def run_select(query):
-    q = query.strip().rstrip(";")
-    if not re.match(r"(select|with)\b", q, re.I) or ";" in q or BLOCKED.search(q):
-        return "Refused: only a single read-only SELECT statement is allowed."
-    if SCOPE and (out_of_scope(q) or re.search(r"\b(?:sys|information_schema)\b", q, re.I)):
-        return "Refused: that query uses a table that is not in scope. Tables in scope: " + ", ".join(sorted(SCOPE))
-    return sql(q)
-
-
-def describe_table(table):
-    if not re.fullmatch(r"[A-Za-z0-9_]+", table):
-        return "Refused: give a plain table name."
-    if SCOPE and table.lower() not in SCOPE:
-        return "Refused: that table is not in scope. Tables in scope: " + ", ".join(sorted(SCOPE))
-    return sql("SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS "
-               f"WHERE TABLE_NAME = '{table}' ORDER BY ORDINAL_POSITION")
-
-
-TOOLS = {
-    "list_tables": ("List the tables in the Lakehouse SQL endpoint.", {}, lambda a: ("TABLE_NAME\n" + "\n".join(sorted(SCOPE))) if SCOPE else sql(
-        "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' ORDER BY TABLE_NAME")),
-    "describe_table": ("List the columns and data types of one table.",
-                       {"table": {"type": "string", "description": "Table name, for example dimproduct"}},
-                       lambda a: describe_table(a["table"])),
-    "run_select": (f"Run one read-only T-SQL SELECT statement. At most {MAX_ROWS} rows come back.",
-                   {"query": {"type": "string", "description": "A T-SQL SELECT statement"}},
-                   lambda a: run_select(a["query"])),
-}
-
-
-def reply(id_, result=None, error=None):
-    msg = {"jsonrpc": "2.0", "id": id_}
-    msg["error" if error else "result"] = error or result
-    sys.stdout.write(json.dumps(msg) + "\n"); sys.stdout.flush()
-
-
-for line in sys.stdin:
-    try:
-        m = json.loads(line)
-    except ValueError:
-        continue
-    method, id_ = m.get("method"), m.get("id")
-    if id_ is None:
-        continue                                   # notifications need no reply
-    if method == "initialize":
-        reply(id_, {"protocolVersion": m["params"].get("protocolVersion", "2024-11-05"),
-                    "capabilities": {"tools": {}}, "serverInfo": {"name": "fabric-sql", "version": "1.0"}})
-    elif method == "tools/list":
-        reply(id_, {"tools": [{"name": n, "description": d,
-                               "inputSchema": {"type": "object", "properties": p, "required": list(p)}}
-                              for n, (d, p, _) in TOOLS.items()]})
-    elif method == "tools/call":
-        name, args = m["params"]["name"], m["params"].get("arguments") or {}
-        try:
-            text = TOOLS[name][2](args)
-            reply(id_, {"content": [{"type": "text", "text": text}]})
-        except Exception as e:
-            reply(id_, {"content": [{"type": "text", "text": f"Error: {e}"}], "isError": True})
-    else:
-        reply(id_, error={"code": -32601, "message": "Method not found"})
-```
-
-I tested it by hand: it listed the tables, and it refused a `DELETE`. Its own check only allows a single `SELECT` statement.
-
-I did not edit my existing harness profile. I made two new profiles, each with one row, so that the Business Central tools from my other posts do not load. The profile `fabricscope10` sets the scope to the ten tutorial tables. The profile `fabricscope11` adds `dimproductsubcategory`. The setting is `FABRIC_SCOPE_TABLES`:
-
-```yaml
-# The fabricscope10 profile: one row that adds the read-only Fabric SQL tools. Use: dsh --profile fabricscope10 "task"
-- insert:
-    - id: mcp-fabric-sql
-      name: '@deepseek-ai/dsh-mcp-client'
-      config:
-        serverName: fabricsql
-        transport: stdio
-        command: python3
-        args:
-          - <home>/Documents/GitHub/fabric-harness/fabric_sql_mcp.py
-        env:
-          FABRIC_SQL_SERVER: <the Lakehouse SQL endpoint connection string>
-          FABRIC_DATABASE: AdventureWorksLH
-          FABRIC_SCOPE_TABLES: dimcustomer,dimdate,dimgeography,dimproduct,dimproductcategory,dimpromotion,dimreseller,dimsalesterritory,factinternetsales,factresellersales
-        toolCallTimeoutMs: 120000
-```
-
-## Scope the tool to the ticked tables
-
-In the Fabric agent, ticking tables narrows what the agent uses. It is a convenience for whoever builds the agent. It does not change what I can read. I was the workspace admin, and I could read every table, which is why the agent's "there is no product table" was about the agent, not about me. I wanted the same idea in the harness, so the tool has a scope, a list of tables, set in the profile. The harness itself signs in as me, with my full permissions, as the Fabric agent did.
-
-When the scope is set, `list_tables` shows only those tables, `describe_table` refuses the others, and `run_select` refuses a query that names any table outside the scope. My first version only looked at the names after `FROM` and `JOIN`, so a comma join slipped through and returned data from a table that I had not scoped in. I changed it to refuse a query if any out-of-scope table name appears anywhere in it. With the ten tutorial tables in scope, I tried it:
-
-| Call | Result |
-|---|---|
-| `list_tables` | The ten tables |
-| `describe_table` on `dimproductsubcategory` | Refused: not in scope |
-| A comma join to `dimproductsubcategory` | Refused: not in scope |
-| `SELECT COUNT(*) FROM dbo.dimproduct` | 606 |
-
-With `dimproductsubcategory` added to the scope, the same join returned `Road Bikes`.
-
-A scope is not security. It narrows what the agent looks at, and it relies on the tool noticing table names. What a person can read is decided by the database permissions, and [Part 6](/posts/fabriclakehouse6/) shows that with a second user.
-
-## The answer key
-
-Before I ran the harness, I ran the two questions as SQL with `sqlcmd` against the same endpoint. The queries are in [Part 4](/posts/fabriclakehouse4/). I also ran the tie-check query that I wrote for Part 4 but never ran there:
-
-```sql
-SELECT p.EnglishProductName, p.ListPrice, c.EnglishProductCategoryName
-FROM dbo.dimproduct p
-JOIN dbo.dimproductsubcategory s ON p.ProductSubcategoryKey = s.ProductSubcategoryKey
-JOIN dbo.dimproductcategory c ON s.ProductCategoryKey = c.ProductCategoryKey
-WHERE p.ListPrice = (SELECT MAX(ListPrice) FROM dbo.dimproduct)
-ORDER BY p.EnglishProductName
-```
-
-It returned exactly five rows: Road-150 Red in sizes 44, 48, 52, 56 and 62, each at 3,578.27 in the Bikes category. So the five-way tie in Part 4 was exactly five.
-
-I did not compare the Part 4 and Part 5 Lakehouses row by row. Both were loaded by the same tutorial code, and my key queries return the same numbers in both, so I treat them as the same data. Here are the country totals from each:
-
-| Country | Part 4: Fabric agent | Part 4: my SQL | Part 5: my SQL | Part 5: harness, 6 of 6 runs |
-|---|---|---|---|---|
-| United States | 9,389,789.94 | 9,389,789.94 | 9,389,789.94 | 9,389,789.94 |
-| Australia | 9,061,000.72 | 9,061,000.72 | 9,061,000.72 | 9,061,000.72 |
-| United Kingdom | 3,391,712.24 | 3,391,712.24 | 3,391,712.24 | 3,391,712.24 |
-| Germany | 2,894,312.36 | 2,894,312.36 | 2,894,312.36 | 2,894,312.36 |
-| France | 2,644,017.74 | 2,644,017.74 | 2,644,017.74 | 2,644,017.74 |
-| Canada | 1,977,844.89 | 1,977,844.89 | 1,977,844.89 | 1,977,844.89 |
-
-All four columns agree to the cent.
-
-## The 12 runs
-
-I used the same two questions as in Part 4, word for word. The first:
+Then I went to Preview and asked the first Microsoft question:
 
 ```PROMPT
-What are the top 5 products with the highest list prices, and what are their categories?
+Show the monthly total and year-to-date total sales. Order by year and month.
 ```
 
-The second:
+![](assets/images/fabriclakehouse5/first-try-no-tool.jpg)
+*"No sales data has been uploaded, so I can't run this. Here's a SQL query that does it."*
+
+![](assets/images/fabriclakehouse5/first-try-thought-process.jpg)
+*Its thought process: "no file was named, so I'll check the uploads and data folders"*
+
+It never considered the Fabric tool. It looked for uploaded files and wrote example SQL against a table it invented. I tried again in a new chat and got the same.
+
+I then added an instruction that named the tool. The agent now said it could not get the figures, because it did not have "a working AdventureWorksAgent tool". It said it had tried the Microsoft 365 assistant with the name `AdventureWorksAgent`.
+
+![](assets/images/fabriclakehouse5/second-try-generic-sql.jpg)
+*Second attempt: another generic SQL answer*
+
+![](assets/images/fabriclakehouse5/second-try-tool-not-working.jpg)
+*Third attempt: "I don't have a working AdventureWorksAgent tool"*
+
+I opened the tool's entry and found that its **Description was empty**.
+
+![](assets/images/fabriclakehouse5/tool-details-empty-description.jpg)
+*The Fabric IQ details dialog, with no description*
+
+I wrote a description. The agent then called a tool, but the wrong one:
+
+![](assets/images/fabriclakehouse5/work-iq-ask-failed.jpg)
+*It called work_iq-ask, the Microsoft 365 Copilot tool, with agentId AdventureWorksAgent. The call failed in 3 ms*
+
+The agent had two tools, Work IQ and the Fabric one, and it chose Work IQ, the Microsoft 365 Copilot tool. That call failed immediately. I do not know why, and a missing Microsoft 365 Copilot licence is a guess. I removed Work IQ and tried once more:
+
+![](assets/images/fabriclakehouse5/tool-not-available.jpg)
+*"The AdventureWorksAgent tool isn't available in this session"*
+
+At this point I had used about 20 Copilot credits across the attempts and had a failed connection. I stopped, deleted the test agent, and wrote it up as unresolved.
+
+## What I got wrong
+
+I then read Microsoft's page properly, and compared it with what I had done.
+
+| Microsoft's step | What I did |
+|---|---|
+| **Step 4: write a detailed description.** The orchestrator uses it to decide which tool to call | I left it empty for the first attempts, and wrote it only after the agent ignored the tool |
+| **Step 6: add instructions** that say when to use each tool | I added them after the first two tests, not before |
+| **Step 7: select Save.** "If you don't save, the tools, descriptions, authentication modes, and instructions that you configured aren't applied" | I never clicked Save. This most likely explains "the tool isn't available in this session" |
+| **Step 1: create the agent from the arrow next to New agent**, which asks for the agent type | In my tenant the arrow and the button opened the same builder, so I cannot say whether it mattered |
+| Keep one clear route to the data | I left Work IQ on, and the agent chose it |
+
+I did not test these one at a time, so I cannot say which mistake mattered most. The documented steps are not hidden, and I skipped some of them.
+
+The silent-connection reports I found are a different problem. A [Microsoft Q&A thread](https://learn.microsoft.com/en-us/answers/questions/5772696/copilot-studio-fabric-data-agent-connection-fails) from February 2026 describes the connection dialog completing and then returning to "Not connected" with no error, in more than one region, and no answer was confirmed. Mine connected and listed my agent, so it was not that one. I found no source that covers an agent connecting and then never calling the tool.
+
+## Second attempt: it works
+
+I needed a Fabric agent to try again. The first one was deleted with its workspace, so I created a second F2, rebuilt the Lakehouse and the agent, and published it again with a long description. Then I did what the page says.
+
+1. I added the Fabric IQ Data MCP tool and selected `AdventureWorksAgent`.
+2. I wrote a detailed description for the tool, before testing.
+3. I chose User authentication, which is the default.
+4. I removed Work IQ.
+5. I wrote instructions that name the tool.
+6. I clicked Save, and waited for "Your agent has been saved".
+
+![](assets/images/fabriclakehouse5/tool-details-description.jpg)
+*The tool's description, and User authentication*
+
+This is the description I wrote for the tool:
+
+```text
+Answers questions about AdventureWorks sales, customers, products, prices, promotions, resellers and sales territories using the AdventureWorksLH lakehouse (internet and reseller sales, dates and geography, 2010 to 2014). Use it for sales totals, monthly and year-to-date trends, top products, and customer or zip code analysis.
+```
+
+And the instructions:
+
+```text
+You answer questions about AdventureWorks sales, customers, products, prices and territories. For every such question, call the AdventureWorksAgent tool with the user's question and report its answer. If the tool cannot answer, say so.
+```
+
+:::watch-it The Save banner moved the page
+The "saved" banner appeared above the toolbar and pushed everything down. My next click missed Preview, and my typed question went into the instructions. I noticed because the instructions box suddenly held a sales question. I replaced the text and saved again.
+:::
+
+I then asked the question I had used for the Fabric agent in Part 4:
 
 ```PROMPT
 What is the total sales amount in factinternetsales by sales territory country?
 ```
 
-The prompt was only the question. The instructions are in a file called `AGENTS.md` in the harness's working folder, which the harness reads at the start of every session, so I did not repeat them in the prompt. I did not name the Fabric tools either: the harness sees them in its tool list.
+![](assets/images/fabriclakehouse5/retry-used-tool.jpg)
+*"Used tool: DataAgent_AdventureWorksAgent"*
 
-I ran each question in the two setups from Part 4, three times each, which makes 12 runs. Each run is a new headless session in its own folder, signed in as me, with the instructions in `AGENTS.md`. The model was `deepseek-v4-flash` with high reasoning effort. I ran three at a time.
+![](assets/images/fabriclakehouse5/retry-countries-answer.jpg)
+*The six countries, with a citation. It cost 1.8 credits*
 
-| Setup | Tables in the tool's scope | Instructions |
+The figures match the Fabric agent's and my SQL: 9,389,789.94 for the United States, 9,061,000.72 for Australia and so on. Copilot added a total of 29,358,677.89 and a sentence that the United States and Australia make up about 63% of internet sales.
+
+```PROMPT
+Show the monthly total and year-to-date total sales. Order by year and month.
+```
+
+![](assets/images/fabriclakehouse5/retry-monthly-answer.jpg)
+*Thirty-eight months again, and a note that December 2010 and January 2014 are the only months in their years*
+
+I did not time these in a stopwatch way. I waited between 40 and 60 seconds before each screenshot, so I know only that this took under a minute. It cost 4.89 credits.
+
+```PROMPT
+What is the root cause of our sales spike?
+```
+
+![](assets/images/fabriclakehouse5/retry-root-cause-answer.jpg)
+*The answer split May 2011 by category, territory, channel and promotion, then added a caveat*
+
+This one is the interesting comparison. In Part 4 the Fabric agent gave this question a cause and a caveat that it needed business context. Copilot's answer put the caveat in bold at the end: the figures show "where the sales came from, but it can't fully prove why they jumped". It cost 4.72 credits.
+
+## What it cost
+
+| Item | Amount |
+|---|---|
+| Second F2, 19:33 to 19:52 UTC | about 19 minutes, roughly $0.12 at list price |
+| Copilot credits across all attempts | about 31 credits |
+| Of which the successful questions | 1.8, 4.89 and 4.72 |
+| Of which the failed attempts | 4.11, 11.37 and 4.45 |
+
+The credit meter appeared in the Preview header. The F2 figure is my calculation, not my bill.
+
+## Honest comparison with calling the same agent from DeepSeek Harness
+
+[Part 6](/posts/fabriclakehouse6/) asks the same eight questions through DeepSeek Harness (`dsh`) and a small MCP server of mine. Here is what I can and cannot say after doing both.
+
+| | Copilot Studio calling the Fabric agent | DeepSeek Harness with my tools |
 |---|---|---|
-| tutorial | The 10 tutorial tables, with no `dimproductsubcategory` | Microsoft's tutorial instructions, which name three tables |
-| corrected | Those 10 plus `dimproductsubcategory` | My corrected instructions from Part 4 |
+| What writes the SQL | The Fabric data agent | The model, through three tools I wrote |
+| What I must build | Nothing in code: a tool, a description, instructions, Save | An MCP server of about 130 lines of Python, a profile and an AGENTS.md |
+| Capacity | A paid F2, for the Fabric agent | None: it ran against a SQL endpoint, and the trial workspace was enough |
+| Extra meter | Copilot credits: about 1.8 to 4.9 per successful question | Model tokens, which I did not meter |
+| Models in the path | Two (Copilot's and Fabric's) | One |
+| Who can use it | People with the right licences, in Teams or Microsoft 365 | Me, at a terminal |
+| Per-user permissions | Yes, in User mode | The identity my terminal is signed in as |
+| First setup worked | No: four mistakes of mine | After setup, yes |
 
-The tutorial setup is the one where the Fabric agent refused. The corrected setup is the one where it answered. The instructions are in [Part 4](/posts/fabriclakehouse4/).
+I would be careful with the words "simpler" and "cleaner". The Copilot route needs no code, and it brings Teams, per-user permissions and an evaluation tab. The harness route has fewer moving parts per question, ran without a paid capacity, and gave me the SQL and the files directly. But I wrote the harness's tools and its safety rules myself, and [Part 7](/posts/fabriclakehouse7/) shows what happened when I did not. Copilot's tool gives an audience and a permission model that my script does not.
 
-I scored each answer against the key with a script, and I read every product answer myself. I counted the tool calls from the harness's session logs.
+On this evidence the harness was the more direct way for one person to ask questions of one Lakehouse. I have not shown it is better for anyone else.
 
-## The results
+## What I did not do
 
-All 12 runs matched the key.
-
-| Setup | Question | Matches the key | Median time | Time range | Tool calls per run |
-|---|---|---|---|---|---|
-| tutorial | countries | 3 of 3 | 12.3 s | 12.2 to 16.3 s | 4, 5, 4 |
-| tutorial | products | 3 of 3 | 44.4 s | 28.3 to 46.3 s | 11, 13, 8 |
-| corrected | countries | 3 of 3 | 13.0 s | 12.4 to 14.0 s | 3, 3, 4 |
-| corrected | products | 3 of 3 | 28.1 s | 17.9 to 32.8 s | 8, 5, 10 |
-
-- **Countries:** all six totals matched to the cent in all six runs, with either scope.
-- **Products with the subcategory table in scope:** all three runs listed the five Road-150 Red bikes at 3,578.27 and joined product to subcategory to category to get Bikes.
-- **Products without it:** all three runs listed the same five bikes at the same price and flagged the missing category link. They took about one and a half times as long as the corrected setup.
-
-## What the harness did when a table was missing
-
-`dimproduct` has a subcategory key and no category key. Without `dimproductsubcategory` in scope, no query joins a product to its category. The tutorial's table list leaves that table out, but its own example queries never ask about product categories, so the gap only shows with my product question. All three runs found this out, and none of them refused. They gave the five bikes and Bikes as the category, and each said that the category was not a join.
-
-- **Run 1** wrote that the category "was therefore derived from the standard AdventureWorks subcategory mapping".
-- **Run 2** wrote that the category "is attributed via the standard AdventureWorks subcategory mapping", and added a second table of the top five models.
-- **Run 3** separated what it had checked from what it had not: the subcategory keys were "verified from the data", and that they roll up to Bikes was "inferred, not joined".
-
-So all three were honest about the gap, and they differed in how they said it. This is where the Fabric agent differed most. When it could not answer, it said it could not, and it repeated the three tables from the instructions. The harness said what was missing, and then it did what a careful analyst would do. None of the three runs mentioned that the instructions name only three tables.
-
-## Does it match Part 4?
-
-The answers match, as the table at the top shows. One thing differed. With the subcategory table missing, the Fabric agent refused the product question and wrongly said that there was no product table. The harness gave the five bikes and said that no table links a product to its category, which was the real gap. That was more useful in this one case. It is one question, three runs, a different model and my own tool. Taken with the rest, my conclusion is that for one person asking questions over one Lakehouse, the harness approach is better. The answers match, it needs no F2, it said what was missing where the Fabric agent refused, and I control the instructions, the example queries, the table scope and the model. The Fabric agent was faster in my tests, and it brings governance that I did not rebuild, so for an organisation that needs that, the choice is different. [Part 6](/posts/fabriclakehouse6/) covers what I did not rebuild.
-
-Matching answers are evidence, not proof, that the two ran the same SQL. A `LEFT JOIN` and an `INNER JOIN` return the same rows here, and any query that finds the five tied products returns the same five. Six country totals matching to the cent is strong evidence, because a different grouping or filter would almost certainly change one of them. The product question is weaker, because many queries return those five rows. In Part 6, the harness ran different SQL without an example file and got a different number, so large differences do show up.
-
-I compared answers, not queries. The Fabric agent's SQL sits in a collapsed step in its chat, which I did not open in Part 4. The harness's full list of queries was in its session logs, and I deleted those after saving the answers, so only some of its SQL survives in the saved answers. A next step is to have the tool log every query that it runs, and to open the agent's step, so that the two lists of queries can be compared directly.
-
-In [Part 6](/posts/fabriclakehouse6/) I rebuild what one person needs from a Fabric data agent on top of tables, which is example queries, the asker's own permissions and a callable endpoint, and I list the enterprise features that I did not rebuild.
-
-## Why this is not a fair test
-
-- **Different models and tools.** I do not know which model the Fabric data agent uses. The harness used `deepseek-v4-flash`, and my own tool, which can run any `SELECT` on the tables in its scope.
-- **A handful of questions.** The two main questions name tables that exist and have a single right answer.
-- **Three runs per cell.** That is enough to see no refusals, and not enough to measure a rate.
-- **No cost figure.** I did not read DeepSeek's usage, so I cannot compare costs. The Fabric side cost me about $0.22 of compute in Part 4, which is also an estimate.
-- **Earlier attempts.** My first set of 18 runs let the harness see all 28 tables, and all 18 matched the key. My second set of 12 used an earlier, weaker version of the scope, and all 12 matched. A third set of 12 limited a second user with database permissions, and 11 of 12 matched, because one ten-table run gave the top five models, which is a different reading of the question. [Part 6](/posts/fabriclakehouse6/) covers that set. A fourth set of 12 matched the final design but put the instructions in a longer prompt, and all 12 matched. I kept the raw answers from every set. The results vary a little from set to set, and three runs per cell cannot tell me how much.
+- **Publish the Copilot agent** to Teams or Microsoft 365 Copilot. I used only Preview.
+- **Use the Evaluate tab.** The page recommends it before publishing.
+- **Try Maker authentication**, or more than one data agent.
+- **Try the older connected-agent route.**
+- **Find out which of my four mistakes mattered.** I fixed them together.
+- **Check the Microsoft 365 Copilot licence.** The failed Work IQ call might be a licence problem, but I did not check.
 
 :::bullet-points What I learned
-- A Lakehouse and its SQL endpoint run on the free trial. The load took under six minutes, and no F2 was needed.
-- A coding harness needs one small tool to answer questions about a Lakehouse. Mine is a single Python file with three read-only tools and an optional scope of tables.
-- With the same tables in scope, the harness matched the key in all 12 runs: all six country totals to the cent, and the five Road-150 Red bikes every time.
-- With the table that links products to categories missing, the Fabric agent refused. The harness found the gap in all three runs and said so, but it took about one and a half times as long.
-- The three runs said the category was not a join in three different ways: a derivation from the standard mapping, an attribution via the standard mapping, and a split between what they verified and what they inferred.
-- A scope on table names works like ticking tables in Fabric. It narrows what the agent looks at, and it is not security. Permissions decide what a person can read.
-- A SQL endpoint can list fewer tables than the Lakehouse holds for a few minutes after a load.
+- A Copilot agent calls a Fabric agent through a tool, and it chooses the tool from the tool's description.
+- Microsoft's steps are clear. Skipping Save, the description and the instructions made the agent ignore the tool, hallucinate a table and call the wrong tool.
+- With two similar tools, the agent picked the wrong one. Remove tools the agent does not need.
+- Once set up correctly, the answers matched the Fabric agent and my SQL, and Copilot added a caveat that the agent had put second.
+- Copilot credits are an extra cost on top of the F2: about 2 to 5 per successful question here.
 :::
 
 ## References
 
+- [Add a Fabric data agent as a tool in Microsoft Copilot Studio (Microsoft Learn)](https://learn.microsoft.com/fabric/data-science/data-agent-microsoft-copilot-studio-tool)
+- [Consume a Fabric data agent in Microsoft Copilot Studio, the connected-agent route (Microsoft Learn)](https://learn.microsoft.com/fabric/data-science/data-agent-microsoft-copilot-studio)
+- [Connect to a Microsoft Fabric Data agent (Copilot Studio, Microsoft Learn)](https://learn.microsoft.com/microsoft-copilot-studio/add-agent-fabric-data-agent)
+- [Data agent as a Model Context Protocol server (Microsoft Learn)](https://learn.microsoft.com/fabric/data-science/data-agent-mcp-server)
+- [Copilot Studio usage limit and agent unavailable errors (Microsoft Learn)](https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/licensing/throttling-errors-agents)
+- [A Microsoft Q&A thread on a silent connection failure](https://learn.microsoft.com/en-us/answers/questions/5772696/copilot-studio-fabric-data-agent-connection-fails)
 - [Part 4: A Fabric Data Agent over the AdventureWorks Lakehouse](/posts/fabriclakehouse4/)
-- [Part 6: Rebuilding what a Fabric Data Agent adds](/posts/fabriclakehouse6/)
-- [DeepSeek Harness](/posts/deepseekharness/)
-- [Fabric data agent example with the AdventureWorks dataset (Microsoft Learn)](https://learn.microsoft.com/fabric/data-science/data-agent-end-to-end-tutorial)
-- [Model Context Protocol](https://modelcontextprotocol.io/)
+- [Part 6: DeepSeek Harness over the AdventureWorks Lakehouse](/posts/fabriclakehouse6/)
