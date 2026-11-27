@@ -308,7 +308,7 @@ It has costs too. The tables declare no joins and no descriptions, so the meanin
 
 The Fabric data agent blurs this line. It sits inside the data platform and owns both the data access and the model, which makes it convenient and governed, and fixes the model and the behaviour inside Fabric.
 
-The Microsoft route for a chat front end adds a second agent layer on top of the first: a Copilot Studio agent calls the Fabric data agent as a tool. That means two models and two sets of instructions before the data layer is reached. I tried it in [Part 5](/posts/fabriclakehouse5/): it worked once I followed Microsoft's steps, and it cost about 2 to 5 Copilot credits per question on top of the F2. My endpoint is an MCP server, so a Copilot Studio agent could call the harness in place of the Fabric agent, and a later post could compare the two.
+The Microsoft route for a chat front end adds a second agent layer on top of the first: a Copilot Studio agent calls the Fabric data agent as a tool. That means two models and two sets of instructions before the data layer is reached. I tried it in [Part 5](/posts/fabriclakehouse5/): it worked, and it cost about 2 to 5 Copilot credits per question on top of the F2. My endpoint is an MCP server, so a Copilot Studio agent could call the harness in place of the Fabric agent, and a later post could compare the two.
 
 ## Limits of these tests
 

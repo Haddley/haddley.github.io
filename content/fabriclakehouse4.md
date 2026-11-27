@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Fabric"
 part: 4
-description: "I followed Microsoft's tutorial for a Fabric data agent over AdventureWorks, then asked it all of Microsoft's own questions twice: with the tutorial's setup and with its example queries and corrected instructions. I checked the answers against my own SQL, published the agent and called it over MCP."
+description: "I followed Microsoft's tutorial for a Fabric data agent over AdventureWorks, then asked it all of Microsoft's own questions in two setups: the tutorial's and one with its example queries and corrected instructions. I checked the answers against my own SQL, published the agent and called it over MCP."
 date: "2026-11-28"
 categories: ["Azure", "AI"]
 tags: "fabric-data-agent, lakehouse, adventureworks, natural-language-query, capacity"
@@ -14,39 +14,15 @@ image: "/assets/images/fabriclakehouse4/posts-meta.svg"
 
 In [Part 1](/posts/fabriclakehouse/) I built a Lakehouse, in [Part 2](/posts/fabriclakehouse2/) I linked Dataverse to Fabric, and in [Part 3](/posts/fabriclakehouse3/) I streamed events into an Eventhouse. In this part I follow Microsoft's [end-to-end tutorial for a Fabric data agent](https://learn.microsoft.com/fabric/data-science/data-agent-end-to-end-tutorial). A data agent lets someone ask a question in plain English and get an answer from tables in a Lakehouse.
 
-I tried to do this on my free trial first, and it did not work. This post covers what I had to do to get a paid capacity, what I built, what went wrong, and how I checked the answers.
+A data agent needs a paid F2 capacity, and the free trial could not create one. This post covers the capacity, the build, Microsoft's eight questions asked in two setups, and publishing the agent and calling it over MCP.
 
-:::pencil How this post was made
-I built the agent twice. My first build had only two of Microsoft's questions, and I rewrote this post after I saw that. Everything here comes from the second, clean build, except the trial's refusal and my attempts to get an F2, which come from the first. The second build asked all of Microsoft's questions, published the agent and called it over MCP. I made two mistakes in it, which I left in.
-:::
+## The capacity
 
-## The trial could not create a data agent
-
-The New item list on my trial workspace offered a Data agent. When I named one and clicked Create, I got an error.
-
-![](assets/images/fabriclakehouse4/trial-cannot-create-data-agent.png)
-*The trial refused: "An admin needs to change the SKU type for your organization's Fabric capacity"*
-
-Microsoft's tutorial says a data agent needs a paid F2 or higher capacity, or a Power BI Premium P1 or higher. That matches the error.
-
-## Getting an F2 took longer than using it
-
-An F2 is the smallest paid Fabric capacity. Azure bills it by the second while it runs, and I can delete it afterwards. Creating one for my Azure subscription took several attempts.
-
-| Where I tried | What happened |
-|---|---|
-| West Europe | Refused: the region is not accepting new customers |
-| North Europe | Refused: regional quota of 0 |
-| East US | Refused: regional quota of 0 |
-| My other two Azure subscriptions | Both disabled, and in a different tenant |
-| A quota request for 2 capacity units in East US | Not approved: the portal told me to contact support |
-| Sweden Central | Created in about 40 seconds |
-
-The Quotas page in the Azure portal explained it. For Microsoft Fabric, many regions showed a limit of 16 capacity units for my subscription, and a few, including East US and North Europe, showed 0. I used Sweden Central, which had 16. I did not choose it for any reason of quality. I chose it because it was an EU region that already had quota. I did not check whether it offers every Fabric AI feature, but the data agent worked there.
+An F2 is the smallest paid Fabric capacity. Azure bills it by the second while it runs, and I can delete it afterwards. Microsoft's tutorial says a data agent needs an F2 or higher, or a Power BI Premium P1 or higher. Many regions showed a quota of 0 for my subscription, so I used Sweden Central, which had room for 16 capacity units.
 
 ## Creating the F2 in the portal
 
-This is the second build. I had no Fabric capacities, so the Microsoft Fabric page in the Azure portal was empty.
+I had no Fabric capacities, so the Microsoft Fabric page in the Azure portal was empty.
 
 ![](assets/images/fabriclakehouse4/portal-1-no-capacities.jpg)
 *No Microsoft Fabric capacities to display*
@@ -88,14 +64,14 @@ An F64 costs about $8,876 a month at the list price that the portal shows, and t
 
 ## What the F2 cost
 
-| | First build | Second build |
-|---|---|---|
-| Capacity created | 12:39:43 UTC | 18:40:13 UTC |
-| Capacity deleted | 13:14:41 UTC | about 19:32 UTC |
-| Time it ran | about 35 minutes | about 52 minutes |
-| List price in Sweden Central | $0.19 per capacity unit per hour | the same |
-| An F2 has | 2 capacity units, so about $0.38 an hour | the same |
-| Compute for the run | about $0.22 | about $0.33 |
+| | |
+|---|---|
+| Capacity created | 18:40:13 UTC |
+| Capacity deleted | about 19:32 UTC |
+| Time it ran | about 52 minutes |
+| List price in Sweden Central | $0.19 per capacity unit per hour |
+| An F2 has | 2 capacity units, so about $0.38 an hour |
+| Compute for the run | about $0.33 |
 
 These figures are my calculations from Microsoft's public price list, not figures from my bill. Copilot and AI usage has its own meter in Azure's price list, and I have not read my Azure cost report yet, so the real figure may be higher.
 
@@ -167,9 +143,9 @@ I clicked Run all.
 ![](assets/images/fabriclakehouse4/nb-9-session-stopped.jpg)
 *I stopped the Spark session, as the tutorial's own warning says to, because a running session keeps using capacity*
 
-## Create the data agent, too early
+## Create the data agent
 
-I did not wait for the load before I created the agent. That was a mistake.
+I created the agent after the load had finished.
 
 ![](assets/images/fabriclakehouse4/ag-1-create-dialog.jpg)
 *I named the agent AdventureWorksAgent*
@@ -179,49 +155,22 @@ I did not wait for the load before I created the agent. That was a mistake.
 
 I chose Add a data source and picked `AdventureWorksLH` from the OneLake catalog.
 
-:::watch-it The catalog showed two lakehouses with the same name
-The catalog lists items from all of my workspaces, not just this one. One `AdventureWorksLH` was from my trial workspace in [Part 6](/posts/fabriclakehouse6/) and one was the new one. They look the same in the list. I chose the new one, and I would not have noticed the other if the agent had worked.
+:::watch-it Check which lakehouse you pick
+The catalog lists items from all of my workspaces, not just this one. I had two lakehouses called `AdventureWorksLH`, and they look the same in the list. Pick the one in the workspace you are working in.
 :::
 
 ![](assets/images/fabriclakehouse4/ag-3-catalog-two-lakehouses.jpg)
 *Two lakehouses called AdventureWorksLH*
 
-![](assets/images/fabriclakehouse4/ag-4-source-added-too-early.jpg)
-*The source was added, while the notebook was still loading tables*
-
-When the load finished, the agent page did not recover. It sat on "Loading your data agent" and showed errors.
-
-![](assets/images/fabriclakehouse4/ag-5-error-not-published.jpg)
-*"The data agent has not been published", though a new agent is not published and the page normally loads anyway*
-
-![](assets/images/fabriclakehouse4/ag-6-error-ontology.jpg)
-*"Couldn't load ontology configuration"*
-
-The agent page loaded in a fresh tab.
-
-![](assets/images/fabriclakehouse4/ag-7-fresh-tab.jpg)
-*A fresh tab loaded the agent, with the source but no tables*
-
-But the source showed only a `dbo` schema with a warning, and no tables.
-
-![](assets/images/fabriclakehouse4/ag-8-dbo-warning.jpg)
-*A warning beside dbo*
-
-![](assets/images/fabriclakehouse4/ag-9-dbo-tooltip.jpg)
-*The tooltip: "This schema has been deleted or you don't have permission to view it"*
-
-The schema had not been deleted, and I have full permission, so the message was wrong about the cause. My guess is that the agent had read the schema before the tables existed and kept a stale copy. I did not confirm that. I removed the data source and added it again, and the warning stayed.
-
-![](assets/images/fabriclakehouse4/ag-10-remove-source.jpg)
-*Removing the data source*
-
-So I deleted the agent and created a new one, after the load had finished. This is the order that the tutorial uses, and I should have followed it.
-
 ![](assets/images/fabriclakehouse4/ag-11-recreated.jpg)
-*The new agent with the source added*
+*The source added to the agent*
 
 ![](assets/images/fabriclakehouse4/ag-12-tree-loaded.jpg)
-*This time the schema tree loaded, with all the tables*
+*The schema tree loaded with all the tables*
+
+:::watch-it Create the agent after the load finishes
+An agent that I created while the notebook was still loading tables showed a warning beside the `dbo` schema and no tables, and its page showed errors. Deleting it and creating a new one after the load fixed that.
+:::
 
 ## Select the tables and add instructions
 
@@ -451,7 +400,7 @@ The SQL box in the example editor is a code editor. On a Mac, Control+A moved th
 ![](assets/images/fabriclakehouse4/b-p4-answer.jpg)
 *Question 4 in Round B: the five products, after the table and the instructions were fixed*
 
-Questions 3 and 4 are fixed by the corrected instructions. Question 4 is the product question that refused three times in my earlier build.
+Questions 3 and 4 are fixed by the corrected instructions. Question 4 is the product question that Round A refused.
 
 ### The example made question 2 copy the SQL exactly
 
