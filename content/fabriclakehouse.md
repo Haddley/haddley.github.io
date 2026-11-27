@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Fabric"
 part: 1
-description: "I created a Lakehouse in Microsoft Fabric, uploaded a sales CSV, turned it into a Delta table, queried it with the SQL analytics endpoint, and charted it with PySpark in a notebook. A leftover Spark session blocked the notebook until I stopped it in the Monitor hub."
+description: "I created a Lakehouse in Microsoft Fabric, uploaded a sales CSV, turned it into a Delta table, queried it with the SQL analytics endpoint, and charted it with PySpark in a notebook."
 date: "2026-11-27"
 categories: ["Azure", "SQL"]
 tags: "microsoft-fabric, lakehouse, onelake, pyspark, delta-lake"
@@ -167,6 +167,38 @@ The chart appeared under the cell. Bikes dominate every month, and the revenue f
 
 ![](assets/images/fabriclakehouse/notebook-chart-top.jpg)
 *Monthly revenue by category, drawn from the same table that the SQL query used*
+
+## Where the old SQL Server tools went
+
+I came to Fabric knowing SSAS, SSIS and SSRS, so I looked up where each one lives now. I read the Microsoft Learn pages for this. I did not try any of the three below.
+
+:::no-dumb-questions Where is SSAS, SSIS, SSRS and Power BI in all this?
+**Q: Where is SSAS?**
+A: It is the semantic model. The Analysis Services engine (VertiPaq and DAX) runs inside Power BI and Fabric, so a Fabric semantic model is SSAS Tabular in the cloud. Azure Analysis Services was the standalone cloud version, and Microsoft publishes a guide for moving from it to Power BI. Multidimensional models (cubes and MDX) are not supported there. A semantic model can also use Direct Lake mode, which reads the Delta files in OneLake without importing them first. SSAS never did that. In this post I queried the table directly, so I skipped the semantic model. It is where a measure such as revenue would be defined once for every report.
+
+**Q: Where is SSIS?**
+A: In Data Factory in Fabric (pipelines) and in Spark notebooks. The Load to Tables step I used is the smallest example of it. For existing packages, Fabric has an Invoke SSIS Package activity that runs `.dtsx` files stored in OneLake. It is in preview.
+
+**Q: Where is SSRS, and where is Power BI?**
+A: Both are in Power BI. Power BI reports are the interactive ones. Paginated reports are the SSRS `.rdl` format, built for printing and PDF. Microsoft provides a tool that publishes `.rdl` reports from SSRS 2012 to 2022 into a Power BI workspace, with some features unsupported, such as custom code DLLs. I built no reports in this post.
+
+**Q: So is Fabric one platform that replaces SQL Server?**
+A: No. Fabric puts several analytics engines on one shared storage format with one bill. It reduces the plumbing between those engines. It does not reduce the number of systems you run. SQL Server and Dataverse still hold the data that applications write, and Fabric holds a copy of it. Part 2 measures that copy.
+:::
+
+:::no-dumb-questions What has Fabric to do with AI?
+**Q: Is Fabric an AI product?**
+A: Mostly it is where the data sits. The AI link comes in three ways, and I used only the first.
+- **Same table, more tools.** A notebook reads the same Delta table as the SQL query, so Python machine-learning code can read it too. I used PySpark for a chart, not for a model.
+- **Assistants on top.** Copilot and the Data Agent let people ask questions of the data in plain language. Copilot was not available on my trial, and I did not try a data agent.
+- **Fabric IQ (preview).** It stores business definitions, such as what a Customer is and how it relates to an Order, mapped onto the tables, so that an agent reads definitions and not only column names.
+
+**Q: What does Fabric not do?**
+A: It does not make the data right. In Part 2 a form insert saved with blank product names, and deleted rows stayed in the lake as blank marker rows. An AI that asks questions of that table would count them.
+
+**Q: Why are people excited about it?**
+A: The pitch is that AI agents need governed, current data in one place. How current depends on the copies. In Part 2 a change took from a few seconds to 18 minutes to arrive.
+:::
 
 :::bullet-points What I learned
 - A Lakehouse keeps **Files** and **Tables** apart. Loading a CSV to a table turns it into a Delta table.

@@ -353,7 +353,7 @@ I waited 20 minutes and asked for the lake timestamps of the changed rows.
 
 Edit 4 is missing from the table because I overwrote that row to "J" before it was read.
 
-I almost missed the three form inserts. I searched for them by name, found nothing, and wrongly concluded that the SQL endpoint was behind. The Lakehouse preview showed 206 rows, which is more than I expected, so I looked again. I found the three rows by their missing names. The SQL endpoint had them too.
+I almost missed the three form inserts. I searched for them by name and found nothing, so I assumed that the SQL endpoint had not caught up with these three rows. That was wrong. The Lakehouse preview showed 206 rows, which is more than I expected, so I looked again and found the three rows by their missing names. The SQL endpoint had them too. The lag I measured in the first run, where a named row was missing from the SQL endpoint for about 16 minutes, still stands. This was a separate mistake of mine, in the second run.
 
 ![](assets/images/fabriclakehouse2/fabric-dv-lakehouse-206-rows.jpg)
 *The Lakehouse preview: 206 rows*
@@ -375,6 +375,27 @@ Yes. Link to Fabric does not read Dataverse live. Dataverse keeps a synced Delta
 - A deleted row stayed in the lake table. After I deleted my first test row at about 10:24, the table held 206 rows: the 200 original rows, five inserts, and the deleted row. The deleted row kept its ID but had NULL in `statecode`, the product name and most other columns, and its sink time was 10:24:45 (local), about when I deleted it. So a delete leaves a marker row in the lake, and a plain `COUNT(*)` counts it.
 
 So "zero-copy" is true only in a narrow sense. I built no pipeline, and Fabric did not make a second copy in my own OneLake. The copy lives in Dataverse storage.
+
+:::no-dumb-questions What is actually copied?
+**Q: Fabric talks about "one copy" of the data. Is that one copy of everything?**
+A: No. It means one copy inside Fabric. The SQL endpoint, a Spark notebook and Power BI can all read the same Delta files, so each tool does not need its own copy. The source system is still there, and Fabric still holds a copy of it. In this post that copy lives in Dataverse storage. In Part 1 it was the table I loaded from the CSV.
+
+**Q: Is that a data warehouse?**
+A: It does the job of one: a separate store, filled from the operational system and used for analysis. Fabric offers a Lakehouse, with a read-only SQL endpoint that I used, and a Warehouse, which accepts T-SQL writes. Both store their tables as Delta.
+
+**Q: Does a change made in Fabric go back to Dataverse?**
+A: Not in anything I did. The link runs one way, from Dataverse to Fabric. Every edit, insert and delete in this post was made in Dataverse and reached the lake. I never changed data on the Fabric side. I did try three T-SQL writes on the SQL endpoint, an `INSERT`, an `UPDATE` and a `DELETE` on the linked sales table, using the `sqlcmd` tool. Each one failed with error 24559: "Data Manipulation Language (DML) statements are not supported for this table type in this version of SQL Server." The table still held 206 rows afterwards.
+
+I then tried the same from a Spark notebook attached to the Dataverse lakehouse: a Spark SQL `INSERT`, `UPDATE` and `DELETE`, and a Delta append of one row with `saveAsTable`. All four failed, and the table still held 206 rows with no test rows. The `INSERT`, the `UPDATE` and the append failed with a Spark "Task failed while writing rows" error. The `DELETE` gave the clearest message: "This operation is not supported through shortcuts of account type Dataverse." So the linked tables could not be written to from Fabric by either route I tried.
+
+Microsoft's documentation says the data stays in Dataverse. The only way back it describes is adding Fabric data to Dataverse as virtual tables, which read it and do not write it.
+
+**Q: When is nothing copied?**
+A: A shortcut points at data that stays where it is, for example in Azure Data Lake Storage or Amazon S3. Mirroring is different, because it keeps a synced copy of a database. For Dataverse, the shortcut points at the replica that Dataverse maintains.
+
+**Q: What does a copy cost?**
+A: It can be out of date: in this post a change took from a few seconds to 18 minutes to arrive. The linked table uses Dataverse storage. Security has to be applied again on the copy. And a deleted row stays in the lake as a marker row.
+:::
 
 ## Chart it in a notebook
 

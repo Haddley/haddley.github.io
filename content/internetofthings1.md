@@ -250,3 +250,7 @@ void loop() {
   }
 }
 ```
+
+## References
+
+- [#295 Raspberry Pi Server based on Docker, with VPN, Dropbox backup, Influx, Grafana, etc: IOTstack (YouTube)](https://www.youtube.com/watch?v=a6mjt8tWUws) - YouTube video on setting up a Raspberry Pi server with Docker containers for Mosquitto, Node-RED, InfluxDB and Grafana, with a Dropbox backup and a VPN (IOTstack).
