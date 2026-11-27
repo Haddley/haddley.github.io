@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Fabric"
 part: 2
-description: "I turned my sales CSV into a Dataverse table, linked it to a Fabric Lakehouse with Link to Fabric, and got the same answers as Part 1. Dataverse keeps a synced Delta copy of the table. I then timed edits and new rows: most reached the lake within 30 seconds, one edit took 18 minutes, and the SQL endpoint lagged behind the lake."
+description: "I turned my sales CSV into a Dataverse table, linked it to a Fabric Lakehouse with Link to Fabric, and got the same answers as Part 1. Dataverse keeps a synced Delta copy of the table. I then timed edits and new rows: all but one reached the lake within about a minute, one edit took 18 minutes, and in the first run the SQL endpoint lagged behind the lake."
 date: "2026-11-27"
 categories: ["Azure", "Power Platform"]
 tags: "microsoft-fabric, dataverse, link-to-fabric, onelake, sql-analytics-endpoint"
@@ -202,7 +202,7 @@ ORDER BY Revenue DESC;
 | 1 | 93 | 5,852 | Accessories |
 | 0 | 33 | 2,064 | Clothing |
 
-The orders and revenue match Part 1 exactly. I worked out which code is which category by matching the order counts, which are different for each category.
+The orders and revenue match Part 1 exactly. I worked out which code is which category by matching the order counts, which are different for each category. The metadata tables later confirmed it (see "Choice labels" below).
 
 ## Change a row in Dataverse
 
@@ -331,7 +331,7 @@ I opened the Lakehouse view at about 09:34, and the SQL endpoint showed the new 
 
 One edit and one new row are too few to say anything. So I made five more edits and five more inserts, and noted the time of each. For the edits, I added text to the product name of five rows in the editable grid. For the inserts, I used the grid's quick **New row** twice and the form three times.
 
-Two things went wrong. The grid's quick **New row** saves after the first keystroke, so those two rows got one-letter names, "L" and "I". Then a click and my typing landed on an existing row and overwrote its name with "J". I counted that as a sixth edit.
+Three things went wrong. The grid's quick **New row** saves after the first keystroke, so those two rows got one-letter names, "L" and "I". Then a click and my typing landed on an existing row and overwrote its name with "J". I counted that as a sixth edit. Finally, my typing never reached the form's Product field for the three form inserts, so those rows were saved with no name.
 
 I waited 20 minutes and asked for the lake timestamps of the changed rows.
 
@@ -347,24 +347,32 @@ I waited 20 minutes and asked for the lake timestamps of the changed rows.
 | Edit 5 | 10:57:08 | 10:57:33 | about 25 seconds |
 | Insert 2 ("I") | about 10:57:36 | 10:57:43 | about 7 seconds |
 | Overwrite to "J" | about 10:58:01 | 10:58:31 | about 30 seconds |
+| Insert 3 (form, no name) | about 10:59:32 | 11:00:13 | about 41 seconds |
+| Insert 4 (form, no name) | about 11:00:26 | 11:01:29 | about 63 seconds |
+| Insert 5 (form, no name) | about 11:01:12 | 11:01:29 | about 17 seconds |
 
-Edit 4 is missing from the table because I overwrote that row to "J" before it was read. Inserts 3 to 5, made with the form between 10:59 and 11:01, were not in the SQL endpoint after 20 minutes. They were in the Lakehouse: its preview showed 206 rows.
+Edit 4 is missing from the table because I overwrote that row to "J" before it was read.
+
+I almost missed the three form inserts. I searched for them by name, found nothing, and wrongly concluded that the SQL endpoint was behind. The Lakehouse preview showed 206 rows, which is more than I expected, so I looked again. I found the three rows by their missing names. The SQL endpoint had them too.
 
 ![](assets/images/fabriclakehouse2/fabric-dv-lakehouse-206-rows.jpg)
 *The Lakehouse preview: 206 rows*
 
+![](assets/images/fabriclakehouse2/fabric-dv-null-name-rows.jpg)
+*Rows with no product name: my deleted test row, and the three form inserts*
+
 What I take from the second run:
-- **Most changes reached the lake within about 30 seconds.** A new row took 4 to 7 seconds, and an edit took 25 to 30.
-- **The sync works in batches.** Edit 2 and edit 3 were saved a second apart and arrived with the same timestamp.
+- **Every change reached the lake within about a minute.** A new row took 4 to 63 seconds, and an edit took 25 to 30.
+- **The sync works in batches.** Edit 2 and edit 3 were saved a second apart and arrived with the same timestamp. Insert 4 and insert 5 arrived together at 11:01:29.
 - **My first edit was the slow one.** It took 18 minutes, and I made it six minutes after I created the link. I do not know why it was slow.
-- **The SQL endpoint is the long delay.** It was still missing inserts 3 to 5 after 20 minutes.
+- **I cannot say how long the SQL endpoint took this time.** I checked it once, 20 minutes after the changes, and by then it had everything. In the first run it was the long delay.
 
 ## Is the data copied?
 
 Yes. Link to Fabric does not read Dataverse live. Dataverse keeps a synced Delta copy of the table, and the Lakehouse reaches that copy through a shortcut. Three things show it:
 - Every row carries `SinkCreatedOn` and `SinkModifiedOn`, the time Dataverse wrote it to the lake. An edited row got a new sink time, so changed rows are rewritten.
 - Microsoft's documentation says Link to Fabric creates an optimized replica in Delta Parquet format using Dataverse storage, and that linked tables use Dataverse storage. The wizard also warned of extra storage charges.
-- A deleted row stayed in the lake table. After I deleted my first test row, the Lakehouse showed 206 rows: the 200 original rows, five inserts, and the deleted row with NULL in most of its columns. I think a delete leaves a marker row in the lake. I have not confirmed that.
+- A deleted row stayed in the lake table. After I deleted my first test row at about 10:24, the table held 206 rows: the 200 original rows, five inserts, and the deleted row. The deleted row kept its ID but had NULL in `statecode`, the product name and most other columns, and its sink time was 10:24:45 (local), about when I deleted it. So a delete leaves a marker row in the lake, and a plain `COUNT(*)` counts it.
 
 So "zero-copy" is true only in a narrow sense. I built no pipeline, and Fabric did not make a second copy in my own OneLake. The copy lives in Dataverse storage.
 
@@ -380,7 +388,7 @@ From the Dataverse Lakehouse I chose **Analyze data with**, then **Notebook**, t
 ![](assets/images/fabriclakehouse2/nb-new-notebook.jpg)
 *The new notebook, with the Dataverse Lakehouse attached*
 
-I used the Part 1 code with three changes. It uses the Dataverse column names, it skips rows with no order date (my test rows have none), and it turns the category codes into names with a dictionary. I built that dictionary earlier by matching the order counts.
+I used the Part 1 code with three changes. It uses the Dataverse column names, it skips rows with no order date (my test rows have none), and it turns the category codes into names with a dictionary. I built that dictionary by matching the order counts, and the metadata tables later confirmed it (see "Choice labels" below).
 
 ```python
 import matplotlib.pyplot as plt
@@ -418,10 +426,47 @@ The bars follow the same pattern as Part 1: Bikes dominate every month, and reve
 
 ## Choice labels
 
-By 09:34 the five folders that had been listed as Unidentified were listed as tables in the Lakehouse. I think they hold the labels for the choice columns, such as the category names behind the codes. I did not query them.
+By 09:34 the five folders that had been listed as Unidentified were listed as tables in the Lakehouse: `GlobalOptionsetMetadata`, `OptionsetMetadata`, `StateMetadata`, `StatusMetadata` and `TargetMetadata`.
 
 ![](assets/images/fabriclakehouse2/fabric-dv-lakehouse-201-rows.jpg)
 *OptionsetMetadata and the other metadata folders are now listed as tables*
+
+I guessed that they hold the labels behind the choice codes, so I queried `OptionsetMetadata`. It has a row for every choice value, with the table (`EntityName`), the column (`OptionSetName`), the stored code (`Option`) and the label (`LocalizedLabel`).
+
+```sql
+SELECT EntityName, OptionSetName, [Option], LocalizedLabel
+FROM dbo.OptionsetMetadata
+WHERE EntityName = 'cr1da_salesorder'
+ORDER BY OptionSetName, [Option];
+```
+
+![](assets/images/fabriclakehouse2/fabric-dv-choice-labels.jpg)
+*Eight rows: four labels for Category and four for Region*
+
+| Code | Category | Region |
+|---|---|---|
+| 0 | Clothing | West |
+| 1 | Accessories | South |
+| 2 | Bikes | North |
+| 3 | Safety | East |
+
+The category labels are exactly the ones I had worked out by matching the order counts. The region labels are new, because I had never matched them.
+
+I then joined the labels to the revenue query, so that SQL returns the names.
+
+```sql
+SELECT o.LocalizedLabel AS Category, COUNT(*) AS Orders, SUM(s.cr1da_totalprice) AS Revenue
+FROM dbo.cr1da_salesorder s
+JOIN dbo.OptionsetMetadata o
+  ON o.EntityName = 'cr1da_salesorder'
+ AND o.OptionSetName = 'cr1da_productcategory'
+ AND o.[Option] = s.cr1da_productcategory
+GROUP BY o.LocalizedLabel
+ORDER BY Revenue DESC;
+```
+
+![](assets/images/fabriclakehouse2/fabric-dv-join-labels.jpg)
+*The same orders and revenue as Part 1, now with the category names*
 
 :::bullet-points What I learned
 - **Link to Fabric avoids a pipeline, not a copy.** Dataverse keeps a synced Delta copy of the table, and it uses Dataverse storage.
@@ -429,7 +474,7 @@ By 09:34 the five folders that had been listed as Unidentified were listed as ta
 - **The SQL endpoint can lag well behind the Lakehouse.** If a query looks stale, check the Lakehouse preview.
 - **A notebook reads the linked table like any other.** In Spark I used the plain table name, not `dbo.` plus the name.
 - **The wizard selects all tables.** Clear the selection and pick only the tables you need, because linked tables use Dataverse storage.
-- **The AI importer renames columns and creates choice columns.** In Fabric, a choice column shows as a number.
+- **The AI importer renames columns and creates choice columns.** In Fabric, a choice column shows as a number, and `OptionsetMetadata` holds the labels. Join to it to get names.
 - **Time your own change.** The sync stamps in `SinkCreatedOn` and `SinkModifiedOn` tell you when a row reached the lake, which shows which of the two delays you are seeing.
 :::
 
