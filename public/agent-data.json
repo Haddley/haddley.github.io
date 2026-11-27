@@ -1,6 +1,49 @@
 {
   "posts": [
     {
+      "slug": "internetofthings4",
+      "title": "Internet of Things (Part 4)",
+      "description": "I rebuilt the Fabric Part 3 pipeline with the tools from my 2021 MQTT posts: Mosquitto, Node-RED, InfluxDB and Grafana, replaying the 120 real stations from the Eventhouse. I measured setup, delay, loss, query time and a second copy, and say what I could not measure.",
+      "date": "2026-11-27",
+      "categories": [
+        "IOT",
+        "Azure"
+      ],
+      "tags": "mqtt, mosquitto, node-red, influxdb, grafana"
+    },
+    {
+      "slug": "fabriclakehouse3",
+      "title": "Microsoft Fabric (Part 3)",
+      "description": "I streamed Microsoft's sample bike-share events into a Fabric Eventhouse, queried them with KQL as they arrived, switched on OneLake availability, timed how long the same rows took to reach the SQL analytics endpoint, and built a live dashboard.",
+      "date": "2026-11-27",
+      "categories": [
+        "Azure"
+      ],
+      "tags": "microsoft-fabric, eventhouse, kql, eventstream, onelake"
+    },
+    {
+      "slug": "fabriclakehouse2",
+      "title": "Microsoft Fabric (Part 2)",
+      "description": "I turned my sales CSV into a Dataverse table, linked it to a Fabric Lakehouse with Link to Fabric, and got the same answers as Part 1. Dataverse keeps a synced Delta copy of the table. I then timed edits and new rows: all but one reached the lake within about a minute, one edit took 18 minutes, and in the first run the SQL endpoint lagged behind the lake.",
+      "date": "2026-11-27",
+      "categories": [
+        "Azure",
+        "Power Platform"
+      ],
+      "tags": "microsoft-fabric, dataverse, link-to-fabric, onelake, sql-analytics-endpoint"
+    },
+    {
+      "slug": "fabriclakehouse",
+      "title": "Microsoft Fabric (Part 1)",
+      "description": "I created a Lakehouse in Microsoft Fabric, uploaded a sales CSV, turned it into a Delta table, queried it with the SQL analytics endpoint, and charted it with PySpark in a notebook. A leftover Spark session blocked the notebook until I stopped it in the Monitor hub.",
+      "date": "2026-11-27",
+      "categories": [
+        "Azure",
+        "SQL"
+      ],
+      "tags": "microsoft-fabric, lakehouse, onelake, pyspark, delta-lake"
+    },
+    {
       "slug": "copilotagentsreality",
       "title": "Copilot Agents: Impressive in the Demo, Disappointing on Monday?",
       "description": "Copilot agents can look excellent in a demo and disappoint in real work.",
@@ -3424,5 +3467,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-26T13:00:46.307Z"
+  "generatedAt": "2026-11-27T06:19:56.976Z"
 }

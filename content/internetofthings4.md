@@ -7,7 +7,7 @@ categories: ["IOT", "Azure"]
 tags: "mqtt, mosquitto, node-red, influxdb, grafana"
 slug: "internetofthings4"
 image: "/assets/images/internetofthings4/posts-meta.svg"
-hidden: true
+hidden: false
 ---
 
 # The Fabric Part 3 Pipeline Again, with Mosquitto, Node-RED, InfluxDB and Grafana

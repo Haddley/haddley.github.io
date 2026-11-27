@@ -7,7 +7,7 @@ categories: ["Azure"]
 tags: "microsoft-fabric, eventhouse, kql, eventstream, onelake"
 slug: "fabriclakehouse3"
 image: "/assets/images/fabriclakehouse3/poster.svg"
-hidden: true
+hidden: false
 ---
 
 # Streaming Events into a Fabric Eventhouse: Query Them with KQL, Then Time the Copy into OneLake
