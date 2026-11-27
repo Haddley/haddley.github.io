@@ -147,9 +147,15 @@ The credit meter appears in the Preview header. The F2 figure is my calculation,
 | Who can use it | People with the right licences, in Teams or Microsoft 365 | Me, at a terminal |
 | Per-user permissions | Yes, in User mode | The identity my terminal is signed in as |
 
-I would be careful with the words "simpler" and "cleaner". The Copilot route needs no code, and it brings Teams, per-user permissions and an evaluation tab. The harness route has fewer moving parts per question, ran without a paid capacity, and gave me the SQL and the files directly. But I wrote the harness's tools and its safety rules myself, and [Part 7](/posts/fabriclakehouse7/) shows what happened when I did not. Copilot's tool gives an audience and a permission model that my script does not.
+The harness route is simpler and cleaner for one person asking questions of one Lakehouse, and the evidence is in the counts.
 
-On this evidence the harness was the more direct way for one person to ask questions of one Lakehouse. I have not shown it is better for anyone else.
+- **Fewer things to set up.** The Copilot route needs an F2, a workspace, a load, a data agent, its tables and instructions, publishing with a description, then a Copilot Studio agent with a tool, a tool description, an authentication mode, instructions, removing Work IQ, and Save. The harness route needs a workspace on the free trial, the same load, one Python file, one profile row and an AGENTS.md.
+- **Fewer paid parts.** The harness ran without an F2 and without Copilot credits. The Copilot route needed both.
+- **Fewer models per question.** One, not two, so there is one place to look when an answer is wrong.
+- **The same answers.** Where a question has a right answer, the two matched my SQL.
+- **Not faster.** The Fabric agent was quicker on most questions: 9 to 16 seconds against 13 to 25 for the harness on the simple ones. The harness took 204 to 419 seconds on the open-ended root-cause question, against 46 to 68.
+
+What the harness does not give me is what Copilot Studio adds: Teams and Microsoft 365 as places to ask, an evaluation tab, and per-user permissions that I did not have to build. I wrote the harness's tools and safety rules myself, and [Part 7](/posts/fabriclakehouse7/) shows what went wrong when I got a rule wrong. So the harness is the better choice for me, at a terminal, over one Lakehouse. Copilot Studio is the better choice when many people who are not me need to ask questions.
 
 ## If the connection fails
 
