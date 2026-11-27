@@ -25,7 +25,7 @@
     {
       "slug": "fabriclakehouse5",
       "title": "Microsoft Fabric (Part 5)",
-      "description": "I connected Copilot Studio to the Fabric data agent from Part 4. My first attempt failed, and I traced it to four setup mistakes against Microsoft's own steps. This post covers how and why Copilot calls a data agent, what it cost, and how it compares with calling the same agent from DeepSeek Harness.",
+      "description": "How and why a Copilot Studio agent calls a Fabric data agent as a tool: the setup steps that matter, Microsoft's questions answered through Copilot, what it cost, and how it compares with calling the same agent from DeepSeek Harness.",
       "date": "2026-11-28",
       "categories": [
         "Azure",
@@ -36,7 +36,7 @@
     {
       "slug": "fabriclakehouse4",
       "title": "Microsoft Fabric (Part 4)",
-      "description": "I followed Microsoft's tutorial for a Fabric data agent over AdventureWorks, then asked it all of Microsoft's own questions twice: with the tutorial's setup and with its example queries and corrected instructions. I checked the answers against my own SQL, published the agent and called it over MCP.",
+      "description": "I followed Microsoft's tutorial for a Fabric data agent over AdventureWorks, then asked it all of Microsoft's own questions in two setups: the tutorial's and one with its example queries and corrected instructions. I checked the answers against my own SQL, published the agent and called it over MCP.",
       "date": "2026-11-28",
       "categories": [
         "Azure",
@@ -3511,5 +3511,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-27T20:26:54.333Z"
+  "generatedAt": "2026-11-27T22:31:59.813Z"
 }

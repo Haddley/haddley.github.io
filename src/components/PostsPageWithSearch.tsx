@@ -59,53 +59,6 @@ export default function PostsPageWithSearch({
 
   return (
     <>
-      {/* Category Navigation Badges */}
-      <div className="row mt-4 mb-3">
-        <div className="col-12">
-          <div style={{ 
-            display: 'flex', 
-            flexWrap: 'wrap', 
-            gap: '12px', 
-            justifyContent: 'center',
-            maxWidth: '1000px',
-            margin: '0 auto'
-          }}>
-            {categories.map((category) => (
-              <Link
-                key={category.slug}
-                href={`/categories/${category.slug}`}
-                className="badge"
-                style={{
-                  fontSize: '1rem',
-                  padding: '10px 20px',
-                  background: '#0f1e3d',
-                  color: 'white',
-                  textDecoration: 'none',
-                  borderRadius: '25px',
-                  transition: 'all 0.25s ease',
-                  boxShadow: '0 2px 8px rgba(15, 30, 61, 0.25)',
-                  border: 'none'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#f59e0b';
-                  e.currentTarget.style.color = '#0f1e3d';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(245, 158, 11, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#0f1e3d';
-                  e.currentTarget.style.color = 'white';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(15, 30, 61, 0.25)';
-                }}
-              >
-                {category.icon} {category.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Search Bar */}
       <div className="row mt-4 mb-4">
         <div className="col-12">
