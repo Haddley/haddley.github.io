@@ -155,7 +155,7 @@ The harness route is simpler and cleaner for one person asking questions of one 
 - **The same answers.** Where a question has a right answer, the two matched my SQL.
 - **Not faster.** The Fabric agent was quicker on most questions: 9 to 16 seconds against 13 to 25 for the harness on the simple ones. The harness took 204 to 419 seconds on the open-ended root-cause question, against 46 to 68.
 
-What the harness does not give me is what Copilot Studio adds: Teams and Microsoft 365 as places to ask, an evaluation tab, and per-user permissions that I did not have to build. I wrote the harness's tools and safety rules myself, and [Part 7](/posts/fabriclakehouse7/) shows what went wrong when I got a rule wrong. So the harness is the better choice for me, at a terminal, over one Lakehouse. Copilot Studio is the better choice when many people who are not me need to ask questions.
+What the harness does not give me is what Copilot Studio adds: Teams and Microsoft 365 as places to ask, an evaluation tab, and per-user permissions that I did not have to build. I wrote the harness's tools and safety rules myself, and [Part 7](/posts/fabriclakehouse7/) shows what went wrong when I got a rule wrong. So the harness is the better choice for me, at a terminal, over one Lakehouse.
 
 ## If the connection fails
 
