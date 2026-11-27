@@ -12,11 +12,29 @@ image: "/assets/images/fabriclakehouse5/posts-meta.svg"
 
 # DeepSeek Harness over the AdventureWorks Lakehouse
 
-In [Part 4](/posts/fabriclakehouse4/) I followed Microsoft's tutorial for a Fabric data agent. It needed a paid F2 capacity, and it refused my product question three times before it answered. In this part I ask the same two questions of [DeepSeek Harness](/posts/deepseekharness/), a general harness that is not part of Fabric, over the same AdventureWorks tables. I give it one small SQL tool, and the tool has a scope that works like ticking tables: it uses the ten tables that I ticked for the agent in Part 4, then eleven. The harness signs in as me, with my full permissions, as the Fabric agent did. The free trial could not create the Fabric agent, but it can hold the whole data layer, so this part needs no F2.
+In [Part 4](/posts/fabriclakehouse4/) I followed Microsoft's tutorial for a Fabric data agent. I loaded the tutorial's AdventureWorks sample, created a data agent over it, and asked the agent two questions. It needed a paid F2 capacity, and it refused my product question three times before it answered.
+
+In this part I take the same sample data, the same two questions, the same ticked tables and the same instructions, and I point [DeepSeek Harness](/posts/deepseekharness/) at them instead. It is a general harness that is not part of Fabric, and it gets one small SQL tool. **The results are the same.** The free trial could not create the Fabric agent, but it can hold the whole data layer, so this part needs no F2.
+
+The two questions are the ones that I asked in Part 4, word for word. I wrote them in the style of the tutorial's example questions. They are not the tutorial's own two example questions, which are about repeat purchases and monthly totals. [Part 6](/posts/fabriclakehouse6/) uses one of those.
+
+## Part 4 and Part 5 side by side
+
+| | Part 4: Fabric data agent | Part 5: DeepSeek Harness |
+|---|---|---|
+| Sample data | The tutorial's AdventureWorks, 28 tables, loaded with the tutorial's notebook on an F2 | The same sample, loaded with the same notebook on my free trial |
+| Questions | Top 5 products by list price with their categories, and total sales by sales territory country | The same two, word for word |
+| Tables | Ten ticked, then eleven | Ten in the tool's scope, then eleven |
+| Instructions | The tutorial's, then my corrected version | The same two files |
+| Country totals | Six, matching my SQL | The same six, to the cent, in 6 of 6 runs |
+| Top 5 products, eleven tables | The five Road-150 Red bikes at 3,578.27, in Bikes, after a refresh and a new chat | The same five, in 3 of 3 runs |
+| Top 5 products, ten tables | Refused three times | The five bikes listed, with the missing category link flagged, in 3 of 3 runs |
+| Time per answer | 5 to 24 seconds | 14 to 47 seconds |
+| Needed an F2 | Yes | No |
 
 In short:
 
-- **The answers match.** In all 12 runs, the harness matched my SQL: all six country totals to the cent, and the five tied bikes. Where I left out the table that links products to categories, the Fabric agent refused, and the harness gave the five bikes and said what was missing.
+- **The same data and the same questions give the same answers.** Every country total and every product answer in the table matched my own SQL. Where I left out the table that links products to categories, the Fabric agent refused, and the harness gave the five bikes and said what was missing.
 - **A scope is a convenience, not security.** Scoping the tool to the ticked tables narrows what the agent looks at, as ticking does in Fabric. What a person can read is set by the database permissions, and [Part 6](/posts/fabriclakehouse6/) shows the difference.
 - **Fabric's agent adds more than tables.** In Part 6 I rebuild what one person needs, and list the enterprise features that I did not.
 
@@ -27,7 +45,7 @@ I created a workspace, `AdventureWorks Harness`, on my trial capacity, and a Lak
 ![](assets/images/fabriclakehouse5/workspace-trial.jpg)
 *The workspace on my trial: a Lakehouse, its SQL analytics endpoint and the load notebook*
 
-The notebook job completed in 5 minutes 34 seconds. In Part 4, all 28 tables were there after about 19 minutes on the F2. I cannot say why the trial was faster: the two ran in different regions on different capacities.
+The notebook job completed in 5 minutes 34 seconds. In Part 4, all 28 tables were there after about 19 minutes on the F2.
 
 ![](assets/images/fabriclakehouse5/lakehouse-tables.jpg)
 *The 28 tables in the Lakehouse, with a preview of dimproductcategory*
@@ -200,14 +218,40 @@ WHERE p.ListPrice = (SELECT MAX(ListPrice) FROM dbo.dimproduct)
 ORDER BY p.EnglishProductName
 ```
 
-It returned exactly five rows: Road-150 Red in sizes 44, 48, 52, 56 and 62, each at 3,578.27 in the Bikes category. So the five-way tie in Part 4 was exactly five. I did not compare the Part 4 and Part 5 Lakehouses row by row. Both were loaded by the same tutorial code, and my key queries return the same numbers in both, so I treat them as the same data. The country totals matched what I reported in Part 4: United States 9,389,789.94, Australia 9,061,000.72, United Kingdom 3,391,712.24, Germany 2,894,312.36, France 2,644,017.74 and Canada 1,977,844.89.
+It returned exactly five rows: Road-150 Red in sizes 44, 48, 52, 56 and 62, each at 3,578.27 in the Bikes category. So the five-way tie in Part 4 was exactly five.
+
+I did not compare the Part 4 and Part 5 Lakehouses row by row. Both were loaded by the same tutorial code, and my key queries return the same numbers in both, so I treat them as the same data. Here are the country totals from each:
+
+| Country | Part 4: Fabric agent | Part 4: my SQL | Part 5: my SQL | Part 5: harness, 6 of 6 runs |
+|---|---|---|---|---|
+| United States | 9,389,789.94 | 9,389,789.94 | 9,389,789.94 | 9,389,789.94 |
+| Australia | 9,061,000.72 | 9,061,000.72 | 9,061,000.72 | 9,061,000.72 |
+| United Kingdom | 3,391,712.24 | 3,391,712.24 | 3,391,712.24 | 3,391,712.24 |
+| Germany | 2,894,312.36 | 2,894,312.36 | 2,894,312.36 | 2,894,312.36 |
+| France | 2,644,017.74 | 2,644,017.74 | 2,644,017.74 | 2,644,017.74 |
+| Canada | 1,977,844.89 | 1,977,844.89 | 1,977,844.89 | 1,977,844.89 |
+
+All four columns agree to the cent.
 
 ## The 12 runs
 
-I used the same two questions as in Part 4, word for word:
+I used the same two questions as in Part 4, word for word. The first:
 
-- "What are the top 5 products with the highest list prices, and what are their categories?"
-- "What is the total sales amount in factinternetsales by sales territory country?"
+```PROMPT
+What are the top 5 products with the highest list prices, and what are their categories?
+```
+
+The second:
+
+```PROMPT
+What is the total sales amount in factinternetsales by sales territory country?
+```
+
+The harness got each question inside the same short wrapper. This is the full prompt of the first run of the product question:
+
+```PROMPT
+Read instructions.md, which describe the data source. Then answer this question: What are the top 5 products with the highest list prices, and what are their categories? Use the fabricsql tools to look at the data. Do not change anything.
+```
 
 I ran each question in the two setups from Part 4, three times each, which makes 12 runs. Each run is a new headless session in its own folder, signed in as me, with an `instructions.md` file that the prompt tells the harness to read. The model was `deepseek-v4-flash` with high reasoning effort. I ran three at a time.
 
@@ -251,15 +295,7 @@ All three runs also pointed out that the tutorial instructions name three tables
 
 ## Does it match Part 4?
 
-The numbers match. The behaviour does not.
-
-| | Fabric data agent (Part 4) | DeepSeek Harness (this part) |
-|---|---|---|
-| Country totals | six, all matching my SQL | six, all matching my SQL, in 6 of 6 runs |
-| Products, ten tables and the tutorial instructions | Refused three times | Five bikes listed, with the missing link flagged, in 3 of 3 runs |
-| Products, eleven tables and my instructions | Correct, after a refresh and a new chat | Correct, in 3 of 3 runs |
-| Time per answer | 5 to 24 seconds | 14 to 47 seconds |
-| Needed an F2 | Yes | No |
+The numbers match, as the table at the top shows. The behaviour does not: the harness said what was missing where the Fabric agent refused, and it took a little longer per answer.
 
 Matching answers are evidence, not proof, that the two ran the same SQL. A `LEFT JOIN` and an `INNER JOIN` return the same rows here, and any query that finds the five tied products returns the same five. Six country totals matching to the cent is strong evidence, because a different grouping or filter would almost certainly change one of them. The product question is weaker, because many queries return those five rows. In Part 6, the harness ran different SQL without an example file and got a different number, so large differences do show up.
 

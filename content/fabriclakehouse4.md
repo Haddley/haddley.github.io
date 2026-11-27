@@ -160,11 +160,15 @@ The AdventureWorksLH data source contains information from three tables:
 Use this data source for queries and analyses that involve customer details, time-based events, and geographical locations.
 ```
 
-I skipped the tutorial's step of adding two example queries, to save paid time. I did not publish the agent either.
+I skipped the tutorial's step of adding two example queries, to save paid time. Those two examples are about repeat purchases and monthly totals. I did not publish the agent either.
 
 ## The first question: three refusals
 
-I asked one of the tutorial's example-style questions: "What are the top 5 products with the highest list prices, and what are their categories?"
+I asked two questions of my own, written in the style of the tutorial's examples. They are not the tutorial's own two example questions. The first was:
+
+```PROMPT
+What are the top 5 products with the highest list prices, and what are their categories?
+```
 
 ![](assets/images/fabriclakehouse4/answer-refused-1.jpg)
 *The first answer, after 18 seconds: "I can't answer this from the available data"*
@@ -176,7 +180,13 @@ The agent said the Lakehouse included only three tables, the same three as in th
 
 ## A different question worked
 
-I then asked: "What is the total sales amount in factinternetsales by sales territory country?" This one names a table. It answered after 24 seconds.
+I then asked:
+
+```PROMPT
+What is the total sales amount in factinternetsales by sales territory country?
+```
+
+This one names a table. It answered after 24 seconds.
 
 ![](assets/images/fabriclakehouse4/answer-countries.jpg)
 *Six countries with sales totals*

@@ -1,6 +1,39 @@
 {
   "posts": [
     {
+      "slug": "fabriclakehouse6",
+      "title": "Microsoft Fabric (Part 6)",
+      "description": "I rebuilt for DeepSeek Harness what one person needs from a Fabric data agent: example queries, running as the asker, and a callable endpoint. I did not build the controls that an organisation needs around an agent, and I say what each would take. I also found that the tutorial's own example SQL is ambiguous, and that the harness can read other sign-ins.",
+      "date": "2026-11-28",
+      "categories": [
+        "Azure",
+        "AI"
+      ],
+      "tags": "deepseek-harness, mcp, example-queries, permissions, data-governance"
+    },
+    {
+      "slug": "fabriclakehouse5",
+      "title": "Microsoft Fabric (Part 5)",
+      "description": "I loaded the AdventureWorks sample on my free trial and gave DeepSeek Harness one small SQL tool, scoped to the tables that I ticked for the Fabric data agent in Part 4. It matched my SQL on all 12 runs, and where a table was missing it said what was missing, where the Fabric agent refused.",
+      "date": "2026-11-28",
+      "categories": [
+        "Azure",
+        "AI"
+      ],
+      "tags": "deepseek-harness, mcp, lakehouse, adventureworks, natural-language-query"
+    },
+    {
+      "slug": "fabriclakehouse4",
+      "title": "Microsoft Fabric (Part 4)",
+      "description": "I followed Microsoft's end-to-end tutorial for a Fabric data agent over the AdventureWorks sample. My trial could not create one, so I paid for an F2 capacity for 35 minutes. The agent refused three times before it answered, and I checked its answers against my own SQL.",
+      "date": "2026-11-28",
+      "categories": [
+        "Azure",
+        "AI"
+      ],
+      "tags": "fabric-data-agent, lakehouse, adventureworks, natural-language-query, capacity"
+    },
+    {
       "slug": "internetofthings4",
       "title": "Internet of Things (Part 4)",
       "description": "I rebuilt the Fabric Part 3 pipeline with the tools from my 2021 MQTT posts: Mosquitto, Node-RED, InfluxDB and Grafana, replaying the 120 real stations from the Eventhouse. I measured setup, delay, loss, query time and a second copy, and say what I could not measure.",
@@ -35,7 +68,7 @@
     {
       "slug": "fabriclakehouse",
       "title": "Microsoft Fabric (Part 1)",
-      "description": "I created a Lakehouse in Microsoft Fabric, uploaded a sales CSV, turned it into a Delta table, queried it with the SQL analytics endpoint, and charted it with PySpark in a notebook. A leftover Spark session blocked the notebook until I stopped it in the Monitor hub.",
+      "description": "I created a Lakehouse in Microsoft Fabric, uploaded a sales CSV, turned it into a Delta table, queried it with the SQL analytics endpoint, and charted it with PySpark in a notebook.",
       "date": "2026-11-27",
       "categories": [
         "Azure",
@@ -3467,5 +3500,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-27T06:19:56.976Z"
+  "generatedAt": "2026-11-27T17:12:22.463Z"
 }
