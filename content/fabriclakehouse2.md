@@ -368,6 +368,54 @@ Yes. Link to Fabric does not read Dataverse live. Dataverse keeps a synced Delta
 
 So "zero-copy" is true only in a narrow sense. I built no pipeline, and Fabric did not make a second copy in my own OneLake. The copy lives in Dataverse storage.
 
+## Chart it in a notebook
+
+In Part 1 I charted the table in a notebook, so I did the same with the linked table. I ran this after my test rows existed, which matters for the code below.
+
+From the Dataverse Lakehouse I chose **Analyze data with**, then **Notebook**, then **New notebook**. The new notebook had the Dataverse Lakehouse attached.
+
+![](assets/images/fabriclakehouse2/nb-new-notebook-menu.jpg)
+*I created a new notebook from the Dataverse Lakehouse*
+
+![](assets/images/fabriclakehouse2/nb-new-notebook.jpg)
+*The new notebook, with the Dataverse Lakehouse attached*
+
+I used the Part 1 code with three changes. It uses the Dataverse column names, it skips rows with no order date (my test rows have none), and it turns the category codes into names with a dictionary. I built that dictionary earlier by matching the order counts.
+
+```python
+import matplotlib.pyplot as plt
+from pyspark.sql import functions as F
+names = {0: "Clothing", 1: "Accessories", 2: "Bikes", 3: "Safety"}
+df = spark.read.table("cr1da_salesorder").where(F.col("cr1da_orderdate").isNotNull())
+df = df.withColumn("Month", F.date_format("cr1da_orderdate", "yyyy-MM"))
+pdf = df.groupBy("Month", "cr1da_productcategory").agg(F.sum(F.col("cr1da_totalprice").cast("double")).alias("Revenue")).toPandas()
+pdf["Category"] = pdf["cr1da_productcategory"].map(names)
+pivot = pdf.pivot(index="Month", columns="Category", values="Revenue").fillna(0).sort_index()
+pivot.plot(kind="bar", stacked=True, figsize=(9, 5), title="Monthly revenue by category")
+plt.ylabel("Revenue")
+plt.tight_layout()
+plt.show()
+```
+
+![](assets/images/fabriclakehouse2/nb-code.jpg)
+*The code in the first cell*
+
+:::watch-it The first run could not find the table
+My first version read `dbo.cr1da_salesorder`, the same style of name that worked in Part 1. Spark could not find it.
+
+![](assets/images/fabriclakehouse2/nb-table-not-found.jpg)
+*TABLE_OR_VIEW_NOT_FOUND for dbo.cr1da_salesorder*
+
+I changed the code to the plain name, `cr1da_salesorder`, and it worked. I do not know why this Lakehouse needs the plain name when Part 1's accepted the `dbo.` form.
+:::
+
+The Spark session started in about 11 seconds, and this time I had no capacity error. The chart appeared under the cell.
+
+![](assets/images/fabriclakehouse2/nb-chart.jpg)
+*Monthly revenue by category, read from the Dataverse-linked table*
+
+The bars follow the same pattern as Part 1: Bikes dominate every month, and revenue falls from January to April, rises in May and falls again in June.
+
 ## Choice labels
 
 By 09:34 the five folders that had been listed as Unidentified were listed as tables in the Lakehouse. I think they hold the labels for the choice columns, such as the category names behind the codes. I did not query them.
@@ -379,6 +427,7 @@ By 09:34 the five folders that had been listed as Unidentified were listed as ta
 - **Link to Fabric avoids a pipeline, not a copy.** Dataverse keeps a synced Delta copy of the table, and it uses Dataverse storage.
 - **Changes usually arrived within about 30 seconds, but not always.** My first edit took 18 minutes.
 - **The SQL endpoint can lag well behind the Lakehouse.** If a query looks stale, check the Lakehouse preview.
+- **A notebook reads the linked table like any other.** In Spark I used the plain table name, not `dbo.` plus the name.
 - **The wizard selects all tables.** Clear the selection and pick only the tables you need, because linked tables use Dataverse storage.
 - **The AI importer renames columns and creates choice columns.** In Fabric, a choice column shows as a number.
 - **Time your own change.** The sync stamps in `SinkCreatedOn` and `SinkModifiedOn` tell you when a row reached the lake, which shows which of the two delays you are seeing.
