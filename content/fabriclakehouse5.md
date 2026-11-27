@@ -29,7 +29,7 @@ The two questions are the ones that I asked in Part 4, word for word. I wrote th
 | Country totals | Six, matching my SQL | The same six, to the cent, in 6 of 6 runs |
 | Top 5 products, eleven tables | The five Road-150 Red bikes at 3,578.27, in Bikes, after a refresh and a new chat | The same five, in 3 of 3 runs |
 | Top 5 products, ten tables | Refused three times | The five bikes listed, with the missing category link flagged, in 3 of 3 runs |
-| Time per answer | 5 to 24 seconds | 14 to 47 seconds |
+| Time per answer | 5 to 24 seconds | 12 to 46 seconds |
 | Needed an F2 | Yes | No |
 
 In short:
@@ -247,13 +247,9 @@ The second:
 What is the total sales amount in factinternetsales by sales territory country?
 ```
 
-The harness got each question inside the same short wrapper. This is the full prompt of the first run of the product question:
+The prompt was only the question. The instructions are in a file called `AGENTS.md` in the harness's working folder, which the harness reads at the start of every session, so I did not repeat them in the prompt. I did not name the Fabric tools either: the harness sees them in its tool list.
 
-```PROMPT
-Read instructions.md, which describe the data source. Then answer this question: What are the top 5 products with the highest list prices, and what are their categories? Use the fabricsql tools to look at the data. Do not change anything.
-```
-
-I ran each question in the two setups from Part 4, three times each, which makes 12 runs. Each run is a new headless session in its own folder, signed in as me, with an `instructions.md` file that the prompt tells the harness to read. The model was `deepseek-v4-flash` with high reasoning effort. I ran three at a time.
+I ran each question in the two setups from Part 4, three times each, which makes 12 runs. Each run is a new headless session in its own folder, signed in as me, with the instructions in `AGENTS.md`. The model was `deepseek-v4-flash` with high reasoning effort. I ran three at a time.
 
 | Setup | Tables in the tool's scope | Instructions |
 |---|---|---|
@@ -270,10 +266,10 @@ All 12 runs matched the key.
 
 | Setup | Question | Matches the key | Median time | Time range | Tool calls per run |
 |---|---|---|---|---|---|
-| tutorial | countries | 3 of 3 | 17.4 s | 14.4 to 22.5 s | 6, 8, 5 |
-| tutorial | products | 3 of 3 | 44.4 s | 40.2 to 45.0 s | 13, 12, 12 |
-| corrected | countries | 3 of 3 | 21.5 s | 20.2 to 23.1 s | 7, 8, 7 |
-| corrected | products | 3 of 3 | 27.6 s | 20.8 to 46.9 s | 14, 9, 7 |
+| tutorial | countries | 3 of 3 | 12.3 s | 12.2 to 16.3 s | 4, 5, 4 |
+| tutorial | products | 3 of 3 | 44.4 s | 28.3 to 46.3 s | 11, 13, 8 |
+| corrected | countries | 3 of 3 | 13.0 s | 12.4 to 14.0 s | 3, 3, 4 |
+| corrected | products | 3 of 3 | 28.1 s | 17.9 to 32.8 s | 8, 5, 10 |
 
 - **Countries:** all six totals matched to the cent in all six runs, with either scope.
 - **Products with the subcategory table in scope:** all three runs listed the five Road-150 Red bikes at 3,578.27 and joined product to subcategory to category to get Bikes.
@@ -281,17 +277,13 @@ All 12 runs matched the key.
 
 ## What the harness did when a table was missing
 
-`dimproduct` has a subcategory key and no category key. Without `dimproductsubcategory` in scope, no query joins a product to its category. The tutorial's table list leaves that table out, but its own example queries never ask about product categories, so the gap only shows with my product question. All three runs found this out, and none of them refused. They gave the five bikes, and then they dealt with the category in three different ways.
+`dimproduct` has a subcategory key and no category key. Without `dimproductsubcategory` in scope, no query joins a product to its category. The tutorial's table list leaves that table out, but its own example queries never ask about product categories, so the gap only shows with my product question. All three runs found this out, and none of them refused. They gave the five bikes and Bikes as the category, and each said that the category was not a join.
 
-Run 1 said that it could not tell from the data:
+- **Run 1** wrote that the category "was therefore derived from the standard AdventureWorks subcategory mapping".
+- **Run 2** wrote that the category "is attributed via the standard AdventureWorks subcategory mapping", and added a second table of the top five models.
+- **Run 3** separated what it had checked from what it had not: the subcategory keys were "verified from the data", and that they roll up to Bikes was "inferred, not joined".
 
-> **The category cannot be determined from this data source.** [...] **Unverified inference, flagged as such:** under the standard AdventureWorks reference model, subcategory key 2 is "Road Bikes", which rolls up to the **Bikes** category. That mapping comes from outside this dataset [...] so please don't treat "Bikes" as a data-derived result.
-
-Run 3 gave Bikes and said that the mapping "follows the AdventureWorks subcategory→category model" and is corroborated by the product names and descriptions. It also warned that a direct join of the subcategory key to the category key would be wrong, because it would label these road bikes as Components. Run 2 gave Bikes and wrote that it "derived the category label from the data rather than a join", from the product families that each subcategory key holds.
-
-So all three were honest about the gap, and they differed in how firmly they answered. This is where the Fabric agent differed most. When it could not answer, it said it could not, and it repeated the three tables from the instructions. The harness said what was missing, and then it did what a careful analyst would do.
-
-All three runs also pointed out that the tutorial instructions name three tables while the tool's scope held ten.
+So all three were honest about the gap, and they differed in how they said it. This is where the Fabric agent differed most. When it could not answer, it said it could not, and it repeated the three tables from the instructions. The harness said what was missing, and then it did what a careful analyst would do. None of the three runs mentioned that the instructions name only three tables.
 
 ## Does it match Part 4?
 
@@ -309,14 +301,14 @@ In [Part 6](/posts/fabriclakehouse6/) I rebuild what one person needs from a Fab
 - **A handful of questions.** The two main questions name tables that exist and have a single right answer.
 - **Three runs per cell.** That is enough to see no refusals, and not enough to measure a rate.
 - **No cost figure.** I did not read DeepSeek's usage, so I cannot compare costs. The Fabric side cost me about $0.22 of compute in Part 4, which is also an estimate.
-- **Earlier attempts.** My first set of 18 runs let the harness see all 28 tables, and all 18 matched the key. My second set of 12 used an earlier, weaker version of the scope, and all 12 matched. A third set of 12 limited a second user with database permissions, and 11 of 12 matched, because one ten-table run gave the top five models, which is a different reading of the question. [Part 6](/posts/fabriclakehouse6/) covers that set. I kept the raw answers from every set. The results vary a little from set to set, and three runs per cell cannot tell me how much.
+- **Earlier attempts.** My first set of 18 runs let the harness see all 28 tables, and all 18 matched the key. My second set of 12 used an earlier, weaker version of the scope, and all 12 matched. A third set of 12 limited a second user with database permissions, and 11 of 12 matched, because one ten-table run gave the top five models, which is a different reading of the question. [Part 6](/posts/fabriclakehouse6/) covers that set. A fourth set of 12 matched the final design but put the instructions in a longer prompt, and all 12 matched. I kept the raw answers from every set. The results vary a little from set to set, and three runs per cell cannot tell me how much.
 
 :::bullet-points What I learned
 - A Lakehouse and its SQL endpoint run on the free trial. The load took under six minutes, and no F2 was needed.
 - A coding harness needs one small tool to answer questions about a Lakehouse. Mine is a single Python file with three read-only tools and an optional scope of tables.
 - With the same tables in scope, the harness matched the key in all 12 runs: all six country totals to the cent, and the five Road-150 Red bikes every time.
 - With the table that links products to categories missing, the Fabric agent refused. The harness found the gap in all three runs and said so, but it took about one and a half times as long.
-- The three runs differed in how firmly they gave the category: one called it an outside-knowledge inference, one a mapping corroborated by names and descriptions, and one derived from the data.
+- The three runs said the category was not a join in three different ways: a derivation from the standard mapping, an attribution via the standard mapping, and a split between what they verified and what they inferred.
 - A scope on table names works like ticking tables in Fabric. It narrows what the agent looks at, and it is not security. Permissions decide what a person can read.
 - A SQL endpoint can list fewer tables than the Lakehouse holds for a few minutes after a load.
 :::

@@ -82,7 +82,7 @@ WHERE s.OrderDate > first_purchase.OrderDate
 GROUP BY g.PostalCode
 ```
 
-I asked a question that uses the same words: "What is the average percentage increase in sales amount for repeat purchases in postal code 91940?" I ran it three times without `examples.md` and three times with it, as the limited user. Both setups had my corrected instructions.
+I asked a question that uses the same words: "What is the average percentage increase in sales amount for repeat purchases in postal code 91940?" I ran it three times without `examples.md` and three times with it, as the limited user. In these runs, the prompt told the harness to read the files. Putting them in `AGENTS.md`, as Part 5 does, would do the same job. Both setups had my corrected instructions.
 
 | Setup | Definition the harness used | Answer | Time |
 |---|---|---|---|
@@ -199,6 +199,8 @@ Each API key belongs to a caller, and each caller maps to a harness profile that
 | `analyst`, the same question | The same five bikes, in 74 s and 85 s on two tries. The subcategory table was denied, so the harness worked the category out from the subcategory key and product names, and said so. |
 
 I also wrote a tiny MCP server, `fabric_ask_mcp.py`, with one tool, `ask_adventureworks`, that calls the service. Any MCP client could then use the harness as a tool. I tested it with a short Python script, not with Claude Code. It listed its tool, and answered the country question with the six correct totals in 18 seconds.
+
+The service builds a longer prompt that tells the harness to read the two files. After the runs in Part 5, I found that `dsh` loads an `AGENTS.md` file from its working folder by itself, so the service could write the instructions and examples into `AGENTS.md` and pass only the question. I did not change the service.
 
 This is not true pass-through. My service gives each caller a sign-in that I set up in advance. A service for many people would need each person's own sign-in passed through, and it would need hosting with HTTPS, which I did not build.
 
